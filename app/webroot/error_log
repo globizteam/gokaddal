@@ -1,0 +1,12 @@
+[20-Aug-2019 04:40:20 UTC] PHP Fatal error:  Cannot use [] for reading in /home/ejhcntq4nh1j/public_html/toyk/app/Controller/ProductsController.php on line 170
+[20-Aug-2019 04:40:37 UTC] PHP Fatal error:  Cannot use [] for reading in /home/ejhcntq4nh1j/public_html/toyk/app/Controller/ProductsController.php on line 170
+[16-Sep-2019 04:28:23 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/Controller/AppController.php on line 50
+[16-Sep-2019 04:28:23 UTC] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[16-Sep-2019 04:29:49 UTC] PHP Parse error:  syntax error, unexpected ''authenticate'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/Controller/AppController.php on line 51
+[16-Sep-2019 04:29:49 UTC] PHP Fatal error:  Exception thrown without a stack frame in Unknown on line 0
+[17-Sep-2019 10:58:43 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 98582528 bytes) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/View/Home/provider_list.ctp on line 171
+[17-Sep-2019 11:02:10 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 98582528 bytes) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/View/Home/provider_list.ctp on line 171
+[17-Sep-2019 11:02:24 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 98582528 bytes) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/View/Home/provider_list.ctp on line 171
+[17-Sep-2019 11:06:28 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 98582528 bytes) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/View/Home/provider_list.ctp on line 173
+[17-Sep-2019 11:06:35 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 98582528 bytes) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/View/Home/provider_list.ctp on line 173
+[19-Sep-2019 07:37:34 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/View/Home/signup.ctp on line 37
