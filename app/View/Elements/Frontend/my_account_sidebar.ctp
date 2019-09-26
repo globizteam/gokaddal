@@ -6,8 +6,15 @@
         <hr class="dark_hr">
         <ul class="m_t_15 solution_sidebar listing_page_sidebar my_account_sidebar list-unstyled p_l_0 m_b_0">
             <li><a href="<?php echo $this->webroot.'home/myaccount'; ?>">Account Details</a></li>
-            <li><a href="javascript:;">Change Password</a></li>
-            <li><a href="javascript:;">Notification</a></li>
+            <li><a href="<?php echo $this->webroot.'home/change_password'; ?>">Change Password</a></li>
+            <li><a href="<?php echo $this->webroot.'home/seeker_notification'; ?>">
+                    <?php 
+                        if (!empty($quote_count)) 
+                                echo $quote_count; 
+
+                    ?>  Notification
+                </a>
+            </li>
             <hr class="hidden-sm hidden-xs">
             <?php if(AuthComponent::user('type') == 1) : ?>
                 <li class="col_sm_m_t_20"><a href="javascript:;">My Solutions</a></li>
@@ -16,7 +23,7 @@
             <?php endif; ?>    
             <!-- <li><a href="#">My Requests</a></li> -->
             <?php if(AuthComponent::user('type') == 2) : ?>
-                <li><a href="javascript:;">My Favourites</a></li>
+                <li><a href="<?php echo $this->webroot.'home/favourite_provider'; ?>">My Favourites</a></li>
                  <!-- <li><a href="<?php //echo $this->webroot.'home/show_requirement'; ?>">My Requirements</a></li> -->
                 <li><a href="<?php echo $this->webroot.'home/my_requirement'; ?>">My Requirements</a></li>
                 <li><a href="<?php echo $this->webroot.'home/post_requirement'; ?>">Post Requirement</a></li>

@@ -84,7 +84,7 @@
                                                                         PUBLISH DATE: 
                                                                         <?php 
                                                                             $onlydate = explode(' ', $data['SeekerRequirement']['created_at']);                                                                       
-                                                                        echo $onlydate[0]; ?> &nbsp;&nbsp; | &nbsp;&nbsp; EXPIRY DATE: <?php echo $onlydate[0]; ?>
+                                                                        echo $onlydate[0]; ?> &nbsp;&nbsp; | &nbsp;&nbsp; EXPIRY DATE: <?php echo $data['SeekerRequirement']['expiry_date']; ?>
 
                                                                     </div>
                                                                 </div>
@@ -94,7 +94,7 @@
                                                                 <div class="listing_item_btns listing_match_item">
                                                                         <ul class="list-unstyled m_b_0">
                                                                             <li>
-                                                                                <a href="<?php echo $this->webroot.'home/view_requirement/'.$data['SeekerRequirement']['id']; ?>">
+                                                                                <a href="<?php echo $this->webroot.'home/my_requirement_detail/'.$data['SeekerRequirement']['id']; ?>">
                                                                                     <i class="fa fa-eye"></i>View Details
                                                                                 </a>
                                                                             </li>

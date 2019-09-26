@@ -113,11 +113,16 @@ a:hover,a:focus{
     font-weight: 700;
     font-size: 16px;
 }
-.message_m_b_40 #flashMessage{
+/*.message_m_b_40 #flashMessage{
      margin-bottom: 50px;
      font-size: 16px;
      text-align: center;
+}*/
+
+.notification_border_orange {
+    border: 1px solid #ff7f27 !important;
 }
+
 .favourite{
     background-color: #4ace42;
     color: white;
@@ -125,7 +130,7 @@ a:hover,a:focus{
 }
 .p_tb_80{
 	padding-top: 80px;
-	padding-bottom: 80px;
+	/*padding-bottom: 80px;*/
 }
 .p_tb_70{
     padding-top: 70px;

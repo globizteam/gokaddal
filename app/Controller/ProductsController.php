@@ -155,6 +155,7 @@ class ProductsController extends AppController
 
 		$this->set(compact('thirdparty_js','categories'));
 	}
+	
 	public function admin_addCategory($categoryId = null) {
 
 		if(!empty($categoryId)){
@@ -168,7 +169,28 @@ class ProductsController extends AppController
         if( $this->request->is(array('post', 'put')) )
         {
             $postData  = $this->request->data;
-           	$postData['Category']['image'] = $postData['image'];
+           	$imgName =  $_FILES['file']['name']; 
+           	$postData['Category']['image'] =  $imgName;
+
+
+           	// $postData['ProviderService']['image'] = $imgName;
+
+            if(!empty($imgName))
+            {
+
+	            	$imgNameNew = time().'-'.$imgName;
+
+	            	$destination = WWW_ROOT;
+
+	            	if(move_uploaded_file($_FILES['file']['tmp_name'],$destination.$imgName)) {
+				        echo "The file ".$imgNameNew. " has been uploaded.";
+				    } else {
+				        echo "Sorry, there was an error uploading your file.";
+						die();
+				    }
+
+        	}
+
             if ($this->Category->saveAll($postData)) 
             {
             	$category = $this->Category->findById($postData['Category']['id']);

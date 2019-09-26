@@ -94,13 +94,14 @@
                     <div class="form_with_grey_bg">
                         <h2 class="text-center txt_black txt_w_700">Lost your password?</h2>
                         <h4 class="text-center txt_grey txt_w_400 l_h_28 m_t_30">Please enter your email address. You will receive a link to create a new password via email.</h4>
-                        <form action="#" class="m_t_30">
+                        <!-- <form action="#" class="m_t_30"> -->
+                            <?php echo $this->Form->create('User', array('controller' => 'Home', 'url' => 'forgot_password')); ?>
                             <div class="form-group">
-                                <input type="email" class="form-control input_field" placeholder="Enter Email">
+                                <input type="email" name="email" class="form-control input_field" placeholder="Enter Email" required="">
                             </div>
                             <div class="text-center orange_btns m_t_30">
                                 <ul class="list-unstyled list-inline m_b_0">
-                                    <li><a href="#">Submit</a></li>
+                                    <li><input type="Submit" value="Submit"></li>
                                 </ul>
                             </div>
                         </form>

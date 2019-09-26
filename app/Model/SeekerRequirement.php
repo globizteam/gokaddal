@@ -2,7 +2,7 @@
 
 class SeekerRequirement extends AppModel {
     
-	// public $hasMany = 'ProviderService';
+	public $hasMany = 'SubmitQuote';
 
 	    public $belongsTo = [
 		     'User' => [

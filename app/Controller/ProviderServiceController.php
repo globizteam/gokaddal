@@ -113,7 +113,7 @@ class ProviderServiceController extends AppController
 		$this->loadModule = 'ProviderService';
 
 		$allcatrecords = $this->Category->find('all',array('fields'=>'id,title'));
-		$users = $this->User->find('all',array('fields'=>'id,name'));
+		$users = $this->User->find('all', array('conditions' => array('User.id !=' => 1, 'User.type' => 1 )));
 		// pr($users);die();
 	    $tags = $this->Tag->find('all');
 	    // pr($tags);die();

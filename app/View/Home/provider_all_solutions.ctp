@@ -94,7 +94,7 @@
                         <div class="listing_item_sec m_t_40">
 
                 <?php 
-                     if ($solution_count > 0) {
+                     if (!empty($solution_count) && ($solution_count > 0) ) {
                         foreach ($provider_all_solution as $key => $solution) :?>
                             <div class="listing_item bg_grey_item">
                                     <div class="row">

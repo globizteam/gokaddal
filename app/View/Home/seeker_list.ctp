@@ -9,7 +9,7 @@
                         <div class="col-md-offset-1 col-md-10">
                             
                             
-                            <?php //include 'search_form_top.php'; ?>
+                            <?php echo $this->element('Frontend/search_form'); ?>
 
 
                             <!-- <p class="txt_16 txt_white text-center after_search m_b_20">Popular Searches: &nbsp;&nbsp;&nbsp; <a href="#">Smart Cities</a> , <a href="#">Utilities</a> , <a href="#">Healthcare</a> , <a href="#">Real Estate</a></p> -->
@@ -93,203 +93,71 @@
 
                         <div class="listing_item_sec m_t_40">
 
-                        <?php foreach ($provider_list as $key => $provider) :?>
-                            <div class="listing_item bg_grey_item">
-                                <div class="row">
-                                    <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
-                                        <div class="listing_item_info listing_match_item">
-                                            <h4 class="listing_item_name">
-                                                <a href="single_provider.php" class="txt_black">
-                                                    <!-- Need Smart Water Management solution -->
-                                                    <?php echo  $provider['ProviderService']['title']; ?>
-                                                </a>
-                                            </h4>
-                                            <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_orange hover_txt_orange text-uppercase">Smart Cities, Tag name Here</a></h5>
-                                            <p class="m_t_10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum earum, enim, voluptas excepturi recusandae alias aliquid voluptate dignissimos odit a minus facere necessitatibus saepe ut.</p>
-                                            <div class="listing_item_location m_t_10"><i class="fas fa-map-marker-alt txt_orange"></i> <span class="txt_grey">East 34th Street, Near Abcd Avenue</span></div>
+                        <?php 
+                        if(!empty($seeker_list))
+                        {
+                            foreach ($seeker_list as $key => $seeker) 
+                            {    
+                            ?>
+                                <div class="listing_item bg_grey_item">
+                                    <div class="row">
+                                        <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
+                                            <div class="listing_item_info listing_match_item">
+                                                <h4 class="listing_item_name">
+                                                    <a href="javascript:;" class="txt_black">
+                                                        <!-- Need Smart Water Management solution -->
+                                                        <?php echo  $seeker['SeekerRequirement']['title']; ?>
+                                                    </a>
+                                                </h4>
+                                                <h5 class="listing_item_tags txt_w_400 m_t_10">
+                                                    <a href="javascript:;" class="txt_orange hover_txt_orange text-uppercase">
+                                                        <?php echo  $seeker['Tag']['name']; ?>
+                                                    </a>
+                                                </h5>
+                                                <p class="m_t_10">
+                                                        <?php echo  $seeker['SeekerRequirement']['description']; ?>
+                                                </p>
+                                                <div class="listing_item_location m_t_10">
+                                                    <i class="fas fa-map-marker-alt txt_orange"></i> 
+                                                    <span class="txt_grey">
+                                                        <?php echo  $seeker['User']['address']; ?>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-xs-4 col_600_full_width xs_m_t_15">
+                                            <div class="listing_item_btns listing_match_item">
+                                                <ul class="list-unstyled m_b_0">
+                                                    <li>
+                                                        <a href="<?php echo $this->webroot.'home/seeker_requirement_view/'.$seeker['SeekerRequirement']['id']  ?>">
+                                                            <i class="fa fa-eye"></i>
+                                                                View Details
+                                                        </a>
+                                                    </li>
+<!--                                                     <li>
+                                                        <a href="#">
+                                                            <i class="fa fa-heart"></i>
+                                                                Save
+                                                        </a>
+                                                    </li> -->
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-4 col_600_full_width xs_m_t_15">
-                                        <div class="listing_item_btns listing_match_item">
-                                            <ul class="list-unstyled m_b_0">
-                                                <li><a href="single_provider.php"><i class="fa fa-eye"></i>View Details</a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i>Save</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- /.listing_item -->
+                                </div> <!-- /.listing_item -->
 
-                        <?php  endforeach; ?>
+                    <?php  
+                            } 
+                        }else{
+                    ?>
+                        <div style="text-align: center; font-weight: 600; font-size: 16px;">
+                            No Seeker present for the required category.
+                        </div>
+                    <?php } ?>
+
+                    
 
                         </div> <!-- /.listing_item_sec -->
-
-<!--                             <div class="listing_item bg_grey_item">
-                                <div class="row">
-                                    <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
-                                        <div class="listing_item_info listing_match_item">
-                                            <h4 class="listing_item_name"><a href="single_provider.php" class="txt_black">Need Energy Management solution</a></h4>
-                                            <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_orange hover_txt_orange text-uppercase">Smart Cities, Tag name Here</a></h5>
-                                            <p class="m_t_10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum earum, enim, voluptas excepturi recusandae alias aliquid voluptate dignissimos odit a minus facere necessitatibus saepe ut.</p>
-                                            <div class="listing_item_location m_t_10"><i class="fas fa-map-marker-alt txt_orange"></i> <span class="txt_grey">East 34th Street, Near Abcd Avenue</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-4 col_600_full_width xs_m_t_15">
-                                        <div class="listing_item_btns listing_match_item">
-                                            <ul class="list-unstyled m_b_0">
-                                                <li><a href="single_provider.php"><i class="fa fa-eye"></i>View Details</a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i>Save</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="listing_item bg_grey_item">
-                                <div class="row">
-                                    <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
-                                        <div class="listing_item_info listing_match_item">
-                                            <h4 class="listing_item_name"><a href="single_provider.php" class="txt_black">Need AI bots solution</a></h4>
-                                            <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_orange hover_txt_orange text-uppercase">Smart Cities, Tag name Here</a></h5>
-                                            <p class="m_t_10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum earum, enim, voluptas excepturi recusandae alias aliquid voluptate dignissimos odit a minus facere necessitatibus saepe ut.</p>
-                                            <div class="listing_item_location m_t_10"><i class="fas fa-map-marker-alt txt_orange"></i> <span class="txt_grey">East 34th Street, Near Abcd Avenue</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-4 col_600_full_width xs_m_t_15">
-                                        <div class="listing_item_btns listing_match_item">
-                                            <ul class="list-unstyled m_b_0">
-                                                <li><a href="single_provider.php"><i class="fa fa-eye"></i>View Details</a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i>Save</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="listing_item bg_grey_item">
-                                <div class="row">
-                                    <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
-                                        <div class="listing_item_info listing_match_item">
-                                            <h4 class="listing_item_name"><a href="single_provider.php" class="txt_black">Need RFID tracking solution</a></h4>
-                                            <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_orange hover_txt_orange text-uppercase">Smart Cities, Tag name Here</a></h5>
-                                            <p class="m_t_10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum earum, enim, voluptas excepturi recusandae alias aliquid voluptate dignissimos odit a minus facere necessitatibus saepe ut.</p>
-                                            <div class="listing_item_location m_t_10"><i class="fas fa-map-marker-alt txt_orange"></i> <span class="txt_grey">East 34th Street, Near Abcd Avenue</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-4 col_600_full_width xs_m_t_15">
-                                        <div class="listing_item_btns listing_match_item">
-                                            <ul class="list-unstyled m_b_0">
-                                                <li><a href="single_provider.php"><i class="fa fa-eye"></i>View Details</a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i>Save</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="listing_item bg_grey_item">
-                                <div class="row">
-                                    <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
-                                        <div class="listing_item_info listing_match_item">
-                                            <h4 class="listing_item_name"><a href="single_provider.php" class="txt_black">Need Data Analytics solution</a></h4>
-                                            <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_orange hover_txt_orange text-uppercase">Smart Cities, Tag name Here</a></h5>
-                                            <p class="m_t_10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum earum, enim, voluptas excepturi recusandae alias aliquid voluptate dignissimos odit a minus facere necessitatibus saepe ut.</p>
-                                            <div class="listing_item_location m_t_10"><i class="fas fa-map-marker-alt txt_orange"></i> <span class="txt_grey">East 34th Street, Near Abcd Avenue</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-4 col_600_full_width xs_m_t_15">
-                                        <div class="listing_item_btns listing_match_item">
-                                            <ul class="list-unstyled m_b_0">
-                                                <li><a href="single_provider.php"><i class="fa fa-eye"></i>View Details</a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i>Save</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="listing_item bg_grey_item">
-                                <div class="row">
-                                    <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
-                                        <div class="listing_item_info listing_match_item">
-                                            <h4 class="listing_item_name"><a href="single_provider.php" class="txt_black">Need AI bots solution</a></h4>
-                                            <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_orange hover_txt_orange text-uppercase">Smart Cities, Tag name Here</a></h5>
-                                            <p class="m_t_10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum earum, enim, voluptas excepturi recusandae alias aliquid voluptate dignissimos odit a minus facere necessitatibus saepe ut.</p>
-                                            <div class="listing_item_location m_t_10"><i class="fas fa-map-marker-alt txt_orange"></i> <span class="txt_grey">East 34th Street, Near Abcd Avenue</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-4 col_600_full_width xs_m_t_15">
-                                        <div class="listing_item_btns listing_match_item">
-                                            <ul class="list-unstyled m_b_0">
-                                                <li><a href="single_provider.php"><i class="fa fa-eye"></i>View Details</a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i>Save</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="listing_item bg_grey_item">
-                                <div class="row">
-                                    <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
-                                        <div class="listing_item_info listing_match_item">
-                                            <h4 class="listing_item_name"><a href="single_provider.php" class="txt_black">Need RFID tracking solution</a></h4>
-                                            <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_orange hover_txt_orange text-uppercase">Smart Cities, Tag name Here</a></h5>
-                                            <p class="m_t_10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum earum, enim, voluptas excepturi recusandae alias aliquid voluptate dignissimos odit a minus facere necessitatibus saepe ut.</p>
-                                            <div class="listing_item_location m_t_10"><i class="fas fa-map-marker-alt txt_orange"></i> <span class="txt_grey">East 34th Street, Near Abcd Avenue</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-4 col_600_full_width xs_m_t_15">
-                                        <div class="listing_item_btns listing_match_item">
-                                            <ul class="list-unstyled m_b_0">
-                                                <li><a href="single_provider.php"><i class="fa fa-eye"></i>View Details</a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i>Save</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="listing_item bg_grey_item">
-                                <div class="row">
-                                    <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
-                                        <div class="listing_item_info listing_match_item">
-                                            <h4 class="listing_item_name"><a href="single_provider.php" class="txt_black">Need Data Analytics solution</a></h4>
-                                            <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_orange hover_txt_orange text-uppercase">Smart Cities, Tag name Here</a></h5>
-                                            <p class="m_t_10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum earum, enim, voluptas excepturi recusandae alias aliquid voluptate dignissimos odit a minus facere necessitatibus saepe ut.</p>
-                                            <div class="listing_item_location m_t_10"><i class="fas fa-map-marker-alt txt_orange"></i> <span class="txt_grey">East 34th Street, Near Abcd Avenue</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-4 col_600_full_width xs_m_t_15">
-                                        <div class="listing_item_btns listing_match_item">
-                                            <ul class="list-unstyled m_b_0">
-                                                <li><a href="single_provider.php"><i class="fa fa-eye"></i>View Details</a></li>
-                                                <li><a href="#"><i class="fa fa-heart"></i>Save</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  -->
-
-                            
-
-
-
-<!--                         <div class="listing_pagination text-center">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                    <li>
-                                        <a href="#" aria-label="Previous">
-                                           <i class="fas fa-chevron-left"></i>
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                            <i class="fas fa-chevron-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div> -->
 
                     </div> <!-- /.col-md-9 -->
                     

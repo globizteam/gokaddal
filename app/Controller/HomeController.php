@@ -12,7 +12,7 @@ App::uses('Hash', 'Utility');
 class HomeController extends AppController
 {
     public $helpers = array('Session','Html','Js','Form','Paginator','Flash','Module');
-    public $uses = array('Category','User','EmailTemplate','ProviderService', 'RateNReview','Favourite','Tag','SeekerRequirement');
+    public $uses = array('Category','User','EmailTemplate','ProviderService', 'RateNReview','Favourite','Tag','SeekerRequirement','SubmitQuote');
 	public $components = array(
 						'Session','Email','RequestHandler','Cookie','Paginator','Flash', 
 						'Auth' => array(
@@ -55,7 +55,7 @@ class HomeController extends AppController
 	{
 		parent::beforeFilter();
 		// give access to non logged in users
-		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user');
+		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','update_user','change_password','favourite_provider','myaccount','seeker_requirement_view','submit_quote','my_requirement_detail');
 
 		// this data available to each view
 		$categories = $this->Category->find('list',array(
@@ -67,7 +67,21 @@ class HomeController extends AppController
 
 		$this->set(compact('categories','rating_all_records'));
 
-		// pr($rating_all_records); die();
+
+		/*Seeker notifications count unread notifications*/
+		$id = $this->Auth->user('id');
+		$this->Paginator->settings = array(
+		        'limit' => 10,
+		        'conditions' => array('SubmitQuote.quote_to' => $id, 'SubmitQuote.read_status' => 0),
+		        'order' => 'SubmitQuote.id desc'
+		  );
+
+
+		$quote_list = $this->Paginator->paginate('SubmitQuote');
+		$quote_count = count($quote_list);
+		$this->set(compact('quote_list','quote_count'));
+
+		// pr($quote_list); die();
 	}
 
 
@@ -172,11 +186,14 @@ class HomeController extends AppController
 	 public function provider_list($id='')
 	 {
 
+
+
+
 	 	// Getting User type
 	 	$userType = $this->Auth->user('type');
 
 	 	/*If user type is seeker(User.type = 2) then fetch Providers*/
-	 	if ($userType ==  2 )  
+	 	if ( $userType == 2 )  
 	 	{
 
 		 	$userid = $this->Auth->user('id');
@@ -247,21 +264,72 @@ class HomeController extends AppController
 	 	}
 	 }
 
+	 public function show_selected_category($id='')
+	 {
+
+	 	 	if ($id) 
+	 	 	{
+
+	 			$this->Paginator->settings = array(
+	 			        'limit' => 10,
+	 			        'conditions' => array('ProviderService.id' => $id ),
+	 			        'order' => 'ProviderService.id desc'
+	 			  );
+
+	 			$provider_all_solution = $this->Paginator->paginate('ProviderService');
+	 			$solution_count = count($provider_all_solution);
+	 			// pr($solution_count);die();
+
+	 	 		$this->set(compact('provider_all_solution','solution_count'));
+
+	 	 		$this->redirect('provider_all_solutions');
+	 	 	}
+
+	 }
+
+
 	 public function provider_all_solutions($id='')
 	 {
-	 	if ($id) {
 
-			$this->Paginator->settings = array(
-			        'limit' => 10,
-			        'conditions' => array('User.id' => $id ),
-			        'order' => 'ProviderService.id desc'
-			  );
 
-			$provider_all_solution = $this->Paginator->paginate('ProviderService');
-			$solution_count = count($provider_all_solution);
+			/*List all solutions based on category selected*/
+		 	if ($this->request->query) 
+		 	{
+		 		$id = $this->request->query['id'];
+	 		// pr($this->request->query);die();
+	 			$this->Paginator->settings = array(
+	 			        'limit' => 10,
+	 			        'conditions' => array('ProviderService.category_id' => $id ),
+	 			        'order' => 'ProviderService.id desc'
+	 			  );
 
-	 		$this->set(compact('provider_all_solution','solution_count'));
-	 	}
+	 			$provider_all_solution = $this->Paginator->paginate('ProviderService');
+	 			// pr($provider_all_solution);die();
+	 			$solution_count = count($provider_all_solution);
+
+	 	 		$this->set(compact('provider_all_solution','solution_count'));
+
+	 	 		// $this->redirect('provider_all_solutions');
+
+		 	}else
+		 	{
+
+				/*List all solutions based on company selected*/
+			 	if ($id) 
+			 	{
+
+					$this->Paginator->settings = array(
+					        'limit' => 10,
+					        'conditions' => array('User.id' => $id ),
+					        'order' => 'ProviderService.id desc'
+					  );
+
+					$provider_all_solution = $this->Paginator->paginate('ProviderService');
+					$solution_count = count($provider_all_solution);
+
+			 		$this->set(compact('provider_all_solution','solution_count'));
+			 	}
+	 		}
 	 }
 
 
@@ -394,9 +462,22 @@ class HomeController extends AppController
 	 }
 
 	 /*view single requirement of seeker*/
-	 public function view_requirement($id='')
+	 public function my_requirement_detail($id='')
 	 {
-	 	pr('i am view_requirement');die();
+	 	 	// $tags = $this->Tag->find('all');
+	 	 	// $this->set(compact('tags'));
+
+	 	 	if ($id) {
+	 	 		$requirement = $this->SeekerRequirement->findById($id);
+
+	 	 		
+	 	 		$this->set(compact('requirement'));
+
+	 	 		// pr($requirement);die();
+
+	 			// $this->Flash->success(__('Your requirement is updated successfully'));
+	 		    // $this->redirect('post_requirement');
+	 	 	}
 	 
 	 }
 
@@ -444,23 +525,310 @@ class HomeController extends AppController
 	 
 	 }
 
+	 private function sendForgotPasswordEmail($user)
+	 {
+	     $emailTemplate = $this->EmailTemplate->findBySlug('forgot-password');
+	 	// pr($emailTemplate);die;
+	     if( !empty($emailTemplate) )
+	     {
+	         $password = $user['password'];
+	         $body = str_replace( ['{name}', '{password}'], [$user['name'], $password], $emailTemplate['EmailTemplate']['body'] );
+
+	         $param['email'] = $user['email'];
+	         $param['body'] = $body;
+
+	         $this->mail($emailTemplate, $param);    
+
+	         $this->Flash->success(__('Reset password email sent successfully'));
+	         $this->redirect('login');
+
+	     }
+	     return false;
+	 }
+
+	/*send forgot password email starting code here*/
+	public function forgot_password() 
+	 {
+	     if( $this->request->is('post') ) 
+	     {
+	         if(!empty($this->request->data['email'])) 
+	         {
+	 			// pr($this->request->data); die();
+
+	             $this->User->recursive = -1;
+	             $userInfo = $this->User->findByEmail($this->request->data['email']);
+
+	             if (count($userInfo) < 1 ) {
+		             $this->Flash->success(__("Your email is not matching with our records, try again"));
+		             $this->redirect('login');
+	             	# code...
+	             }
+	         	// pr($userInfo);die();
+
+	             App::uses('CakeText', 'Utility');
+	             mt_srand(mktime());
+	             $userInfo['User']['password'] = mt_rand();
+	             // $userInfo['User']['code'] = CakeText::uuid();
+	             $this->User->save($userInfo);
+	             $this->sendForgotPasswordEmail($userInfo['User']);
+	         }
+	     
+	     }
+	 }
+
+
+	public function update_user($ss='')
+	{
+
+		// pr($this->request->data);die();
+
+		// $this->loadModel('User');
+		// unset($this->request->data['User']['email']);
+		// $user = $this->request->data;
+
+		// $user['User']['id'] = $this->Auth->user('id');
+		// $validator = $this->User->validator();
+
+		// $user1['User']['name'] = $this->request->data['User']['name'];
+		// $user1['User']['id'] = $this->request->data['User']['id'];
+
+			// pr($user1);die();
+
+        // unset($validator['password'],$validator['contact']);
+		if($this->request->is('post'))
+		{
+			if ( $this->User->save($this->request->data) ) 
+			{
+				// pr($user);die();
+				$this->Flash->success(__('User Information updated successfully'));
+				$this->redirect($this->referer());
+			}
+
+			$this->Flash->success(__('Some error occur in updation'));
+			$this->redirect($this->referer());
+		}
+
+	}
+
+	public function change_password($value='')
+	{
+		    	if($this->request->is('post'))
+		    	{
+		    		$user = $this->request->data;
+					$userData = $this->User->findById($this->Auth->user('id'));
+		    		// pr($user);die();
+					$passwordHasher = new SimplePasswordHasher(array('hashType' => 'sha256'));
+		            $password = $passwordHasher->hash($user['User']['current_password']);
+
+					/*Checking if current password is matching with user table password*/
+					if($userData['User']['password'] != $password){
+						$this->Flash->error(__("Please enter correct current password."));
+						$this->redirect($this->referer());
+					}
+
+
+					/*Checking if new_password is matching with confirm_password password*/
+		            if ($user['User']['new_password'] != $user['User']['confirm_password']) {
+		                
+		                $this->Session->setFlash('Password does not match.');
+		                $this->redirect($this->referer());
+		            }
+
+
+					$validator = $this->User->validator();
+		            unset($validator['name'],$validator['email'],$validator['contact']);
+
+		            // $userData['User']['update'] = 'update';
+		            // $user['User']['password'] = $user['User']['current_password'];
+		            // unset($user['User']['current_password'],$user['User']['new_password'],$user['User']['confirm_password']);
+		            $user['User']['id'] = $userData['User']['id'];
+		            // pr($user);die();
+					if($this->User->save($user))
+					{
+						$this->Session->setFlash('Password Updated successfully');
+
+		                $this->redirect('change_password');
+					}
+						$this->Session->setFlash('Password Not Updated');
+
+		                $this->redirect('change_password');
+
+		    	}
+	}
+
+	public function favourite_provider($value='')
+	{
+		$userdata = $this->User->findById($this->Auth->user('id'));
+		// $userdata['Favourite'];
+		// pr($userdata['Favourite'][0]['provider_service_id']);die();
+		$povider_services = [];
+
+		foreach ($userdata['Favourite'] as $key => $service) 
+			$fav_prov_list_ids[] = $service['provider_service_id'];
+
+
+				$this->Paginator->settings = array(
+				        'limit' => 10,
+				        'conditions' => array('ProviderService.id ' => $fav_prov_list_ids),
+				        'order' => 'ProviderService.id desc'
+				  );
+
+
+				$fav_providers = $this->Paginator->paginate('ProviderService');
+				$count = count($fav_providers);
+				// $user_list = $this->Paginator->paginate('ProviderService');
+
+		/*Getting all providers which are marked as favourite by logged in Seeker*/
+		// $fav_providers = $this->ProviderService->find('all', array('conditions' => array('ProviderService.id' => $fav_prov_list_ids )));
+
+		$this->set(compact('fav_providers','count'));
+
+		// echo "<pre>";
+		// print_r($fav_providers);die();
+		// echo "</pre>";
+
+	}
 
 	 public function seeker_list($value='')
 	 {
 
+
+	 		 	$userid = $this->Auth->user('id');
+
+
+	 		 	$user = $this->User->findById($userid);
+	 		 	$provider_dealsin = $user['ProviderService'];
+
+	 		 	$cat_ids = [];
+
+	 		 	// got the categories in which provider deals, now we need to find in seeker_requiements tables for the same category
+	 		 	foreach ($provider_dealsin as $key => $provider) 
+	 		 		$cat_ids[] = $provider['category_id'];
+
+	 		 		$cat_ids = array_unique($cat_ids);
+
+	 		 	// pr('provider deals in following categories');
+	 		 	// print_r($cat_ids);
+	 		 	// echo "<br><br><br>";
+
+
+	 		 	/*if no category found in provider_services table for the logged in provider*/
+	 		 	if (count($cat_ids) < 1 ) {
+	 		 		$seeker_list = 0;
+	 		 		$this->set(compact('seeker_list'));
+	 		 	}else{
+
+		 			$this->Paginator->settings = array(
+		 			        'limit' => 10,
+		 			        'conditions' => array('SeekerRequirement.category_id ' => $cat_ids),
+		 			        'order' => 'SeekerRequirement.id desc'
+		 			  );
+	 				
+	 				$seeker_list = $this->Paginator->paginate('SeekerRequirement');
+	 				// pr($seeker_list);die();
+	 				$count = count($seeker_list);
+	 				$this->set(compact('seeker_list','count'));
+	 		 		
+				}
+
+	 		 		/*category records in which logged in provider deals*/
+		 	 		// $seeker_services = $this->ProviderService->find('all', array('conditions' => array('ProviderService.category_id' => $cat_ids ) ));
+
+		 	 		/*we have got the categories of provider, now we need to check same category in which seeker deals in seeker_requiements table*/
+
+		 	 		// foreach ($seeker_services as $key => $provider)
+		 	 		// { 
+		 	 		// 	$ids[] = $provider['ProviderService']['user_id'];
+		 	 		// }
+
+		 	 		// /**/
+		 	 		// $user_ids = array_unique($ids);
+		 		 	// pr($ids);die();
+
+
+	 	// $data = $this->Auth->user('id');
+
+	 	// $this->Paginator->settings = array(
+	 	//         'limit' => 10,
+	 	//         'conditions' => array('User.id !=' => 1,'User.type ' => 2 ),
+	 	//         'order' => 'User.id desc'
+	 	//   );
+
+
+	 	// pr($seeker_list);die();
+	 	// $count = count($seeker_list);
+	 	// $this->set(compact('seeker_list','count'));
+
 	 }
 
-	 // private function sendForgotPasswordEmail($user)
-	 // {
-	 // 	//pr($user);die;
-	 // 	$Email = new CakeEmail();
-	 // 	$Email->config('default');
-	 // 	$Email->from(array('hardeep_singh4u@yahoo.co.in' => 'My Site'));
-	 // 	$Email->to('hardeep_singh4u@yahoo.co.in');
-	 // 	$Email->subject('About');
-	 // 	$Email->send('My message');
-	 //     return true;
-	 // }
+	 /*showing each requirement of seeker as per request*/
+	public function seeker_requirement_view($id='')
+	{
+		if($id) 
+		{
+			$seeker_req = $this->SeekerRequirement->findById($id);
+			// pr($seeker_req);die();
+			$this->set(compact('seeker_req'));
+		}
+
+	}
+
+	public function submit_quote($id='')
+	{
+		// pr($this->request->data['SubmitQuote']['user_id']);die();
+		$userid = $this->request->data['SubmitQuote']['user_id'];
+		$quoteto = $this->request->data['SubmitQuote']['quote_to'];
+		$seekerrequirementid = $this->request->data['SubmitQuote']['seeker_requirement_id'];
+
+		/*check if provider already submitted code to the particular Seeker requirement*/
+		$check_quote = $this->SubmitQuote->find('all', array('conditions' => array(
+																		'SubmitQuote.user_id' => $userid, 
+																		'SubmitQuote.quote_to' => $quoteto, 
+																		'SubmitQuote.seeker_requirement_id' => $seekerrequirementid, 
+																	)));
+		if ( count($check_quote) > 0 ) {
+			$this->Flash->error('You already submitted quotation for this requirement');
+			// $this->redirect($this->referer());
+			
+		}else{
+			$this->SubmitQuote->save($this->request->data);
+			$this->Flash->success(__('Quotation submitted successfully'));
+		}
+		
+		$this->redirect($this->referer());
+	}
+
+	// seeker quotation notification count and messages
+	public function seeker_notification($value='')
+	{
+
+		$id = $this->Auth->user('id');
+		$this->Paginator->settings = array(
+		        'limit' => 10,
+		        'conditions' => array('SubmitQuote.quote_to' => $id),
+		        'order' => 'SubmitQuote.id desc'
+		  );
+
+
+		$quote_list = $this->Paginator->paginate('SubmitQuote');
+		$count = count($quote_list);
+		$this->set(compact('quote_list','count'));
+
+
+		/*Mark each notifications as read*/
+		foreach ($quote_list as $key => $quote) {
+
+			// updating each record as read
+			$update_record['SubmitQuote']['id'] = $quote['SubmitQuote']['id'];
+			$update_record['SubmitQuote']['read_status'] = $quote['SubmitQuote']['read_status'] = 1;
+			$this->SubmitQuote->save($update_record);
+		}
+		// die();
+		// $quote_count = count($quote_list);
+	
+
+	}
+
 } 
 ?>
 

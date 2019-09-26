@@ -47,14 +47,24 @@
                                             <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Categories <i class="fas fa-angle-down"></i></a>
                                             <ul class="dropdown-menu">
 
-                                                <?php foreach ($categories as $key => $category) : ?>
-                                                    <li>
-                                                        <!-- <a href="<?php echo HTTP_ROOT; ?>"solution_seeker.php> -->
-                                                        <a href="javascript:;">
-                                                            <?php echo $category; ?>
-                                                        </a>
-                                                    </li>
-                                                <?php endforeach; ?>
+                                                <!-- if logged in as seeker, will see all the categories -->
+                                                <?php 
+                                                    if( AuthComponent::user('type') != 1 ) 
+                                                    {
+                                                        foreach ($categories as $key => $category) 
+                                                        { 
+
+                                                ?>
+                                                        <li>
+                                                            <!-- <a href="<?php echo HTTP_ROOT; ?>"solution_seeker.php> -->
+                                                            <a href="<?php echo $this->webroot.'home/provider_all_solutions?id='.$key.'&showcategories=1'; ?>">
+                                                                <?php echo $category; ?>
+                                                            </a>
+                                                        </li>
+                                                <?php 
+                                                        } 
+                                                    }
+                                                ?>
 
 <!--                                                 <li><a href="solution_seeker.php">Public Services</a></li>
                                                 <li><a href="solution_seeker.php">Manufacturing</a></li>

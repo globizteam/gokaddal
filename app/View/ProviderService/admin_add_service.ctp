@@ -102,7 +102,7 @@
                                                                 <label for="Tag">Select Tag</label>
                                                                 <select class="form-control" name="tagid">
                                                                 <?php foreach ($tags as $tag): ?>
-                                                                  <option value="<?= $tag['Tag']['id']; ?>"  <?php  if(isset($tag) && $tag['Tag']['id'] == $service['ProviderService']['tag_id'] ){ echo 'selected'; } ?> ><?= $tag['Tag']['name']; ?></option>
+                                                                  <option value="<?= $tag['Tag']['id']; ?>"  <?php  if(isset($tag) && isset($service) && ($tag['Tag']['id'] == $service['ProviderService']['tag_id'] ) ){ echo 'selected'; } ?> ><?= $tag['Tag']['name']; ?></option>
                                                                 <?php endforeach; ?>
                                                                 </select>
                                                             </div>
@@ -113,7 +113,7 @@
                                                                 <?php foreach ($users as $user): 
                                                                         if ($user['User']['id'] == 1) continue;
                                                                  ?>
-                                                                  <option value="<?= $user['User']['id']; ?>"  <?php  if(isset($service) && $service['User']['id'] == $user['User']['id'] ){ echo 'selected'; } ?> ><?= $user['User']['name']; ?></option>
+                                                                  <option value="<?= $user['User']['id']; ?>"  <?php  if(isset($tag) && isset($service) && ($service['User']['id'] == $user['User']['id'] ) ){ echo 'selected'; } ?> ><?= $user['User']['name']; ?></option>
                                                                 <?php endforeach; ?>
                                                                 </select>
                                                             </div>
