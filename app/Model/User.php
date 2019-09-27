@@ -138,7 +138,8 @@ class User extends AppModel {
 
         $passwordHasher = new SimplePasswordHasher(array('hashType' => 'sha256'));
 
-            if (!empty($this->data[$this->alias]['password'])) {
+            if (!empty($this->data[$this->alias]['password'])) 
+            {
                 $this->data[$this->alias]['password'] = $passwordHasher->hash(
                     $this->data[$this->alias]['password']
                 );

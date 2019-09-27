@@ -57,10 +57,47 @@ class HomeController extends AppController
 		// give access to non logged in users
 		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','update_user','change_password','favourite_provider','myaccount','seeker_requirement_view','submit_quote','my_requirement_detail');
 
+		$this->loadModel('User');
+
 		// this data available to each view
 		$categories = $this->Category->find('list',array(
         'conditions' => array('Category.parent' => 0) ));
 
+		$id = $this->Auth->user('id');
+		// getting selected categories for provider
+		if(AuthComponent::user('type') == 1)
+		{
+			$this->Paginator->settings = array(
+			        'limit' => 10,
+			        'conditions' => array('ProviderService.user_id' => $id ),
+			        'order' => 'ProviderService.id desc'
+			);
+
+
+			$seeker_solutions = $this->Paginator->paginate('ProviderService');
+
+			$seeker_cat_ids = [];
+
+			foreach ($seeker_solutions as $key => $seeker) {
+				// echo "<pre>";
+				$seeker_cat_ids[] = $seeker['ProviderService']['category_id']; 
+			}
+
+
+		 	$cat_names = $this->Category->find('all', array('conditions' => array('Category.id' => $seeker_cat_ids ) ) );
+		 // 	echo "<pre>";
+			// print_r($cat_names);
+		 // 	echo "</pre>";
+		 // 	die();
+
+		 	$cat_count = count($cat_names);
+
+			$this->set(compact('cat_names','cat_count'));
+
+
+		 	// pr($seeker_solutions);die();
+
+		}
 
 		// provide overall rating of the particular provider(Company)
 		$rating_all_records = $this->RateNReview->find('all');
@@ -69,7 +106,6 @@ class HomeController extends AppController
 
 
 		/*Seeker notifications count unread notifications*/
-		$id = $this->Auth->user('id');
 		$this->Paginator->settings = array(
 		        'limit' => 10,
 		        'conditions' => array('SubmitQuote.quote_to' => $id, 'SubmitQuote.read_status' => 0),
@@ -264,6 +300,7 @@ class HomeController extends AppController
 	 	}
 	 }
 
+
 	 public function show_selected_category($id='')
 	 {
 
@@ -297,11 +334,13 @@ class HomeController extends AppController
 		 	{
 		 		$id = $this->request->query['id'];
 	 		// pr($this->request->query);die();
+
 	 			$this->Paginator->settings = array(
 	 			        'limit' => 10,
 	 			        'conditions' => array('ProviderService.category_id' => $id ),
 	 			        'order' => 'ProviderService.id desc'
-	 			  );
+	 			);
+
 
 	 			$provider_all_solution = $this->Paginator->paginate('ProviderService');
 	 			// pr($provider_all_solution);die();
@@ -332,7 +371,48 @@ class HomeController extends AppController
 	 		}
 	 }
 
+	 /*when provider is logged in*/
+	 public function seeker_selected_category($value='')
+	 {
 
+	 	if ($this->request->query) 
+	 	{
+	 		$catid = $this->request->query['id'];
+ 		// pr($this->request->query);die();
+
+	 		// $this->SeekerRequirement->find('all', array('conditions' => array('SeekerRequirement.category_id' => $catid ) ) );
+
+ 			$this->Paginator->settings = array(
+ 			        'limit' => 10,
+ 			        'conditions' => array('SeekerRequirement.category_id' => $catid ),
+ 			        'order' => 'SeekerRequirement.id desc'
+ 			);
+
+
+ 			$seeker_requirements = $this->Paginator->paginate('SeekerRequirement');
+ 			// pr($seeker_requirements);die();
+ 			$seeker_req_count = count($seeker_requirements);
+
+ 	 		$this->set(compact('seeker_requirements','seeker_req_count'));
+
+ 	 		// $this->redirect('provider_all_solutions');
+
+	 	}
+
+
+	 	$id = $this->Auth->user('id');
+
+		$this->Paginator->settings = array(
+		        'limit' => 10,
+		        'conditions' => array('ProviderService.user_id' => $id ),
+		        'order' => 'ProviderService.id desc'
+		);
+
+		$seeker_solutions = $this->Paginator->paginate('ProviderService');
+	 	
+	 	pr($seeker_solutions);die();
+	 	# code...
+	 }
 
 	 public function rating_n_reviews($value='')
 	 {
@@ -399,7 +479,12 @@ class HomeController extends AppController
 
 	 public function myaccount($value='')
 	 {
-	 	// pr('i am in myaccount');die();
+	 	$id = $this->Auth->user('id');
+	 	$userdata = $this->User->findById($id);
+
+	 	$this->set(compact('userdata'));
+
+	 	// pr($userdata);die();
 	 }
 
 	 public function post_requirement($id='')
@@ -577,19 +662,27 @@ class HomeController extends AppController
 	 }
 
 
-	public function update_user($ss='')
+	public function update_user($data='')
 	{
 
-		// pr($this->request->data);die();
+		// pr($data);die();
 
 		// $this->loadModel('User');
 		// unset($this->request->data['User']['email']);
-		// $user = $this->request->data;
+		// $userdata['User'] = $this->Auth->user();
+		// unset($userdata['User']['password'] = );
 
+		
+		$user = $this->request->data;
+
+		unset($this->User->validate['password'],$this->User->validate['email'], $this->User->validate['type']);
+		// pr($user);die();
 		// $user['User']['id'] = $this->Auth->user('id');
-		// $validator = $this->User->validator();
+		// // $validator = $this->User->validator();
 
-		// $user1['User']['name'] = $this->request->data['User']['name'];
+		// $user['User']['name'] = $this->request->data['User']['name'];
+
+		// unset($user['User']['password']);
 		// $user1['User']['id'] = $this->request->data['User']['id'];
 
 			// pr($user1);die();
@@ -597,14 +690,23 @@ class HomeController extends AppController
         // unset($validator['password'],$validator['contact']);
 		if($this->request->is('post'))
 		{
-			if ( $this->User->save($this->request->data) ) 
+				// pr($this->request->data);die();
+			if ( $this->User->save($user) ) 
 			{
-				// pr($user);die();
 				$this->Flash->success(__('User Information updated successfully'));
 				$this->redirect($this->referer());
 			}
 
-			$this->Flash->success(__('Some error occur in updation'));
+
+			// debug($this->User->validationErrors); //show validationErrors
+
+			// echo 'i am in between';
+
+			// debug($this->User->getDataSource()->getLog(false, false)); //show last sql query
+			// die();
+
+
+			$this->Flash->success(__('Some error occur in updation, please try'));
 			$this->redirect($this->referer());
 		}
 
@@ -614,6 +716,7 @@ class HomeController extends AppController
 	{
 		    	if($this->request->is('post'))
 		    	{
+
 		    		$user = $this->request->data;
 					$userData = $this->User->findById($this->Auth->user('id'));
 		    		// pr($user);die();
@@ -635,20 +738,26 @@ class HomeController extends AppController
 		            }
 
 
-					$validator = $this->User->validator();
-		            unset($validator['name'],$validator['email'],$validator['contact']);
+		    		unset($this->User->validate['email'],$this->User->validate['name'], $this->User->validate['type'], $this->User->validate['contact']);
 
-		            // $userData['User']['update'] = 'update';
-		            // $user['User']['password'] = $user['User']['current_password'];
-		            // unset($user['User']['current_password'],$user['User']['new_password'],$user['User']['confirm_password']);
-		            $user['User']['id'] = $userData['User']['id'];
-		            // pr($user);die();
+		            $user['id'] = $userData['User']['id'];
+		            $user['password'] = $user['User']['new_password'];
+
+		    		unset($user['User']['current_password'],$user['User']['new_password'],$user['User']['confirm_password']);
+
 					if($this->User->save($user))
 					{
 						$this->Session->setFlash('Password Updated successfully');
 
 		                $this->redirect('change_password');
 					}
+
+					// debug($this->User->validationErrors); //show validationErrors
+
+					// debug($this->User->getDataSource()->getLog(false, false)); //show last sql query
+					// die();
+
+
 						$this->Session->setFlash('Password Not Updated');
 
 		                $this->redirect('change_password');
@@ -681,12 +790,30 @@ class HomeController extends AppController
 		/*Getting all providers which are marked as favourite by logged in Seeker*/
 		// $fav_providers = $this->ProviderService->find('all', array('conditions' => array('ProviderService.id' => $fav_prov_list_ids )));
 
+		// pr($fav_providers);die();
 		$this->set(compact('fav_providers','count'));
 
 		// echo "<pre>";
 		// print_r($fav_providers);die();
 		// echo "</pre>";
 
+	}
+
+	/*delete single requirement of seeker*/
+	public function remove_favourite($id='')
+	{
+		$userid = $this->Auth->user('id');
+
+
+		$deleteFavourite = $this->Favourite->find('all', array('conditions' => array( 'Favourite.user_id' => $userid,'Favourite.provider_service_id' => $id)));
+		// pr($deleteFavourite);die();
+
+		if($this->Favourite->delete($deleteFavourite[0]['Favourite']['id']))
+			$this->Flash->error(__('Favourite deleted successfully.'));
+		else
+			$this->Flash->error(__('Error in deleting, Please contact admin.'));
+		$this->redirect($this->referer());
+	
 	}
 
 	 public function seeker_list($value='')

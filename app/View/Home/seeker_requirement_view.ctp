@@ -83,10 +83,10 @@
                     <h4 class="text-center txt_grey txt_w_400">Lorem ipsum dolor sit amet, consectetur.</h4>
                         <form action="<?php echo $this->webroot.'home/submit_quote/'.$seeker_req['SeekerRequirement']['id']; ?>" method="post" class="m_t_30">
                             <div class="form-group">
-                                <input type="text" class="form-control input_field" name="data[SubmitQuote][name]" value="<?php echo $seeker_req['User']['name']; ?>" placeholder="Enter Name">
+                                <input type="text" class="form-control input_field" name="data[SubmitQuote][name]" value="<?php echo AuthComponent::user('company_name'); ?>" placeholder="Enter Name">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control input_field" name="data[SubmitQuote][email]" value="<?php echo $seeker_req['User']['email']; ?>" placeholder="Enter Email">
+                                <input type="email" class="form-control input_field" name="data[SubmitQuote][email]" value="<?php echo AuthComponent::user('email'); ?>" placeholder="Enter Email">
                             </div>
                             <input type="hidden" name="data[SubmitQuote][user_id]" value="<?php echo AuthComponent::user('id');  ?>" >
                             <input type="hidden" name="data[SubmitQuote][quote_to]" value="<?php echo $seeker_req['SeekerRequirement']['user_id'];  ?>" >

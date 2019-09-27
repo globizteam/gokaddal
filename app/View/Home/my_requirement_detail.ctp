@@ -117,12 +117,12 @@
                                                     <?php echo $quote['message']; ?>
 
                                                 </p>
-<!--                                                 <div class="share_icon p_t_5">
+                                                <div class="share_icon p_t_5">
                                                     <a href="#" class="txt_orange txt_12">
                                                         <i class="fas fa-envelope m_r_3"></i>
                                                             Contact
                                                     </a>
-                                                </div> -->
+                                                </div>
                                             </div> <!-- /.review_item -->
 
                                             <?php  
@@ -133,7 +133,7 @@
 
                                         <div class="text-center orange_btns m_t_30">
                                             <ul class="list-unstyled list-inline m_b_0">
-                                                <li><a href="#">See All</a></li>
+                                                <li><a href="javascript:;">See All</a></li>
                                             </ul>
                                         </div>
 

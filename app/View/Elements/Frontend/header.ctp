@@ -66,6 +66,24 @@
                                                     }
                                                 ?>
 
+                                                <?php 
+                                                    if( AuthComponent::user('type') == 1 ) 
+                                                    {
+                                                        foreach ($cat_names as $key => $category) 
+                                                        { 
+
+                                                ?>
+                                                        <li>
+                                                            <!-- <a href="<?php echo HTTP_ROOT; ?>"solution_seeker.php> -->
+                                                            <a href="<?php echo $this->webroot.'home/seeker_selected_category?id='. $category['Category']['id'].'&showcategories=1'; ?>">
+                                                                <?php echo $category['Category']['title']; ?>
+                                                            </a>
+                                                        </li>
+                                                <?php 
+                                                        } 
+                                                    }
+                                                ?>
+
 <!--                                                 <li><a href="solution_seeker.php">Public Services</a></li>
                                                 <li><a href="solution_seeker.php">Manufacturing</a></li>
                                                 <li><a href="solution_seeker.php">E-Governance</a></li>

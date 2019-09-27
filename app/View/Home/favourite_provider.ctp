@@ -7,12 +7,7 @@
                     <h3 class="text-center txt_white m_b_70">Category/Solution Provider Name</h3> -->
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            
-                            
                             <?php echo $this->element('Frontend/search_form'); ?>
-
-
-                            <!-- <p class="txt_16 txt_white text-center after_search m_b_20">Popular Searches: &nbsp;&nbsp;&nbsp; <a href="#">Smart Cities</a> , <a href="#">Utilities</a> , <a href="#">Healthcare</a> , <a href="#">Real Estate</a></p> -->
                         </div>
                     </div>
                 </div>
@@ -190,11 +185,12 @@
                                                         ?>
 
                                                     </li>
-<!--                                                     <li>
-                                                        <a href="#" data-toggle="modal" data-target="#like_modal">
-                                                            <i class="fa fa-heart"></i>Favourite
+                                                    <li>
+                                                        <!-- removing from favourite sending provider service id -->
+                                                        <a href="<?php echo  $this->webroot.'home/remove_favourite/'.$user['ProviderService']['id']; ?>" >
+                                                            <i class="fa fa-heart"></i>Remove
                                                         </a>
-                                                    </li> -->
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>

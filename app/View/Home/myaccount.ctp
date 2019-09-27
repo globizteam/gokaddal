@@ -10,8 +10,6 @@
                             <?php echo $this->element('Frontend/search_form'); ?>
 
 
-
-                            <!-- <p class="txt_16 txt_white text-center after_search m_b_20">Popular Searches: &nbsp;&nbsp;&nbsp; <a href="#">Smart Cities</a> , <a href="#">Utilities</a> , <a href="#">Healthcare</a> , <a href="#">Real Estate</a></p> -->
                         </div>
                     </div>
                 </div>
@@ -50,19 +48,19 @@
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="name" class="txt_black">Name</label>
-                                                            <input type="text" name="data[User][name]" class="form-control input_field my_info_input" id="name" placeholder="Enter Your Name" value="<?php echo AuthComponent::user('name'); ?>">
+                                                            <input type="text" name="data[User][name]" class="form-control input_field my_info_input" id="name" placeholder="Enter Your Name" value="<?php echo $userdata['User']['name']; ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="email" class="txt_black">Email</label>
-                                                            <input type="text" name="data[User][email]" class="form-control input_field my_info_input" id="email" placeholder="Enter Your Email" value="<?php echo AuthComponent::user('email'); ?>" readonly>
+                                                            <input type="text" name="data[User][email]" class="form-control input_field my_info_input" id="email" placeholder="Enter Your Email" value="<?php echo $userdata['User']['email']; ?>" readonly>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="mobile_number" class="txt_black">Mobile Number</label>
-                                                            <input type="text" class="form-control input_field my_info_input" name="data[User][contact]" id="contact" placeholder="Enter Your Mobile Number" value="<?php echo AuthComponent::user('contact'); ?>">
+                                                            <input type="text" class="form-control input_field my_info_input" name="data[User][contact]" id="contact" placeholder="Enter Your Mobile Number" value="<?php echo $userdata['User']['contact']; ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">
@@ -70,8 +68,8 @@
                                                             <label for="user_type" class="txt_black">User Type</label>
                                                             <select class="form-control input_field my_info_input" name="data[User][type]" id="user_type" disabled="">
                                                                 <option value="Select User Type">Select User Type</option>
-                                                                <option value="<?php echo 1; ?>"<?php if(AuthComponent::user('type') == 1)  echo 'selected'; ?> >Solution Provider</option>
-                                                                <option value="<?php echo 2; ?>"<?php if(AuthComponent::user('type') == 2)  echo 'selected'; ?> > Solution Seeker</option>
+                                                                <option value="<?php echo 1; ?>"<?php if($userdata['User']['type'] == 1)  echo 'selected'; ?> >Solution Provider</option>
+                                                                <option value="<?php echo 2; ?>"<?php if($userdata['User']['type'] == 2)  echo 'selected'; ?> > Solution Seeker</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -88,23 +86,23 @@
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="street_address" class="txt_black">Street Address</label>
-                                                            <input type="text" class="form-control input_field my_info_input" id="street_address" name="data[User][address]" placeholder="Enter Street Address" value="<?php echo AuthComponent::user('address'); ?>">
+                                                            <input type="text" class="form-control input_field my_info_input" id="street_address" name="data[User][address]" placeholder="Enter Street Address" value="<?php echo $userdata['User']['address']; ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="country" class="txt_black">Country</label>
-                                                            <input type="text" class="form-control input_field my_info_input" name="data[User][country]" id="country" placeholder="Enter Country" value="<?php echo AuthComponent::user('country'); ?>">
+                                                            <input type="text" class="form-control input_field my_info_input" name="data[User][country]" id="country" placeholder="Enter Country" value="<?php echo $userdata['User']['country']; ?>">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="state" class="txt_black">State</label>
-                                                            <input type="text" class="form-control input_field my_info_input" name="data[User][state]" id="state" placeholder="Enter State" value="<?php echo AuthComponent::user('state'); ?>">
+                                                            <input type="text" class="form-control input_field my_info_input" name="data[User][state]" id="state" placeholder="Enter State" value="<?php echo $userdata['User']['state']; ?>">
                                                         </div>
                                                     </div>
 
-                                                    <input type="hidden" name="data[User][id]" value="<?php echo AuthComponent::user('id'); ?>">
+                                                    <input type="hidden" name="data[User][id]" value="<?php echo $userdata['User']['id']; ?>">
 <!--                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="city" class="txt_black">City</label>
