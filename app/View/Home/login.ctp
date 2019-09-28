@@ -38,10 +38,11 @@
                             <!-- <form action="my_account.php"> -->
                                 <div class="form-group">
                                     
-                                    <input type="email" name="data[User][email]" class="form-control input_field" placeholder="Enter Email">
+                                    <!-- <input type="email" name="data[User][email]" class="form-control input_field" placeholder="Enter Email"> -->
+                                    <input type="email" name="data[User][email]" class="form-control input_field" placeholder="Enter Email" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="data[User][password]" class="form-control input_field" placeholder="Enter Password">
+                                    <input type="password" name="data[User][password]" class="form-control input_field" placeholder="Enter Password" required="">
                                 </div>
                                 <p class="text-right txt_12"><a href="#" class="txt_grey hover_txt_orange" data-toggle="modal" data-target="#forgot_password">Forgot Password ?</a></p>
                                <!--  <div class="form-group">
@@ -94,14 +95,14 @@
                     <div class="form_with_grey_bg">
                         <h2 class="text-center txt_black txt_w_700">Lost your password?</h2>
                         <h4 class="text-center txt_grey txt_w_400 l_h_28 m_t_30">Please enter your email address. You will receive a link to create a new password via email.</h4>
-                        <!-- <form action="#" class="m_t_30"> -->
-                            <?php echo $this->Form->create('User', array('controller' => 'Home', 'url' => 'forgot_password')); ?>
+                    
+                        <form action="<?php echo $this->webroot.'home/forgot_password'; ?>" method="post" id="UserForgetForm" class="m_t_30">
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control input_field" placeholder="Enter Email" required="">
+                                <input type="email" name="email" class="form-control input_field" placeholder="Enter Email" required >
                             </div>
                             <div class="text-center orange_btns m_t_30">
                                 <ul class="list-unstyled list-inline m_b_0">
-                                    <li><input type="Submit" value="Submit"></li>
+                                    <li><input type="submit" value="Submit"></li>
                                 </ul>
                             </div>
                         </form>

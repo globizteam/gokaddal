@@ -120,7 +120,14 @@
                         <div class="orange_btns m_t_30">
                             <ul class="list-unstyled list-inline m_b_0">
                                 <li><input type="submit" value="Update"></li>
-                                <li><a href="<?php echo $this->webroot.'home/my_requirement'?>">Cancel</a></li>
+                                <li>
+                                    <?php  if (AuthComponent::user('type') == 2) { ?>
+                                            <a href="<?php echo $this->webroot.'home/my_requirement'; ?>">Cancel</a>
+                                    <?php } if (AuthComponent::user('type') == 1)  { ?>
+                                            <!-- <a href="<?php //echo $this->webroot.'home/my_solutions'; ?>">Cancel</a> -->
+                                            <a href="javascript:;">Cancel</a>
+                                    <?php }  ?>
+                                </li>
                             </ul>
                         </div>
                     </form>

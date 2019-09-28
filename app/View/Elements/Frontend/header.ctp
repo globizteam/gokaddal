@@ -15,6 +15,13 @@
     </head>
 
 <body> -->
+
+    <?php 
+        $directoryURI = $_SERVER['REQUEST_URI'];
+        $activePage = basename($directoryURI);   
+
+    ?>
+
     <div class="top_header">
         <div class="topbar">
             <div class="container-fluid">
@@ -69,60 +76,56 @@
                                                 <?php 
                                                     if( AuthComponent::user('type') == 1 ) 
                                                     {
-                                                        foreach ($cat_names as $key => $category) 
-                                                        { 
+                                                        // echo count($cat_names);
+                                                        if (count($cat_names) < 0) {
 
-                                                ?>
-                                                        <li>
-                                                            <!-- <a href="<?php echo HTTP_ROOT; ?>"solution_seeker.php> -->
-                                                            <a href="<?php echo $this->webroot.'home/seeker_selected_category?id='. $category['Category']['id'].'&showcategories=1'; ?>">
-                                                                <?php echo $category['Category']['title']; ?>
-                                                            </a>
-                                                        </li>
-                                                <?php 
-                                                        } 
+                                                            foreach ($cat_names as $key => $category) 
+                                                            { 
+
+                                                    ?>
+                                                            <li>
+                                                                <!-- <a href="<?php echo HTTP_ROOT; ?>"solution_seeker.php> -->
+                                                                <a href="<?php echo $this->webroot.'home/seeker_selected_category?id='. $category['Category']['id'].'&showcategories=1'; ?>">
+                                                                    <?php echo $category['Category']['title']; ?>
+                                                                </a>
+                                                            </li>
+                                                    <?php 
+                                                            } 
+                                                        }else{
+                                                            echo "<li style='color: #ff7f27;'>No Categories Found</li>";
+                                                        }
                                                     }
                                                 ?>
 
-<!--                                                 <li><a href="solution_seeker.php">Public Services</a></li>
-                                                <li><a href="solution_seeker.php">Manufacturing</a></li>
-                                                <li><a href="solution_seeker.php">E-Governance</a></li>
-                                                <li><a href="solution_seeker.php">Oil& Gas</a></li>
-                                                <li><a href="solution_seeker.php">Servillence & Security</a></li>
-                                                <li><a href="solution_seeker.php">Real Estate</a></li>
-                                                <li><a href="solution_seeker.php">Transportation</a></li>
-                                                <li><a href="solution_seeker.php">Agriculture</a></li>
-                                                <li><a href="solution_seeker.php">Media & Entertainment</a></li>
-                                                <li><a href="solution_seeker.php">Retail</a></li>
-                                                <li><a href="solution_seeker.php">Banking & Finance</a></li>
-                                                <li><a href="solution_seeker.php">Utilities</a></li>
-                                                <li><a href="solution_seeker.php">Dairy</a></li> -->
                                             </ul>
                                         </li>
                                         <?php if( AuthComponent::user('type') == 2 ) { ?>
-                                            <li>
+                                            <li class= "<?= ($activePage == 'provider_list') ? 'active':''; ?>" >
                                                 <a href="<?php echo $this->webroot ;?>home/provider_list">Solution Provider</a>
                                             </li>
                                         <?php }elseif( AuthComponent::user('type') == 1 ) {?>
-                                            <li>
+                                            <li class="<?= ($activePage == 'seeker_list') ? 'active':''; ?>">
                                                 <a href="<?php echo $this->webroot ;?>home/seeker_list">Solution Seeker</a>
                                             </li>
                                         <?php }else {?>
-                                            <li>
+                                            <li class="<?= ($activePage == 'provider_list') ? 'active':''; ?>">
                                                 <a href="<?php echo $this->webroot ;?>home/provider_list">Solution Provider</a>
                                             </li>
-                                            <li>
+                                            <li class="<?= ($activePage == 'seeker_list') ? 'active':''; ?>">
                                                 <!-- <a href="<?php echo $this->webroot ;?>home/seeker_list">Solution Seeker</a> -->
                                                 <a href="<?php echo $this->webroot ;?>home/seeker_list">Solution Seeker</a>
                                             </li>
                                         <?php } ?>
                                         
-                                        <li><a href="javascript:;">Blog</a></li>
+                                        <li class="<?= ($activePage == 'blog') ? 'active':''; ?>">
+                                            <a href="javascript:;">Blog</a>
+                                        </li>
                                         <!-- <li class="top_right_menu"><a href="login.php"><i class="fas fa-user m_r_3"></i> Login / Signup</a></li> -->
 
                                         <li class="top_right_menu">
-                                        <?php
-                                            if( !AuthComponent::user('id') ) {
+                                            <?php if( AuthComponent::user('id') ) {  ?>
+                                                <a href="javascript:;"><i class="fas fa-user m_r_3"></i><?php echo AuthComponent::user('name'); ?></a>
+                                            <?php }else{ 
                                                 echo $this->Html->link(
                                                         $this->Html->tag('i', '', array('class' => 'fas fa-user m_r_3')) .'Login / Signup',
                                                         array(
@@ -133,21 +136,36 @@
                                                         array('escape' => false)
                                                 );
 
-                                            }else {
+                                            } ?>
 
-                                                echo $this->Html->link(
-                                                        $this->Html->tag('i', '', array('class' => 'fas fa-user m_r_3')) .'Logout',
-                                                        array(
-                                                            'controller' => 'home',
-                                                            'action' => 'logout',
-                                                            'full_base' => true,
-                                                        ),
-                                                        array('escape' => false)
-                                                );
-                                            ?>
+
+
                                                 <ul class="dropdown-menu myaccount_dropdown">
-                                                    <li><a href="<?php echo $this->webroot.'home/myaccount';
-                                                     ?>">My Account</a></li>
+                                                    <?php if( AuthComponent::user('id') ) 
+                                                        { 
+                                                    ?>
+                                                    
+                                                    <li>
+                                                        <?php 
+                                                            echo $this->Html->link('Myaccount',
+                                                                    array(
+                                                                        'controller' => 'home',
+                                                                        'action' => 'myaccount',
+                                                                        'full_base' => true,
+                                                                    ),
+                                                                    array('escape' => false)
+                                                            );
+
+                                                            
+                                                        ?>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <a href="<?php echo $this->webroot.'home/logout';
+                                                     ?>">
+                                                            Logout
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                            <?php } ?>
 

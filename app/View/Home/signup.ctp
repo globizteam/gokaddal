@@ -59,15 +59,15 @@
                                     <input type="text" name="contact" class="form-control input_field" placeholder="Enter Contact Number">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="company_name" class="form-control input_field company_name" placeholder="Enter name of your company">
-                                </div>
-                                <div class="form-group">
                                    <select class="form-control input_field user_type" name="type">
                                        <option value="Select Star Rating" selected disabled>Select User Type</option>
                                        <option value="1">Provider</option>
                                        <option value="2">Seeker</option>
                                    </select>
                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="company_name" class="form-control input_field company_name" placeholder="Enter name of your company">
+                                </div>
                                <div class="form-group">
                                     <textarea rows="2" name="address" class="form-control input_field" placeholder="Enter Address"></textarea>
                                 </div>

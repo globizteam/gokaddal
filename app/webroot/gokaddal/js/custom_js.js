@@ -14,14 +14,14 @@ jQuery('#return_to_top').click(function() {      // When arrow is clicked
 
 
 
-//  Categories on Home page
-// jQuery('.catg_item').matchHeight();
+ // Categories on Home page
+jQuery('.catg_item').matchHeight();
 
-//  Blog on Home page
-// jQuery('.blog_item').matchHeight();
+ // Blog on Home page
+jQuery('.blog_item').matchHeight();
 
-// // listing_text
-// jQuery('.listing_text').matchHeight();
+// listing_text
+jQuery('.listing_text').matchHeight();
 
 
 
@@ -51,34 +51,34 @@ jQuery('#return_to_top').click(function() {      // When arrow is clicked
 
 
 
-// var screen_width = jQuery( window ).width();
-// if(screen_width < 992){
-//     jQuery(".top_main_menu .dropdown-toggle").attr("data-toggle","dropdown");
-// }else{
-// 	$(".top_main_menu .dropdown").mouseenter(function() {
-// 	    $(this).find('.dropdown-menu').css("display", "block");
-// 	}).mouseleave(function() {
-// 	     $(this).find('.dropdown-menu').css("display", "none");
-// 	});
-// }
+var screen_width = jQuery( window ).width();
+if(screen_width < 992){
+    jQuery(".top_main_menu .dropdown-toggle").attr("data-toggle","dropdown");
+}else{
+	$(".top_main_menu .dropdown").mouseenter(function() {
+	    $(this).find('.dropdown-menu').css("display", "block");
+	}).mouseleave(function() {
+	     $(this).find('.dropdown-menu').css("display", "none");
+	});
+}
 
 
 
 
 // //  Listing Page 
-// jQuery('.listing_match_item').matchHeight();
+jQuery('.listing_match_item').matchHeight();
 
 
-// jQuery('.contact_match_height').matchHeight();
+jQuery('.contact_match_height').matchHeight();
 
 
 
-// jQuery('.my_acc_match_height').matchHeight();
+jQuery('.my_acc_match_height').matchHeight();
 
 
-// jQuery(window).on('load',function(){
-// 	jQuery('#hot_solution_modal').modal('show');
-// });
+jQuery(window).on('load',function(){
+	jQuery('#hot_solution_modal').modal('show');
+});
 
 /* custom js @Hardeep 16-09-2019 */
 // $('.form-validate').validate();
@@ -99,18 +99,20 @@ $('.save_favourites').on('click', function(ev) {
 $('.user_type').on('change', function (argument) {
 	var usertype = $(this).find("option:selected").text();
 	if (usertype == 'Seeker') {
-		var comp_name = $('#UserSignupForm').find('.company_name').prop('disabled', true);
+		// var comp_name = $('#UserSignupForm').find('.company_name').prop('disabled', true);
+		var comp_name = $('#UserSignupForm').find('.company_name').hide();
 		// alert(comp_name);
 		// console.log($(this).parent().find()) ;
 	}else{
-		alert('Provider');
+		var comp_name = $('#UserSignupForm').find('.company_name').show();
+		// alert('Provider');
 	}
 })
 
 
 /*custom validations for validate.js*/
 $(document).ready(function() {
- $("#UserSignupForm").validate({
+ $("#UserSignupForm, #RateNReviewProviderDetailsForm, #UserLoginForm, #UserForgetForm, #forgot_password, #changePasswordForm").validate({
    rules: {
      name : {
        required: true,
@@ -118,7 +120,8 @@ $(document).ready(function() {
      },
      email: {
        required: true,
-       email: true
+       email: true,
+       // remote: '/gokaddal-staging/home/checkEmailExists'
      },
      contact:{
        	required: true,
@@ -146,6 +149,26 @@ $(document).ready(function() {
        required: true,
        minlength: 6
      },
+     current_password: {
+       required: true,
+       minlength: 6
+     },
+     new_password: {
+       required: true,
+       minlength: 6
+     },
+     confirm_password: {
+       required: true,
+       minlength: 6
+     },
+     rating: {
+       required: true
+     },
+     description: {
+       required: true,
+       minlength:3
+     },
+
      weight: {
        required: {
          depends: function(elem) {
@@ -161,7 +184,8 @@ $(document).ready(function() {
        minlength: "Name should be at least 3 characters"
      },
      email: {
-       email: "The email should be in the format: abc@domain.tld"
+       email: "The email should be in the format: abc@domain.tld",
+       // remote: "Already used"
      },
      contact:{
        minlength: "Contact should be at least 8 number long",
@@ -185,6 +209,12 @@ $(document).ready(function() {
      },
      password:{
        minlength: "Password should be atleast 6 characters long"
+     },
+     current_password:{
+       minlength: "Password should be atleast 6 characters long"
+     },
+     description:{
+       minlength: "Message should be atleast 3 characters long"
      }
 
    }

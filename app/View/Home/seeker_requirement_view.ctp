@@ -55,7 +55,13 @@
                         </div>
                         <div class="orange_btns m_t_30">
                             <ul class="list-unstyled list-inline m_b_0">
-                                <li><a href="#" data-toggle="modal" data-target="#submit_quote_modal">Submit a Quote</a></li>
+                                <?php if(AuthComponent::user('id') == 1) { ?>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#submit_quote_modal">
+                                            Submit a Quote
+                                        </a>
+                                    </li>
+                                <?php } ?>
                                 <!-- <li><a href="#">Save To Favourites</a></li> -->
                             </ul>
                         </div>

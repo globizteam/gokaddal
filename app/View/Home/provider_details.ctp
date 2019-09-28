@@ -178,12 +178,18 @@
                                                 $done = 1;
                                 ?>
                                                 <li>
-                                                    <a href="#" class="rating-given" >Rating & Reviews</a>
+                                                    <a href="#" class="rating-given"  data-toggle="collapse" data-target="#provider_reviews" >Rating & Reviews</a>
                                                 </li>
                                                 </br>
                                                 <li>
                                                     <div class="show-rate-msg">
-                                                        You already given <b><?php echo $rating['RateNReview']['rating']; ?> </b> rating to this provider. 
+<!--                                                         You already given 
+                                                        <b>
+                                                        <?php
+                                                        $rate_in = $rating['RateNReview']['rating'];  
+                                                        echo $rating['RateNReview']['rating']; 
+                                                        ?>  -->
+                                                        <!-- </b> rating to this provider.  -->
                                                     </div>
                                                 </li>
                                 <?php        
@@ -229,71 +235,87 @@
                         <h2 class="text-center txt_black m_b_20 txt_w_700">Rating &amp; Reviews</h2>
                         <h4 class="text-center txt_grey txt_w_400">Lorem ipsum dolor sit amet, consectetur.</h4>
                         <div class="reviews_sec m_t_30">
-                            <div class="review_item">
-                                <div class="row">
-                                    <div class="col-sm-2 col-xs-2 hidden-xs">
-                                        <img src="images/user.jpg" alt="Prifile" class="img-circle img-responsive">
-                                    </div>
-                                    <div class="col-sm-10 col-xs-12">
-                                        <h4 class="listing_item_name"><a href="javascript:;" class="txt_black txt_w_700">John Doe </a> <span class="listing_item_stars m_l_3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></h4>
-                                        <h6 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_grey">22 June, 2018</a></h6>
-                                        <p class="para_small p_t_5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim quaerat molestias perspiciatis modi nesciunt, placeat aspernatur adipisci quia cupiditate</p>
-                                        <div class="share_icon p_t_5"><a href="#" class="txt_orange txt_12"><i class="fas fa-share-alt m_r_3"></i> Share Comment</a></div>
-                                    </div>
-                                </div>
-                            </div> <!-- /.review_item -->
-                            <div class="review_item">
-                                <div class="row">
-                                    <div class="col-sm-2 col-xs-2 hidden-xs">
-                                        <img src="images/user.jpg" alt="Prifile" class="img-circle img-responsive">
-                                    </div>
-                                    <div class="col-sm-10 col-xs-12">
-                                        <h4 class="listing_item_name"><a href="javascript:;" class="txt_black txt_w_700">John Doe </a> <span class="listing_item_stars m_l_3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></h4>
-                                        <h6 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_grey">22 June, 2018</a></h6>
-                                        <p class="para_small p_t_5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim quaerat molestias perspiciatis modi nesciunt, placeat aspernatur adipisci quia cupiditate</p>
-                                        <div class="share_icon p_t_5"><a href="#" class="txt_orange txt_12"><i class="fas fa-share-alt m_r_3"></i> Share Comment</a></div>
-                                    </div>
-                                </div>
-                            </div> <!-- /.review_item -->
-                            <div class="review_item">
-                                <div class="row">
-                                    <div class="col-sm-2 col-xs-2 hidden-xs">
-                                        <img src="images/user.jpg" alt="Prifile" class="img-circle img-responsive">
-                                    </div>
-                                    <div class="col-sm-10 col-xs-12">
-                                        <h4 class="listing_item_name"><a href="javascript:;" class="txt_black txt_w_700">John Doe </a> <span class="listing_item_stars m_l_3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></h4>
-                                        <h6 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_grey">22 June, 2018</a></h6>
-                                        <p class="para_small p_t_5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim quaerat molestias perspiciatis modi nesciunt, placeat aspernatur adipisci quia cupiditate</p>
-                                        <div class="share_icon p_t_5"><a href="#" class="txt_orange txt_12"><i class="fas fa-share-alt m_r_3"></i> Share Comment</a></div>
-                                    </div>
-                                </div>
-                            </div> <!-- /.review_item -->
-                            <div class="review_item">
-                                <div class="row">
-                                    <div class="col-sm-2 col-xs-2 hidden-xs">
-                                        <img src="images/user.jpg" alt="Prifile" class="img-circle img-responsive">
-                                    </div>
-                                    <div class="col-sm-10 col-xs-12">
-                                        <h4 class="listing_item_name"><a href="javascript:;" class="txt_black txt_w_700">John Doe </a> <span class="listing_item_stars m_l_3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></h4>
-                                        <h6 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_grey">22 June, 2018</a></h6>
-                                        <p class="para_small p_t_5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus enim quaerat molestias perspiciatis modi nesciunt, placeat aspernatur adipisci quia cupiditate</p>
-                                        <div class="share_icon p_t_5"><a href="#" class="txt_orange txt_12"><i class="fas fa-share-alt m_r_3"></i> Share Comment</a></div>
-                                    </div>
-                                </div>
-                            </div> <!-- /.review_item -->
+
+                            <?php 
+                                if (!empty($ratings_count) ) 
+                                {
+                                    foreach ($company_ratings as $key => $rating) 
+                                    {
+                            ?>
+
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-sm-2 col-xs-2 hidden-xs">
+                                                    <img src="<?php echo $this->webroot.'no-image.jpg'  ?>" alt="Profile" class="img-circle img-responsive">
+                                                </div>
+
+                                                <div class="col-sm-10 col-xs-12">
+                                                    <h4 class="listing_item_name">
+                                                        <a href="javascript:;" class="txt_black txt_w_700">
+                                                            <?php echo $rating['RateNReview']['name']; ?>
+                                                        </a> 
+                                                        <span class="listing_item_stars m_l_3">
+                                                            <?php
+                                                                $i = 1;
+                                                                while ($i <= $rating['RateNReview']['rating']) {
+                                                                    echo "<i class='fas fa-star'></i>";
+                                                                    $i++;
+                                                                }
+                                                            ?>
+                                                        </span>
+                                                    </h4>
+                                                    
+                                                    <h6 class="listing_item_tags txt_w_400 m_t_10">
+                                                        <a href="javascript:;" class="txt_grey">
+                                                            <?php echo $rating['RateNReview']['created_at']; ?>
+                                                        </a>
+                                                    </h6>
+                                                    <p class="para_small p_t_5">
+                                                            <?php echo $rating['RateNReview']['description']; ?>
+                                                    </p>
+                                                    
+            <!--                                         <div class="share_icon p_t_5">
+                                                        <a href="#" class="txt_orange txt_12">
+                                                            <i class="fas fa-share-alt m_r_3"></i> 
+                                                                Share Comment
+                                                        </a>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div> <!-- /.review_item -->
+
+
+
+                            <?php
+                                        /*list only 5 top favourites*/
+                                        if($key > 5) break;
+                                    }
+                                }   
+                            ?>
+
+
+
                         </div>
-                         <div class="text-center orange_btns m_t_30">
-                                    <ul class="list-unstyled list-inline m_b_0">
-                                        <li><a href="#">See All</a></li>
-                                    </ul>
-                                </div>
+
+
+                        <div class="text-center orange_btns m_t_30">
+                            <ul class="list-unstyled list-inline m_b_0">
+                                <li><a href="#" data-toggle="modal" data-target="#favourite_modal" class="modal-content">See All</a></li>
+                            </ul>
+                        </div>
                     </div>
+
+
+                    
+
+
                     <div class="col-sm-6 col-xs-12 p_t_80">
                         <h2 class="text-center txt_black m_b_20 txt_w_700">Write a Review</h2>
                         <h4 class="text-center txt_grey txt_w_400">Lorem ipsum dolor sit amet, consectetur.</h4>
 
                         <div class="form_with_grey_bg m_t_50">
-                            <!-- <form action="#"> -->
+                            <?php if ($done != 1) { ?>
+                          
                                 <?php echo $this->Form->create('RateNReview', array('controller' => 'home', 'url' => 'rating_n_reviews'))  ?>
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control input_field" placeholder="Enter Name" value="<?php echo AuthComponent::user('name'); ?>">
@@ -304,7 +326,7 @@
                                     <!-- hidden field -->
                                     <input type="hidden" name="rate_to" value="<?php echo $provider['User']['id']; ?>">
                                 <div class="form-group">
-                                    <select class="form-control input_field" name="rating" >
+                                    <select class="form-control input_field rating" name="rating" >
                                         <option value="Select Star Rating" selected="" disabled="">Select Star Rating</option>
                                         <option value="1">1 Star</option>
                                         <option value="2">2 Star</option>
@@ -314,7 +336,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <textarea rows="3" name="description" class="form-control input_field" placeholder="Enter Message"></textarea>
+                                    <textarea rows="3" name="description" class="form-control input_field description" placeholder="Enter Message"></textarea>
                                 </div>
                                 <div class="text-center orange_btns m_t_30"  >
                                     <ul class="list-unstyled list-inline m_b_0">
@@ -322,6 +344,14 @@
                                     </ul>
                                 </div>
                             </form>
+
+                            <?php   }else{ ?>
+                                    <div style="font-size: 18px; font-weight: 600; text-align: center;">You already given <b><?php echo $rate_in; ?> rating</b> to this provider</div>
+                            <?php }  ?>
+
+                        </div>
+
+
                         </div>
 
                     </div>
@@ -381,6 +411,91 @@
                             </div>
 
                         <?php endif; ?>
+
+
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- submit_quote_modal -->
+    <div id="favourite_modal" class="modal fade modal_form" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <button type="button" class="close modal_close_btn" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                <div class="modal-body">
+                    <div class="form_with_grey_bg">
+
+                            <h2 class="text-center txt_black m_b_20 txt_w_700">Rating &amp; Reviews</h2>
+                            <h4 class="text-center txt_grey txt_w_400">Lorem ipsum dolor sit amet, consectetur.</h4>
+                            <div class="reviews_sec m_t_30">
+
+                                <?php 
+                                    if (!empty($ratings_count) ) 
+                                    {
+                                        foreach ($company_ratings as $key => $rating) 
+                                        {
+                                ?>
+
+                                            <div class="review_item">
+                                                <div class="row">
+                                                    <div class="col-sm-2 col-xs-2 hidden-xs">
+                                                        <img src="<?php echo $this->webroot.'no-image.jpg'  ?>" alt="Profile" class="img-circle img-responsive">
+                                                    </div>
+
+                                                    <div class="col-sm-10 col-xs-12">
+                                                        <h4 class="listing_item_name">
+                                                            <a href="javascript:;" class="txt_black txt_w_700">
+                                                                <?php echo $rating['RateNReview']['name']; ?>
+                                                            </a> 
+                                                            <span class="listing_item_stars m_l_3">
+                                                                <?php
+                                                                    $i = 1;
+                                                                    while ($i <= $rating['RateNReview']['rating']) {
+                                                                        echo "<i class='fas fa-star'></i>";
+                                                                        $i++;
+                                                                    }
+                                                                ?>
+                                                            </span>
+                                                        </h4>
+                                                        
+                                                        <h6 class="listing_item_tags txt_w_400 m_t_10">
+                                                            <a href="javascript:;" class="txt_grey">
+                                                                <?php echo $rating['RateNReview']['created_at']; ?>
+                                                            </a>
+                                                        </h6>
+                                                        <p class="para_small p_t_5">
+                                                                <?php echo $rating['RateNReview']['description']; ?>
+                                                        </p>
+                                                        
+                <!--                                         <div class="share_icon p_t_5">
+                                                            <a href="#" class="txt_orange txt_12">
+                                                                <i class="fas fa-share-alt m_r_3"></i> 
+                                                                    Share Comment
+                                                            </a>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                            </div> <!-- /.review_item -->
+
+
+                                <?php
+                                        }
+                                    }   
+                                ?>
+
+
+
+                            </div>
 
 
                     </div>

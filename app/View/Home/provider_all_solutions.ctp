@@ -112,7 +112,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-6 col_600_full_width xs_m_t_15">
                                             <div class="listing_item_info listing_match_item">
                                                 <h4 class="listing_item_name">
-                                                    <a href="javascript:;" class="txt_black">
+                                                    <a href="<?php echo $this->webroot.'home/provider_solution_view/'.$solution['ProviderService']['id']; ?>" class="txt_black">
                                                         <?php echo  $solution['ProviderService']['title']; ?>
                                                     </a>
                                                 </h4>

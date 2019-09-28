@@ -44,24 +44,25 @@
                                         <hr class="dark_grey_hr m_t_15">
                                         <div class="my_info_form">
                                             <!-- <form action="#"> -->
-                                                <?php echo $this->Form->create('User', array('url' => array('controller' => 'home', 'action' => 'change_password') ) ); ?>
+                                                <?php //echo $this->Form->create('User', array('url' => array('controller' => 'home', 'action' => 'change_password') ) ); ?>
+                                                <form method="post" action="<?php echo $this->webroot.'home/change_password'; ?>" id="changePasswordForm" >
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="current_password" class="txt_black">Enter Current Password</label>
-                                                            <input type="password" name="data[User][current_password]" class="form-control input_field my_info_input" id="current_password" placeholder="Enter Current Password" value="">
+                                                            <input type="password" name="current_password" class="form-control input_field my_info_input" id="current_password" placeholder="Enter Current Password" value="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="new_password" class="txt_black">Enter New Password</label>
-                                                            <input type="password" class="form-control input_field my_info_input" name="data[User][new_password]" id="new_password" placeholder="Enter New Password" value="">
+                                                            <input type="password" class="form-control input_field my_info_input" name="new_password" id="new_password" placeholder="Enter New Password" value="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="confirm_password" class="txt_black">Re-enter New Password</label>
-                                                            <input type="password" class="form-control input_field my_info_input" name="data[User][confirm_password]" id="confirm_password" placeholder="Confirm Password" value="">
+                                                            <input type="password" class="form-control input_field my_info_input" name="confirm_password" id="confirm_password" placeholder="Confirm Password" value="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">

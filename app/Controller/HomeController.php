@@ -63,6 +63,8 @@ class HomeController extends AppController
 		$categories = $this->Category->find('list',array(
         'conditions' => array('Category.parent' => 0) ));
 
+        // pr($categories);die();
+
 		$id = $this->Auth->user('id');
 		// getting selected categories for provider
 		if(AuthComponent::user('type') == 1)
@@ -252,7 +254,7 @@ class HomeController extends AppController
 
 			$this->Paginator->settings = array(
 			        'limit' => 10,
-			        'conditions' => array('User.id ' => $user_ids),
+			        'conditions' => array('User.id ' => $user_ids,'User.status ' => 1),
 			        'order' => 'User.id desc'
 			  );
 
@@ -261,7 +263,7 @@ class HomeController extends AppController
 
 			$this->Paginator->settings = array(
 			        'limit' => 10,
-			        'conditions' => array('User.id != ' => 1,'User.type ' => 2 ),
+			        'conditions' => array('User.id != ' => 1,'User.type ' => 2,'User.status ' => 1 ),
 			        'order' => 'User.id desc'
 			  );
 
@@ -270,7 +272,7 @@ class HomeController extends AppController
 
 			$this->Paginator->settings = array(
 			        'limit' => 10,
-			        'conditions' => array('User.id != ' => 1, 'User.type ' => 1),
+			        'conditions' => array('User.id != ' => 1, 'User.type ' => 1,'User.status ' => 1),
 			        'order' => 'User.id desc'
 			  );
 
@@ -295,8 +297,22 @@ class HomeController extends AppController
  		$this->set(compact('check_rating'));
 
 	 	if ($id) {
+	 		// pr($check_rating);die();
 	 		$provider = $this->User->findById($id);
-	 		$this->set(compact('provider'));
+	 		// $this->Paginator->settings = array(
+	 		//         'limit' => 10,
+	 		//         'conditions' => array('RateNReview.rate_to' => $id ),
+	 		//         'order' => 'RateNReview.id desc'
+	 		//   );
+
+	 		$company_ratings = $this->RateNReview->find('all', array('conditions' => 
+	 														array('RateNReview.rate_to' => $id,
+	 														 ),
+	 															'order'=>array('RateNReview.id' => 'DESC') 
+	 														   ) );
+	 		$ratings_count = count($company_ratings);
+	 		// pr($company_ratings);die();
+	 		$this->set(compact('provider','company_ratings','ratings_count'));
 	 	}
 	 }
 
@@ -739,12 +755,13 @@ class HomeController extends AppController
 	{
 		    	if($this->request->is('post'))
 		    	{
+		    		// pr($this->request->data);die();
 
 		    		$user = $this->request->data;
 					$userData = $this->User->findById($this->Auth->user('id'));
 		    		// pr($user);die();
 					$passwordHasher = new SimplePasswordHasher(array('hashType' => 'sha256'));
-		            $password = $passwordHasher->hash($user['User']['current_password']);
+		            $password = $passwordHasher->hash($user['current_password']);
 
 					/*Checking if current password is matching with user table password*/
 					if($userData['User']['password'] != $password){
@@ -754,9 +771,9 @@ class HomeController extends AppController
 
 
 					/*Checking if new_password is matching with confirm_password password*/
-		            if ($user['User']['new_password'] != $user['User']['confirm_password']) {
+		            if ($user['new_password'] != $user['confirm_password']) {
 		                
-		                $this->Session->setFlash('Password does not match.');
+		                $this->Flash->error('Password does not match.');
 		                $this->redirect($this->referer());
 		            }
 
@@ -764,13 +781,13 @@ class HomeController extends AppController
 		    		unset($this->User->validate['email'],$this->User->validate['name'], $this->User->validate['type'], $this->User->validate['contact']);
 
 		            $user['id'] = $userData['User']['id'];
-		            $user['password'] = $user['User']['new_password'];
+		            $user['password'] = $user['new_password'];
 
 		    		unset($user['User']['current_password'],$user['User']['new_password'],$user['User']['confirm_password']);
 
 					if($this->User->save($user))
 					{
-						$this->Session->setFlash('Password Updated successfully');
+						$this->Flash->success('Password Updated successfully');
 
 		                $this->redirect('change_password');
 					}
@@ -781,7 +798,7 @@ class HomeController extends AppController
 					// die();
 
 
-						$this->Session->setFlash('Password Not Updated');
+						$this->Flash->error('Password Not Updated');
 
 		                $this->redirect('change_password');
 
@@ -828,6 +845,17 @@ class HomeController extends AppController
 		$this->redirect($this->referer());
 
 	
+	}
+
+	public function checkEmailExists($value='')
+	{
+		$checkemail = $this->request->query['email'];
+		$record = $this->User->find('all', array('conditions' => array('User.email' => $checkemail )));
+
+		if (count($record) > 0 ) 
+			return true;
+		else
+			return false;
 	}
 
 	 public function seeker_list($value='')

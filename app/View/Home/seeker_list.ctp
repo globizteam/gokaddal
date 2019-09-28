@@ -104,7 +104,7 @@
                                         <div class="col-md-9 col-sm-8 col-xs-8 col_600_full_width">
                                             <div class="listing_item_info listing_match_item">
                                                 <h4 class="listing_item_name">
-                                                    <a href="javascript:;" class="txt_black">
+                                                    <a href="<?php echo $this->webroot.'home/seeker_requirement_view/'.$seeker['SeekerRequirement']['id'];  ?>" class="txt_black">
                                                         <!-- Need Smart Water Management solution -->
                                                         <?php echo  $seeker['SeekerRequirement']['title']; ?>
                                                     </a>
@@ -129,7 +129,7 @@
                                             <div class="listing_item_btns listing_match_item">
                                                 <ul class="list-unstyled m_b_0">
                                                     <li>
-                                                        <a href="<?php echo $this->webroot.'home/seeker_requirement_view/'.$seeker['SeekerRequirement']['id']  ?>">
+                                                        <a href="<?php echo $this->webroot.'home/seeker_requirement_view/'.$seeker['SeekerRequirement']['id'];  ?>">
                                                             <i class="fa fa-eye"></i>
                                                                 View Details
                                                         </a>
