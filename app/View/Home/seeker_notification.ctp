@@ -51,14 +51,15 @@
                                                     foreach ($quote_list as $key => $quote) 
                                                     {
                                             ?>
+                                                    <a href="<?php echo $this->webroot.'home/my_requirement_detail/'.$quote['SeekerRequirement']['id']; ?>">
                                                         <div class="listing_item bg_white_item <?php if($quote['SubmitQuote']['read_status'] == 0 ) { echo 'notification_border_orange'; } ?> ">
                                                             <h5>
-                                                                <a href="<?php echo $this->webroot.'home/'; ?>" class="txt_black hover_txt_orange">
+                                                                <a href="<?php echo $this->webroot.'home/my_requirement_detail/'.$quote['SeekerRequirement']['id']; ?>" class="txt_black hover_txt_orange">
                                                                     <?php echo $quote['SubmitQuote']['message'];  ?>
                                                                 </a>
                                                             </h5>
                                                             <h5 class="txt_w_400 m_t_10 txt_12">
-                                                                <a href="" class="txt_grey">
+                                                                <a href="javascript:;" class="txt_grey">
 
                                                                     <?php
                                                                         $created_at = $quote['SubmitQuote']['created_at'];    
@@ -73,7 +74,7 @@
                                                                 </a>
                                                             </h5>
                                                         </div> <!-- /.listing_item -->
-
+                                                    </a>
 
                                         <?php   
 

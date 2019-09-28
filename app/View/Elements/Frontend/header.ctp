@@ -113,7 +113,7 @@
                                             </li>
                                             <li>
                                                 <!-- <a href="<?php echo $this->webroot ;?>home/seeker_list">Solution Seeker</a> -->
-                                                <a href="javascript:;">Solution Seeker</a>
+                                                <a href="<?php echo $this->webroot ;?>home/seeker_list">Solution Seeker</a>
                                             </li>
                                         <?php } ?>
                                         

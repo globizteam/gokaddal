@@ -44,14 +44,16 @@
                         <!-- Listings start here -->
                         <div class="listing_item_sec m_t_40">
 
-                        <?php foreach ($fav_providers as $key => $user) :?>
+           <?php 
+                     if (!empty($service_count) && ($service_count > 0) ) {
+                        foreach ($fav_services as $key => $solution) :?>
                             <div class="listing_item bg_grey_item">
                                     <div class="row">
                                         <div class="col-md-2 col-sm-2 col-xs-12">
                                             <div class="listing_item_img listing_match_item">
-                                                <?php if(isset($user['User']['profile_pic'])) :?> 
+                                                <?php if(!empty($solution['ProviderService']['image'])) :?> 
                                                     
-                                                    <img src="<?php echo  $this->webroot.$user['User']['profile_pic']; ?>" alt="Image" class="img-responsive center-block" width="100px" >
+                                                    <img src="<?php echo  $this->webroot.$solution['ProviderService']['image']; ?>" alt="Image" class="img-responsive center-block" width="100px" >
                                                     <?php else : ?> 
                                                         <img src="<?php echo  $this->webroot.'app/webroot/no-image.jpg' ?>" alt="Image" class="img-responsive center-block" width="100px" >
                                                     <?php endif; ?>
@@ -62,97 +64,15 @@
                                             <div class="listing_item_info listing_match_item">
                                                 <h4 class="listing_item_name">
                                                     <a href="javascript:;" class="txt_black">
-                                                        <?php echo  $user['User']['name']; ?>
+                                                        <?php echo  $solution['ProviderService']['title']; ?>
                                                     </a>
                                                 </h4>
-                                                <!-- <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="#" class="txt_grey">Parfact, Modren & Compact</a></h5> -->
-
-                                                <?php 
-                                                    $total_users = $final_rating_no = 0;
-                                                    $one_calc = $two_calc = $three_calc = $four_calc = $five_calc = 0;
-
-                                                    // print_r($rating_all_records[0]['RateNReview']);die();
-                                                    if(isset($rating_all_records[0]['RateNReview']) )
-                                                    {
-                                                        foreach ($rating_all_records as $key => $rating) 
-                                                        {
-                                                                if($rating['RateNReview']['rate_to'] == $user['User']['id'])
-                                                                {
-                                                                    $rate_no_check = $rating['RateNReview']['rating'];
-                                                                    switch ($rate_no_check) {
-                                                                        case 1:
-                                                                            $one_calc = $one_calc + 1;
-                                                                            $total_users = $total_users + 1;
-                                                                            break;
-                                                                        case 2:
-                                                                            $two_calc = $two_calc + 1;
-                                                                            $total_users = $total_users + 1;
-                                                                            break;
-                                                                        case 3:
-                                                                            $three_calc = $three_calc + 1;
-                                                                            $total_users = $total_users + 1;
-                                                                            break;
-                                                                        case 4:
-                                                                            $four_calc = $four_calc + 1;
-                                                                            $total_users = $total_users + 1;
-                                                                            break;
-                                                                        case 5:
-                                                                            $five_calc = $five_calc + 1;
-                                                                            $total_users = $total_users + 1;
-                                                                            break;
-                                                                        
-                                                                        default:
-                                                                            # code...
-                                                                            break;
-                                                                    }
-
-
-
-                                                                }
-
-
-                                                        }
-                                                                $rating_total = ($one_calc * 1 ) + ($two_calc * 2 ) + ($three_calc * 3 ) + ($four_calc * 4 ) + ($five_calc * 5 ); 
-                                                                if ($rating_total != 0) {
-                                                                    $final_rating_no = $rating_total/$total_users;
-                                                                    // round off final rating number
-                                                                    $final_rating_no = round($final_rating_no);
-                                                                }else{
-                                                                    $final_rating_no = null;
-                                                                }
-
-                                                                    // echo "total_users". $total_users;die();
-
-                                                    }
-                                                ?>
-
-                                                <div class="listing_item_stars m_t_15">
-                                                    <?php 
-                                                        if (isset($final_rating_no)) {
-                                                            $i = 1; 
-                                                            while ($i <= 5) {
-
-                                                                if ($final_rating_no >= $i) 
-                                                                    echo '<i class="fas fa-star"></i>';
-                                                                else
-                                                                    echo '<i class="far fa-star"></i>';            
-
-                                                                $i++;
-                                                            }
-                                                        }else{
-                                                            $z = 1;
-                                                            while ($z <= 5) {
-                                                                echo '<i class="far fa-star"></i>';            
-                                                                $z++;                                  
-                                                            }
-                                                        } 
-                                                    ?> 
-                                                </div>
-
-
-                                                
+                                                <h5 class="listing_item_tags txt_w_400 m_t_10"><a href="javascript:;" class="txt_grey">By <?php echo $solution['User']['company_name']; ?></a></h5>
+<!--                                                 <div class="listing_item_stars m_t_15">
+                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                                </div> -->
                                                 <div class="listing_item_location m_t_10"><i class="fas fa-map-marker-alt txt_orange"></i> <span class="txt_grey">
-                                                        <?php echo  $user['User']['address']; ?>
+                                                        <?php echo  $solution['User']['address']; ?>
 
                                                 </span></div>
                                             </div>
@@ -162,34 +82,29 @@
                                                 <ul class="list-unstyled m_b_0">
                                                     <li>
                                                         <?php
-                                                            echo $this->Html->link(
-                                                                    $this->Html->tag('i', '', array('class' => 'fa fa-eye')) .'View Details',
-                                                                    array(
-                                                                        'controller' => 'home',
-                                                                        'action' => 'provider_details/'.$user['User']['id'],
-                                                                        'full_base' => true
-                                                                    ),
-                                                                    array('escape' => false)
-                                                            );
 
+                                                        echo $this->Html->link(
+                                                                $this->Html->tag('i', '', array('class' => 'fa fa-eye')) .'View Details',
+                                                                array(
+                                                                    'controller' => 'home',
+                                                                    'action' => 'provider_solution_view/'.$solution['ProviderService']['id'],
+                                                                    'full_base' => true
+                                                                ),
+                                                                array('escape' => false)
+                                                        );
 
-                                                            // echo $this->Html->link(
-                                                            //     'View Details',
-                                                            //     array(
-                                                            //         'controller' => 'home',
-                                                            //         'action' => 'provider_details/'.$user['User']['id'],
-                                                            //         'full_base' => true
-                                                            //     )
-                                                            // );
 
                                                         ?>
 
                                                     </li>
                                                     <li>
-                                                        <!-- removing from favourite sending provider service id -->
-                                                        <a href="<?php echo  $this->webroot.'home/remove_favourite/'.$user['ProviderService']['id']; ?>" >
-                                                            <i class="fa fa-heart"></i>Remove
+                                                        <a href="<?php echo  $this->webroot.'home/delete_favourite_solution/'.$solution['Favourite'][0]['id']; ?>"  onclick="return confirm('Are you sure, You want to delete this service?')" data-toggle="tooltip" title="Delete" class="pd-setting-ed">
+                                                            <i class="fas fa-times"></i> Delete
                                                         </a>
+
+<!--                                                         <a href="<?php echo  $this->webroot.'delete_favourite_service/'.$solution['Favourite'][0]['id']; ?>">
+                                                            <i class="fa fa-heart"></i>Remove
+                                                        </a> -->
                                                     </li>
                                                 </ul>
                                             </div>
@@ -198,7 +113,26 @@
                                 </div> 
 
 
-                            <?php  endforeach; ?>
+                        <?php  endforeach; ?>
+
+                        </div> <!-- /.listing_item_sec -->
+
+                        <!-- Pagination starts here -->
+                            <div class="custom-pagination">
+                                <nav aria-label="Page navigation example">
+                                    <?php echo $this->element('Admin/pagination')?>
+                                </nav>
+                            </div>
+                    <?php 
+                        }else{ 
+                    ?>
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div  class="no-solutions" >No Favourite services yet.</div>
+                            </div>
+                        </div>
+                       <?php }   ?>
 
                         </div> <!-- /.listing_item_sec -->
 
@@ -234,7 +168,7 @@
 
 
                                          <!-- Pagination starts here -->
-                                     <?php if(!empty($count)) {?> 
+<!--                                      <?php if(!empty($count)) {?> 
                                          <div class="custom-pagination">
                                              <nav aria-label="Page navigation example">
                                                  <?php echo $this->element('Admin/pagination')?>
@@ -243,7 +177,7 @@
                                     <?php }else{  ?>
                                         <div style=" text-align: center; font-size: 16px; font-weight: 600;">No provider match as per your requirement.</div>
 
-                                    <?php }  ?>
+                                    <?php }  ?> -->
 <!--                                     <div class="listing_pagination text-center m_t_15">
                                         <nav aria-label="Page navigation">
                                             <ul class="pagination">

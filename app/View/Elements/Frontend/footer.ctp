@@ -68,8 +68,12 @@
     <script src="<?php echo $this->webroot; ?>gokaddal/owl-carousel/owl.carousel.min.js"></script>
 
     <script src="<?php echo $this->webroot; ?>gokaddal/js/jquery.matchHeight.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script> -->
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
 
     <script src="<?php echo $this->webroot; ?>gokaddal/js/custom_js.js"></script>
 

@@ -19,11 +19,11 @@
             <?php if(AuthComponent::user('type') == 1) : ?>
                 <li class="col_sm_m_t_20"><a href="javascript:;">My Solutions</a></li>
                 <li><a href="javascript:;">My Proposals</a></li>
-                <li><a href="javascript:;">Post Solution</a></li>
+                <li><a href="<?php echo $this->webroot.'home/post_solution'; ?>">Post Solution</a></li>
             <?php endif; ?>    
             <!-- <li><a href="#">My Requests</a></li> -->
             <?php if(AuthComponent::user('type') == 2) : ?>
-                <li><a href="<?php echo $this->webroot.'home/favourite_provider'; ?>">My Favourites</a></li>
+                <li><a href="<?php echo $this->webroot.'home/list_favourite_solution'; ?>">My Favourites</a></li>
                  <!-- <li><a href="<?php //echo $this->webroot.'home/show_requirement'; ?>">My Requirements</a></li> -->
                 <li><a href="<?php echo $this->webroot.'home/my_requirement'; ?>">My Requirements</a></li>
                 <li><a href="<?php echo $this->webroot.'home/post_requirement'; ?>">Post Requirement</a></li>

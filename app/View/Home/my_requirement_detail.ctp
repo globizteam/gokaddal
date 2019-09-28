@@ -51,7 +51,7 @@
                                                 </p>
                                                 <h5 class="listing_item_tags txt_w_400 m_t_15">
                                                     <span class="txt_orange">TAGS: </span>
-                                                    <a href="#" class="txt_grey">
+                                                    <a href="javascript:;" class="txt_grey">
                                                         <?php echo $requirement['Tag']['name']; ?>
                                                     </a>
                                                 </h5>
@@ -118,9 +118,20 @@
 
                                                 </p>
                                                 <div class="share_icon p_t_5">
-                                                    <a href="#" class="txt_orange txt_12">
+                                                    <a href="javascript:;" class="txt_orange txt_12">
                                                         <i class="fas fa-envelope m_r_3"></i>
-                                                            Contact
+
+                                                        <?php
+
+                                                            // in_array($onlyusers, haystack)
+                                                        foreach ($onlyusers as $key => $contact) 
+                                                        {
+                                                            if ($contact['id'] == $quote['user_id']) 
+                                                                echo $contact['contact'];
+                                                        }
+
+                                                        ?>
+                                                            
                                                     </a>
                                                 </div>
                                             </div> <!-- /.review_item -->

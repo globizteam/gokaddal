@@ -5721,3 +5721,487 @@ Stack Trace:
 #4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
 #5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #6 {main}
+2019-09-27 06:35:57 Error: [ParseError] syntax error, unexpected ''User.status' (T_ENCAPSED_AND_WHITESPACE), expecting ')'
+Request URL: /gokaddal-staging/home/provider_details/8
+Stack Trace:
+#0 [internal function]: App::load('HomeController')
+#1 [internal function]: spl_autoload_call('HomeController')
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(266): class_exists('HomeController')
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-27 06:36:45 Error: [MissingActionException] Action HomeController::favourite_provider() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'favourite_provider',
+)
+Request URL: /gokaddal-staging/home/favourite_provider
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 06:37:14 Error: [MissingActionException] Action HomeController::favourite_provider() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'favourite_provider',
+)
+Request URL: /gokaddal-staging/home/favourite_provider
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 06:58:22 Error: [ParseError] syntax error, unexpected end of file
+Request URL: /gokaddal-staging/home/list_favourite_solution
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(933): View->_evaluate('/home/ejhcntq4n...', Array)
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(473): View->_render('/home/ejhcntq4n...')
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-27 07:16:48 Error: [MissingControllerException] Controller class DeleteFavouriteServiceController could not be found.
+Exception Attributes: array (
+  'class' => 'DeleteFavouriteServiceController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging/delete_favourite_service/14
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 08:02:53 Error: [ParseError] syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+Request URL: /gokaddal-staging/home/my_requirement_detail/7
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(933): View->_evaluate('/home/ejhcntq4n...', Array)
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(473): View->_render('/home/ejhcntq4n...')
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-27 08:03:35 Error: [ParseError] syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING)
+Request URL: /gokaddal-staging/home/my_requirement_detail/7
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(933): View->_evaluate('/home/ejhcntq4n...', Array)
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(473): View->_render('/home/ejhcntq4n...')
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-09-27 08:03:57 Error: [MissingHelperException] Helper class usersHelper could not be found.
+Exception Attributes: array (
+  'class' => 'usersHelper',
+  'plugin' => false,
+)
+Request URL: /gokaddal-staging/home/my_requirement_detail/7
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/HelperCollection.php(63): HelperCollection->load('users')
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(858): HelperCollection->__isset('users')
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/View/Home/my_requirement_detail.ctp(127): View->__get('users')
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(971): include('/home/ejhcntq4n...')
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(933): View->_evaluate('/home/ejhcntq4n...', Array)
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(473): View->_render('/home/ejhcntq4n...')
+#6 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#7 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#8 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#9 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2019-09-27 08:04:41 Error: [MissingHelperException] Helper class usersHelper could not be found.
+Exception Attributes: array (
+  'class' => 'usersHelper',
+  'plugin' => false,
+)
+Request URL: /gokaddal-staging/home/my_requirement_detail/7
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/HelperCollection.php(63): HelperCollection->load('users')
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(858): HelperCollection->__isset('users')
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/View/Home/my_requirement_detail.ctp(127): View->__get('users')
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(971): include('/home/ejhcntq4n...')
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(933): View->_evaluate('/home/ejhcntq4n...', Array)
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(473): View->_render('/home/ejhcntq4n...')
+#6 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#7 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#8 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#9 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2019-09-27 08:05:09 Error: [MissingHelperException] Helper class usersHelper could not be found.
+Exception Attributes: array (
+  'class' => 'usersHelper',
+  'plugin' => false,
+)
+Request URL: /gokaddal-staging/home/my_requirement_detail/7
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/HelperCollection.php(63): HelperCollection->load('users')
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(858): HelperCollection->__isset('users')
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/View/Home/my_requirement_detail.ctp(127): View->__get('users')
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(971): include('/home/ejhcntq4n...')
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(933): View->_evaluate('/home/ejhcntq4n...', Array)
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(473): View->_render('/home/ejhcntq4n...')
+#6 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#7 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#8 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#9 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2019-09-27 09:16:44 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 09:17:31 Error: [MissingActionException] Action ProviderServiceController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProviderServiceController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/ProviderService/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProviderServiceController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 09:17:33 Error: [MissingActionException] Action ProviderServiceController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'ProviderServiceController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/ProviderService/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ProviderServiceController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 10:08:23 Error: [MissingViewException] View file "Home/seeker_selected_category.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Home/seeker_selected_category.ctp',
+)
+Request URL: /gokaddal-staging/home/seeker_selected_category?id=7&showcategories=1
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(470): View->_getViewFileName('Home/seeker_sel...')
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-09-27 10:14:20 Error: [MissingViewException] View file "Home/seeker_selected_category.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Home/seeker_selected_category.ctp',
+)
+Request URL: /gokaddal-staging/home/seeker_selected_category?id=7&showcategories=1
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(470): View->_getViewFileName('Home/seeker_sel...')
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-09-27 10:48:44 Error: [MissingActionException] Action HomeController::echo $this->webroot.'home() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'echo $this->webroot.\'home',
+)
+Request URL: /gokaddal-staging/home/echo%20$this-%3Ewebroot.'home/seeker_requirement_view/'.$require['SeekerRequirement']['id'];
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 10:49:27 Error: [MissingActionException] Action HomeController::single_provider.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'single_provider.php',
+)
+Request URL: /gokaddal-staging/home/single_provider.php
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 11:05:34 Error: [MissingActionException] Action HomeController::post_solution() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'post_solution',
+)
+Request URL: /gokaddal-staging/home/post_solution
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 11:17:56 Error: [MissingActionException] Action UsersController::admin() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin',
+)
+Request URL: /gokaddal-staging/users/admin
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 11:18:03 Error: [MissingActionException] Action UsersController::admin() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin',
+)
+Request URL: /gokaddal-staging/Users/admin
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 11:18:10 Error: [MissingActionException] Action UsersController::admin_admin_login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_admin_login',
+)
+Request URL: /gokaddal-staging/admin
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 11:18:48 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 11:19:44 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 11:19:55 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 11:21:33 Error: [MissingActionException] Action UsersController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/users/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 12:15:18 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] Can\'t connect to local MySQL server through socket \'/var/lib/mysql/mysql.sock\' (2)',
+  'enabled' => true,
+)
+Request URL: /gokaddal-staging/home/signup
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/DboSource.php(271): Mysql->connect()
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/ConnectionManager.php(105): DboSource->__construct(Array)
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(3646): ConnectionManager::getDataSource('default')
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(1162): Model->setDataSource('default')
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(3673): Model->setSource('categories')
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(1394): Model->getDataSource()
+#6 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(1490): Model->schema()
+#7 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(1477): Model->hasField('title', false)
+#8 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(914): Model->hasField(Array)
+#9 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(3212): Model->__get('displayField')
+#10 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(3073): Model->_findList('before', Array)
+#11 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(3007): Model->buildQuery('list', Array)
+#12 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/Controller/HomeController.php(64): Model->find('list', Array)
+#13 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Event/CakeEventManager.php(243): HomeController->beforeFilter(Object(CakeEvent))
+#14 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(677): CakeEventManager->dispatch(Object(CakeEvent))
+#15 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(189): Controller->startupProcess()
+#16 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#17 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#18 {main}
+2019-09-27 12:21:27 Error: [MissingActionException] Action AppController::webroot() could not be found.
+Exception Attributes: array (
+  'controller' => 'AppController',
+  'action' => 'webroot',
+)
+Request URL: /gokaddal-staging/app/webroot/
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(AppController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 12:21:34 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 12:21:43 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 12:21:47 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 12:22:07 Error: [MissingActionException] Action UsersController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/users/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 12:22:10 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 12:22:56 Error: [MissingActionException] Action UsersController::admin_index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_index',
+)
+Request URL: /gokaddal-staging/admin/users
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 12:23:12 Error: [MissingActionException] Action UsersController::admin_index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_index',
+)
+Request URL: /gokaddal-staging/admin/users
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 12:23:54 Error: [MissingActionException] Action UsersController::admin_index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_index',
+)
+Request URL: /gokaddal-staging/admin/users
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 12:27:47 Error: [MissingActionException] Action HomeController::dfsf() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'dfsf',
+)
+Request URL: /gokaddal-staging/home/dfsf
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 12:27:54 Error: [MissingActionException] Action HomeController::test() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'test',
+)
+Request URL: /gokaddal-staging/home/test
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 12:38:44 Error: [MissingActionException] Action HomeController::my() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'my',
+)
+Request URL: /gokaddal-staging/home/my
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 12:49:07 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 13:18:39 Error: [MissingActionException] Action UsersController::admin_index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_index',
+)
+Request URL: /gokaddal-staging/admin/users
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 13:18:43 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-09-27 13:19:09 Error: [MissingActionException] Action UsersController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/users/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-09-27 13:19:14 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

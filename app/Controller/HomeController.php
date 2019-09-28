@@ -55,7 +55,7 @@ class HomeController extends AppController
 	{
 		parent::beforeFilter();
 		// give access to non logged in users
-		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','update_user','change_password','favourite_provider','myaccount','seeker_requirement_view','submit_quote','my_requirement_detail');
+		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','update_user','change_password','list_favourite_solution','myaccount','seeker_requirement_view','submit_quote','my_requirement_detail');
 
 		$this->loadModel('User');
 
@@ -95,7 +95,7 @@ class HomeController extends AppController
 			$this->set(compact('cat_names','cat_count'));
 
 
-		 	// pr($seeker_solutions);die();
+		 	// pr($cat_names);die();
 
 		}
 
@@ -400,17 +400,17 @@ class HomeController extends AppController
 	 	}
 
 
-	 	$id = $this->Auth->user('id');
+	 // 	$id = $this->Auth->user('id');
 
-		$this->Paginator->settings = array(
-		        'limit' => 10,
-		        'conditions' => array('ProviderService.user_id' => $id ),
-		        'order' => 'ProviderService.id desc'
-		);
+		// $this->Paginator->settings = array(
+		//         'limit' => 10,
+		//         'conditions' => array('ProviderService.user_id' => $id ),
+		//         'order' => 'ProviderService.id desc'
+		// );
 
-		$seeker_solutions = $this->Paginator->paginate('ProviderService');
+		// $seeker_solutions = $this->Paginator->paginate('ProviderService');
 	 	
-	 	pr($seeker_solutions);die();
+	 	// pr($seeker_solutions);die();
 	 	# code...
 	 }
 
@@ -525,6 +525,12 @@ class HomeController extends AppController
 	 	}
 	 }
 
+
+	 public function post_solution($value='')
+	 {
+	 	# code...
+	 }
+
 	 public function my_requirement($value='')
 	 {
 
@@ -555,10 +561,27 @@ class HomeController extends AppController
 	 	 	if ($id) {
 	 	 		$requirement = $this->SeekerRequirement->findById($id);
 
-	 	 		
-	 	 		$this->set(compact('requirement'));
+				$userids = [];
+	 	 		foreach ($requirement['SubmitQuote'] as $key => $quote_contact) {
+	 	 			$userids[] =  $quote_contact['user_id'];
+	 	 		}
+
+	 	 		$users = $this->User->find('all', array('conditions' => array('User.id' => $userids ) ) );
+
+	 	 		$onlyusers = [];
+
+	 	 		foreach ($users as $key => $user) {
+	 	 			$onlyusers[] =  $user['User'];
+	 	 		}
+
+	 	 		// $usercontacts = 
+	 	 		// pr($onlyusers);die();
+
+				 	 		// die();
+	 	 		$this->set(compact('requirement','onlyusers'));
 
 	 	 		// pr($requirement);die();
+
 
 	 			// $this->Flash->success(__('Your requirement is updated successfully'));
 	 		    // $this->redirect('post_requirement');
@@ -765,12 +788,12 @@ class HomeController extends AppController
 		    	}
 	}
 
-	public function favourite_provider($value='')
+	/*list favourite solutions of seeker in myaccount*/	
+	public function list_favourite_solution($value='')
 	{
 		$userdata = $this->User->findById($this->Auth->user('id'));
 		// $userdata['Favourite'];
-		// pr($userdata['Favourite'][0]['provider_service_id']);die();
-		$povider_services = [];
+		$fav_prov_list_ids = [];
 
 		foreach ($userdata['Favourite'] as $key => $service) 
 			$fav_prov_list_ids[] = $service['provider_service_id'];
@@ -783,15 +806,10 @@ class HomeController extends AppController
 				  );
 
 
-				$fav_providers = $this->Paginator->paginate('ProviderService');
-				$count = count($fav_providers);
-				// $user_list = $this->Paginator->paginate('ProviderService');
+				$fav_services = $this->Paginator->paginate('ProviderService');
+				$service_count = count($fav_services);
 
-		/*Getting all providers which are marked as favourite by logged in Seeker*/
-		// $fav_providers = $this->ProviderService->find('all', array('conditions' => array('ProviderService.id' => $fav_prov_list_ids )));
-
-		// pr($fav_providers);die();
-		$this->set(compact('fav_providers','count'));
+		$this->set(compact('fav_services','service_count'));
 
 		// echo "<pre>";
 		// print_r($fav_providers);die();
@@ -800,64 +818,74 @@ class HomeController extends AppController
 	}
 
 	/*delete single requirement of seeker*/
-	public function remove_favourite($id='')
+	public function delete_favourite_solution($id='')
 	{
-		$userid = $this->Auth->user('id');
 
-
-		$deleteFavourite = $this->Favourite->find('all', array('conditions' => array( 'Favourite.user_id' => $userid,'Favourite.provider_service_id' => $id)));
-		// pr($deleteFavourite);die();
-
-		if($this->Favourite->delete($deleteFavourite[0]['Favourite']['id']))
-			$this->Flash->error(__('Favourite deleted successfully.'));
+		if($this->Favourite->delete($id))
+			$this->Flash->error(__('Service deleted successfully.'));
 		else
-			$this->Flash->error(__('Error in deleting, Please contact admin.'));
+			$this->Flash->error(__('Error in deleting service, Please contact admin.'));
 		$this->redirect($this->referer());
+
 	
 	}
 
 	 public function seeker_list($value='')
 	 {
 
+	 	if (!$this->Auth->loggedIn()) {
+ 			$this->Paginator->settings = array(
+ 			        'limit' => 10,
+ 			        // 'conditions' => array('SeekerRequirement. ' => $cat_ids),
+ 			        'order' => 'SeekerRequirement.id desc'
+ 			  );
+				
+				$seeker_list = $this->Paginator->paginate('SeekerRequirement');
+				// pr($seeker_list);die();
+				$count = count($seeker_list);
+				$this->set(compact('seeker_list','count'));
 
-	 		 	$userid = $this->Auth->user('id');
+	 	}else{
 
-
-	 		 	$user = $this->User->findById($userid);
-	 		 	$provider_dealsin = $user['ProviderService'];
-
-	 		 	$cat_ids = [];
-
-	 		 	// got the categories in which provider deals, now we need to find in seeker_requiements tables for the same category
-	 		 	foreach ($provider_dealsin as $key => $provider) 
-	 		 		$cat_ids[] = $provider['category_id'];
-
-	 		 		$cat_ids = array_unique($cat_ids);
-
-	 		 	// pr('provider deals in following categories');
-	 		 	// print_r($cat_ids);
-	 		 	// echo "<br><br><br>";
+ 		 	$userid = $this->Auth->user('id');
 
 
-	 		 	/*if no category found in provider_services table for the logged in provider*/
-	 		 	if (count($cat_ids) < 1 ) {
-	 		 		$seeker_list = 0;
-	 		 		$this->set(compact('seeker_list'));
-	 		 	}else{
+ 		 	$user = $this->User->findById($userid);
+ 		 	$provider_dealsin = $user['ProviderService'];
 
-		 			$this->Paginator->settings = array(
-		 			        'limit' => 10,
-		 			        'conditions' => array('SeekerRequirement.category_id ' => $cat_ids),
-		 			        'order' => 'SeekerRequirement.id desc'
-		 			  );
-	 				
-	 				$seeker_list = $this->Paginator->paginate('SeekerRequirement');
-	 				// pr($seeker_list);die();
-	 				$count = count($seeker_list);
-	 				$this->set(compact('seeker_list','count'));
-	 		 		
-				}
+ 		 	$cat_ids = [];
 
+ 		 	// got the categories in which provider deals, now we need to find in seeker_requiements tables for the same category
+ 		 	foreach ($provider_dealsin as $key => $provider) 
+ 		 		$cat_ids[] = $provider['category_id'];
+
+ 		 		$cat_ids = array_unique($cat_ids);
+
+ 		 	// pr('provider deals in following categories');
+ 		 	// print_r($cat_ids);
+ 		 	// echo "<br><br><br>";
+
+
+ 		 	/*if no category found in provider_services table for the logged in provider*/
+ 		 	if (count($cat_ids) < 1 ) {
+ 		 		$seeker_list = 0;
+ 		 		$this->set(compact('seeker_list'));
+ 		 	}else{
+
+	 			$this->Paginator->settings = array(
+	 			        'limit' => 10,
+	 			        'conditions' => array('SeekerRequirement.category_id ' => $cat_ids),
+	 			        'order' => 'SeekerRequirement.id desc'
+	 			  );
+ 				
+ 				$seeker_list = $this->Paginator->paginate('SeekerRequirement');
+ 				// pr($seeker_list);die();
+ 				$count = count($seeker_list);
+ 				$this->set(compact('seeker_list','count'));
+ 		 		
+			}
+
+	 	} //logged in end
 	 		 		/*category records in which logged in provider deals*/
 		 	 		// $seeker_services = $this->ProviderService->find('all', array('conditions' => array('ProviderService.category_id' => $cat_ids ) ));
 
@@ -940,6 +968,8 @@ class HomeController extends AppController
 		$quote_list = $this->Paginator->paginate('SubmitQuote');
 		$count = count($quote_list);
 		$this->set(compact('quote_list','count'));
+
+		// pr($quote_list);die();
 
 
 		/*Mark each notifications as read*/
