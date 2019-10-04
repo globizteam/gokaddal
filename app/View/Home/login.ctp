@@ -35,7 +35,7 @@
                         <?php echo $this->Flash->render(); ?>
                         <div class="form_with_grey_bg">
                             <?php echo $this->Form->create('User', array('url' => array('controller' => 'home', 'action' => 'login') ) ); ?>
-                            <!-- <form action="my_account.php"> -->
+                            <!-- <form action="<?php echo $this->webroot.'home/login'; ?>" method="post" > -->
                                 <div class="form-group">
                                     
                                     <!-- <input type="email" name="data[User][email]" class="form-control input_field" placeholder="Enter Email"> -->

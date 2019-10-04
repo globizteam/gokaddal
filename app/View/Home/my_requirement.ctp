@@ -35,6 +35,7 @@
                         
                         <div class="row">
                             <div class="col-lg-11 col-md-12">
+                                <?php echo $this->Flash->render(); ?>
                                 <div class="my_account_main_content p_tb_80 col_sm_p_tb_60">
 
                                     <div class="row m_b_15">
@@ -73,7 +74,7 @@
                                                                     
                                                                     <h5 class="listing_item_tags txt_w_400 m_t_10">
                                                                         <a href="javascript:;" class="txt_orange hover_txt_orange text-uppercase">
-                                                                            Smart Cities, Tag name Here
+                                                                            <?php echo $data['Tag']['name']; ?>
                                                                         </a>
                                                                     </h5>
                                                                     <p class="m_t_10">

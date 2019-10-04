@@ -34,8 +34,14 @@
 
 
                     <div class="col-lg-5 col-md-5 col-sm-6">
-                        <a href="#">
-                            <img src="<?php echo  $this->webroot.'app/webroot/no-image.jpg' ?>" alt="Image" class="img-responsive center-block" style="max-width: 50% !important; width: 100%;" >
+                        <a href="javascript:;">
+                            <?php if(!empty($providerservice['ProviderService']['image']) ) { ?>
+
+                                <img src="<?php echo $this->webroot.'app/webroot/'.$providerservice['ProviderService']['image']; ?>" alt="Image" class="img-responsive center-block" style="max-width: 50% !important; width: 100%;" >
+                            <?php }else { ?>
+                                <img src="<?php echo $this->webroot.'app/webroot/no-image.jpg'; ?>" alt="Image" class="img-responsive center-block" style="max-width: 50% !important; width: 100%;" >
+
+                            <?php } ?>
                         </a>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-6 ">

@@ -163,6 +163,8 @@
         
         <div class="row">
             <div class="col-md-12 text-center">
+                   <br> 
+                   <br> 
                 <?php echo $this->Session->flash(); ?>  
             </div>
         </div>

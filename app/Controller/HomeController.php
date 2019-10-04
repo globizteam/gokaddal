@@ -55,7 +55,9 @@ class HomeController extends AppController
 	{
 		parent::beforeFilter();
 		// give access to non logged in users
-		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','update_user','change_password','list_favourite_solution','myaccount','seeker_requirement_view','submit_quote','my_requirement_detail');
+		// $this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','update_user','change_password','list_favourite_solution','myaccount','seeker_requirement_view','submit_quote','my_requirement_detail');
+		
+		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','submit_quote','checkemailexist','search_provider');
 
 		$this->loadModel('User');
 
@@ -119,6 +121,32 @@ class HomeController extends AppController
 		$quote_count = count($quote_list);
 		$this->set(compact('quote_list','quote_count'));
 
+
+
+		/*Provider notifications count unread notifications*/
+		$id = $this->Auth->user('id');
+		// $userData = $this->Auth->user();
+
+		$services = $this->ProviderService->find('all', array('conditions' => array('ProviderService.user_id' => $id ) ) );
+
+
+		$cat_ids = [];
+		// gathered category ids in which current user deals...
+		foreach ($services as $key => $service) {
+			$cat_ids[] = $service['ProviderService']['category_id'];
+		}
+
+		// if Seeker 
+		$this->Paginator->settings = array(
+		        'limit' => 10,
+		        'conditions' => array('SeekerRequirement.category_id' => $cat_ids,'SeekerRequirement.read_status' => 0),
+		        'order' => 'SeekerRequirement.id desc'
+		  );
+
+		$requirement_list = $this->Paginator->paginate('SeekerRequirement');
+		$requirement_count = count($requirement_list);
+		$this->set(compact('requirement_count'));
+		
 		// pr($quote_list); die();
 	}
 
@@ -134,11 +162,11 @@ class HomeController extends AppController
 
 		if ($this->request->is('post')) 
 		{
+	        // pr($this->request->data);die();
 			$email = $this->request->data['User']['email'];
 
 	        $userfind = $this->User->find('all', array('conditions' => array('User.email' => $email,'User.status' => 1 ) ));
 
-	        // pr(count($userfind));die();
 	        if (count($userfind) > 0 ) 
 	        {
 		        if ($this->Auth->login()) 
@@ -239,16 +267,15 @@ class HomeController extends AppController
 		 	$user = $this->User->findById($userid);
 		 	$seeker_requirement = $user['SeekerRequirement'];
 
+		 	$cat_ids = [];
 		 	foreach ($seeker_requirement as $key => $requirement) 
 		 		$cat_ids[] = $requirement['category_id'];
 		 	
 	 		$provider_with_req_cat = $this->ProviderService->find('all', array('conditions' => array('ProviderService.category_id' => $cat_ids ) ));
 
-
+	 		$ids = [];
 	 		foreach ($provider_with_req_cat as $key => $provider)
-	 		{ 
 	 			$ids[] = $provider['ProviderService']['user_id'];
-	 		}
 
 	 		$user_ids = array_unique($ids);
 
@@ -507,14 +534,15 @@ class HomeController extends AppController
 	 {
 	 	$login_id = $this->Auth->user('id');
  	 	$tags = $this->Tag->find('all');
+
+ 	 	// pr()
  	 	// $userdata = $this->User->find($login_id);
  	 	$this->set(compact('tags'));
 
- 	 	if ($id) {
+ 	 	if($id) 
+ 	 	{
  	 		$editrequirement = $this->SeekerRequirement->findById($id);
  	 		$this->set(compact('editrequirement'));
-
-
  			// $this->Flash->success(__('Your requirement is updated successfully'));
  		    // $this->redirect('post_requirement');
  	 	}
@@ -542,9 +570,125 @@ class HomeController extends AppController
 	 }
 
 
-	 public function post_solution($value='')
+	 public function post_solution($id='')
 	 {
-	 	# code...
+	 	$login_id = $this->Auth->user('id');
+ 	 	$tags = $this->Tag->find('all');
+ 	 	// $userdata = $this->User->find($login_id);
+ 	 	$this->set(compact('tags'));
+
+ 	 	if($id) 
+ 	 	{
+ 	 		$editservice = $this->ProviderService->findById($id);
+ 	 		$this->set(compact('editservice'));
+ 	 		// pr($editservice);die();
+ 			// $this->Flash->success(__('Your requirement is updated successfully'));
+ 		    // $this->redirect('post_requirement');
+ 	 	}
+
+
+
+
+
+
+	 	if ($this->request->is('post','put')) 
+	 	{
+
+
+	 		$imgName =  $_FILES['file']['name']; 
+
+	 		$postData['User']['profile_pic'] = $imgName;
+	 		
+	 		if(!empty($imgName))
+	 		{
+
+	 			// pr(' i am in ');die();
+
+	 		        $imgNameNew = time().'-'.$imgName;
+
+	 		        $destination = WWW_ROOT;
+
+	 		        if(move_uploaded_file($_FILES['file']['tmp_name'],$destination.$imgName)) {
+	 		            echo "The file ".$imgName. " has been uploaded.";
+	 						// die();
+	 		        } else {
+	 		            echo "Sorry, there was an error uploading your file.";
+	 		            die();
+	 		        }
+
+	 		}
+
+
+
+	 		$this->request->data['user_id'] = $login_id;
+	 		$this->request->data['image'] = $imgName;
+	 		// pr($this->request->data);die();
+
+	 		if ($this->ProviderService->save($this->request->data)) 
+	 		{
+			
+				if (isset($this->request->data['id'])) 
+				{
+					$this->Flash->success(__('Solution updated successfully'));
+				    $this->redirect($this->referer());
+					
+				}
+
+				$this->Flash->success(__('Solution added successfully'));
+			    $this->redirect($this->referer());
+ 			}
+ 				$this->Flash->error(__('Problem saving requirement'));
+ 			 	$this->redirect($this->referer());
+
+	 	}
+
+	 }
+
+	 public function my_proposal($value='')
+	 {	
+
+
+	 	$current_user_id = $this->Auth->user('id');
+	 	
+	 	$allSeekerUsers = $this->User->find('all', array('conditions' => array('User.type' => 2 ) ) );
+
+ 		$this->Paginator->settings = array(
+ 		        'limit' => 10,
+ 		        'conditions' => array('SubmitQuote.user_id' => $current_user_id ),
+ 		        'order' => 'SubmitQuote.id desc'
+ 		  );
+
+ 		$userdata = $this->Paginator->paginate('SubmitQuote');
+
+ 		$requirementcount = count($userdata);
+ 		// pr($userdata);die();
+ 	 	$this->set(compact('userdata','requirementcount','allSeekerUsers'));
+
+
+
+
+	 	// pr($qoute);die();
+
+
+
+	 }
+
+	 public function my_solution($value='')
+	 {
+	 	 	/*showing logged user requirements he posted*/
+	 	 	$current_user_id = $this->Auth->user('id');
+
+	 		$this->Paginator->settings = array(
+	 		        'limit' => 10,
+	 		        'conditions' => array('ProviderService.user_id' => $current_user_id ),
+	 		        'order' => 'ProviderService.id desc'
+	 		  );
+
+	 		$userdata = $this->Paginator->paginate('ProviderService');
+
+	 		$solutioncount = count($userdata);
+	 		// pr($userdata);die();
+	 	 	$this->set(compact('userdata','solutioncount'));
 	 }
 
 	 public function my_requirement($value='')
@@ -555,7 +699,7 @@ class HomeController extends AppController
 
 
 		$this->Paginator->settings = array(
-		        'limit' => 10,
+		        'solutioncount' => 10,
 		        'conditions' => array('SeekerRequirement.user_id' => $current_user_id ),
 		        'order' => 'SeekerRequirement.id desc'
 		  );
@@ -642,10 +786,21 @@ class HomeController extends AppController
 	 public function delete_requirement($id='')
 	 {
 	 	if($this->SeekerRequirement->delete($id))
-	 		$this->Flash->error(__('Requirement deleted successfully.'));
+	 		$this->Flash->success(__('Requirement deleted successfully.'));
 	 	else
 	 		$this->Flash->error(__('Error in deleting data, Please contact admin.'));
-	 	$this->redirect($this->referer());
+	 	$this->redirect('my_requirement');
+	 
+	 }
+
+	 /*delete single solution of seeker*/
+	 public function delete_solution($id='')
+	 {
+	 	if($this->ProviderService->delete($id))
+	 		$this->Flash->success(__('Solution deleted successfully.'));
+	 	else
+	 		$this->Flash->error(__('Error in deleting data, Please contact admin.'));
+	 	$this->redirect('my_solution');
 	 
 	 }
 
@@ -847,8 +1002,10 @@ class HomeController extends AppController
 	
 	}
 
-	public function checkEmailExists($value='')
+	public function admin_checkemailexist($email='')
 	{
+		// pr('hello all');die();
+		echo "hello all";
 		$checkemail = $this->request->query['email'];
 		$record = $this->User->find('all', array('conditions' => array('User.email' => $checkemail )));
 
@@ -1013,6 +1170,64 @@ class HomeController extends AppController
 	
 
 	}
+
+
+	// seeker quotation notification count and messages
+	public function provider_notification($value='')
+	{
+
+		$id = $this->Auth->user('id');
+		// $userData = $this->Auth->user();
+
+		$services = $this->ProviderService->find('all', array('conditions' => array('ProviderService.user_id' => $id ) ) );
+
+
+		$cat_ids = [];
+		// gathered category ids in which current user deals...
+		foreach ($services as $key => $service) {
+			$cat_ids[] = $service['ProviderService']['category_id'];
+		}
+
+		// if Seeker 
+		$this->Paginator->settings = array(
+		        'limit' => 10,
+		        'conditions' => array('SeekerRequirement.category_id' => $cat_ids),
+		        'order' => 'SeekerRequirement.id desc'
+		  );
+
+
+		$requirement_list = $this->Paginator->paginate('SeekerRequirement');
+		$count = count($requirement_list);
+		$this->set(compact('requirement_list','count'));
+		// pr($requirement_list);die();
+
+		/*Mark each Requirement as read*/
+		foreach ($requirement_list as $key => $requirement) 
+		{
+			// updating each record as read
+			$update_record['SeekerRequirement']['id'] = $requirement['SeekerRequirement']['id'];
+			$update_record['SeekerRequirement']['read_status'] = $requirement['SeekerRequirement']['read_status'] = 1;
+			$this->SeekerRequirement->save($update_record);
+		}
+		// die();
+		// $quote_count = count($quote_list);
+	
+
+	}
+
+
+	public function search_provider($value='')
+	{
+
+		$location = $this->request->query['location'];
+		$lookingfor = $this->request->query['looking_for'];
+		// pr($location);
+		pr($lookingfor);die();
+		$new_regist_user_id = $this->request->query['id'];
+		echo "i am in serach";die();
+	}
+
+	
 
 } 
 ?>

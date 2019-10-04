@@ -165,10 +165,10 @@
                                     <?php //endif; ?>
                                 </li>
                             <!-- if user is logged in -->
-                            <?php if(AuthComponent::user('id')) { ?>
+                            <?php $done = 0; if(AuthComponent::user('id')) { ?>
                                 <!-- if rating is already given by current logged in user(seeker) -->
                                 <?php
-                                    $done = 0;
+                                    
                                     if (isset($check_rating[0]['RateNReview']['rate_to'])) {
 
                                         foreach ($check_rating as $key => $rating) 

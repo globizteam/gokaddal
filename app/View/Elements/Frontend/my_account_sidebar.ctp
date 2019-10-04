@@ -18,6 +18,9 @@
             <li class= "<?= ($activePage == 'change_password') ? 'active-sidebar':''; ?>" >
                 <a href="<?php echo $this->webroot.'home/change_password'; ?>">Change Password</a>
             </li>
+
+            <!-- if seeker logged in -->
+            <?php if(AuthComponent::user('type') == 2) : ?>
             <li class= "<?= ($activePage == 'seeker_notification') ? 'active-sidebar':''; ?>" >
                 <a href="<?php echo $this->webroot.'home/seeker_notification'; ?>">
                     <?php 
@@ -27,13 +30,29 @@
                     ?>  Notification
                 </a>
             </li>
+            <?php endif; ?>    
+            
+            <!-- if provider logged in -->
+            <?php if(AuthComponent::user('type') == 1) : ?>
+            <li class= "<?= ($activePage == 'provider_notification') ? 'active-sidebar':''; ?>" >
+                <a href="<?php echo $this->webroot.'home/provider_notification'; ?>">
+                    <?php 
+                        if (!empty($requirement_count)) 
+                                echo $requirement_count; 
+
+                    ?>  Notification
+                </a>
+            </li>
+            <?php endif; ?>    
+            
+
             <hr class="hidden-sm hidden-xs">
             <?php if(AuthComponent::user('type') == 1) : ?>
-                <li class="col_sm_m_t_20  <?= ($activePage == 'my_solutions') ? 'active-sidebar':''; ?>" >
-                    <a href="javascript:;">My Solutions</a>
+                <li class="col_sm_m_t_20  <?= ($activePage == 'my_solution') ? 'active-sidebar':''; ?>" >
+                    <a href="<?php echo $this->webroot.'home/my_solution'; ?>">My Solutions</a>
                 </li>
-                <li class="col_sm_m_t_20  <?= ($activePage == 'my_proposals') ? 'active-sidebar':''; ?>">
-                    <a href="javascript:;">My Proposals</a>
+                <li class="col_sm_m_t_20  <?= ($activePage == 'my_proposal') ? 'active-sidebar':''; ?>">
+                    <a href="<?php echo $this->webroot.'home/my_proposal'; ?>">My Proposals</a>
                 </li>
                 <li class="col_sm_m_t_20  <?= ($activePage == 'post_solution') ? 'active-sidebar':''; ?>">
                     <a href="<?php echo $this->webroot.'home/post_solution'; ?>">Post Solution</a>

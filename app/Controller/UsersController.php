@@ -88,13 +88,56 @@ class UsersController extends AppController
 
 		$this->set(compact('thirdparty_js','user'));
 	}
+
+    // public function admin_selectusertype($value='')
+    // {
+    //     $check_user_type = $this->request->data;
+
+    //     // echo $this->request->data;die();
+    //     // pr($this->request->data);die();
+    //         $conditions = [];
+    //         // $conditions = array(
+    //         //                 'User.id !=' => 1
+    //         //             ); 
+
+    //         if(!empty($check_user_type)) {
+    //             $conditions[] = array('OR' =>array(
+    //                                     array('User.type'  => $check_user_type )
+    //                                 )
+    //                             );
+    //         }
+
+    //          $this->Paginator->settings = array(
+    //                 'limit' => 10,
+    //                 'conditions' => $conditions,
+    //                 'order' => 'User.id desc'
+    //           );
+
+    //         $users = $this->Paginator->paginate('User');
+
+            
+    //         $thirdparty_js = [
+    //             'https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js'
+    //         ];
+    //         $element = 'js/user_list';
+    //         // pr($element);die();
+
+    //         $elementData='';
+    //         $this->set(compact('thirdparty_js','users','element', 'elementData'));
+
+    //         $this->redirect($this->referer());
+    // }
+
 	public function admin_userList()
 	{
+            // pr('hello');die();
 
 		$conditions = [];
 		$conditions = array(
 						'User.id !=' => 1
 					); 
+
+
 
 		if(!empty($_GET['search_value'])) {
 			$conditions[] = array('OR' =>array(
@@ -103,6 +146,15 @@ class UsersController extends AppController
 								)
 							);
 		}
+        
+        if(!empty($_GET['usertype'])) {
+            // pr('sssdsadad');die();
+            $conditions[] = array('OR' =>array(
+                                    array('User.type' => $_GET['usertype'] ),
+                                    // array('User.email LIKE' => '%'.$_GET['search_value'].'%' )
+                                )
+                            );
+        }
 
 		 $this->Paginator->settings = array(
 		        'limit' => 10,
@@ -199,7 +251,8 @@ class UsersController extends AppController
 
 
             $pass = mt_rand(1000,100000);
-            if(empty($postData['User']['id'])){
+            if(empty($postData['User']['id']))
+            {
                 $postData['User']['password'] = $pass;
             }
             //pr($postData);die;
@@ -208,7 +261,8 @@ class UsersController extends AppController
 
             $postData['User']['profile_pic'] = $imgName;
             
-            if(!empty($imgName)){
+            if(!empty($imgName))
+            {
 
 
                     $imgNameNew = time().'-'.$imgName;
@@ -237,8 +291,10 @@ class UsersController extends AppController
                 $userId = $this->User->id;
                 if(empty($postData['User']['id'])){
                     $this->sendForgotPasswordEmail($postData['User']);
+                    $this->Flash->success(__('Reset password mail sent successfully'));
                     
                 }
+
                 if ( isset($this->request->data['edit'])) 
                     $this->Flash->success(__('The user updated successfully'));
                 else
@@ -286,8 +342,8 @@ class UsersController extends AppController
 
             $this->mail($emailTemplate, $param);    
 
-            $this->Flash->success(__('Reset password email sent successfully'));
-            $this->redirect('login');
+            // $this->Flash->success(__('Reset password email sent successfully'));
+            // $this->redirect('login');
 
         }
         return false;
@@ -295,6 +351,7 @@ class UsersController extends AppController
 
     public function admin_updateUserPassword($id = null){
     	if(!empty($id)){
+            // pr('i am there');die();
 
             $postData = $this->User->findById($id); 
             $pass = mt_rand(1000,100000);
@@ -302,7 +359,10 @@ class UsersController extends AppController
             $postData['User']['password'] = $pass;  
             $this->User->save($postData, false);     
             $this->sendForgotPasswordEmail($postData['User']);
-            $this->Flash->error(__("Password sent to user's email."));
+
+            $this->Flash->success(__("Password sent to user's email."));
+
+            $this->redirect($this->referer());
                     
         }
         $this->redirect($this->referer());

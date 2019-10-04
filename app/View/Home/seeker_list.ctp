@@ -3,8 +3,8 @@
         <div class="upper_banner">
             <div class="container-fluid">
                 <div class="container">
-                    <h1 class="text-center txt_white m_b_20 txt_52">Solution Provider</h1>
-                    <h3 class="text-center txt_white m_b_70">Category/Solution Provider Name</h3>
+                    <h1 class="text-center txt_white m_b_20 txt_52">Solution Seeker</h1>
+                    <h3 class="text-center txt_white m_b_70">Category/Solution Seeker Name</h3>
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
                             
@@ -29,20 +29,46 @@
                     <div class="col-md-3 col-sm-12 rightBar col_sm_m_t_50">
                         <h3 class="txt_black txt_w_700 text-uppercase">Categories</h3>
                         <ul class="m_t_40 solution_sidebar listing_page_sidebar list-unstyled p_l_0">
-                            <li><a href="#">Smart Cities</a></li>
-                            <li><a href="#">Public Services</a></li>
-                            <li><a href="#">Manufacturing</a></li>
-                            <li><a href="#">E-Governance</a></li>
-                            <li><a href="#">Oil& Gas</a></li>
-                            <li><a href="#">Servillence & Security</a></li>
-                            <li><a href="#">Real Estate</a></li>
-                            <li><a href="#">Transportation</a></li>
-                            <li><a href="#">Agriculture</a></li>
-                            <li><a href="#">Media & Entertainment</a></li>
-                            <li><a href="#">Retail</a></li>
-                            <li><a href="#">Banking & Finance</a></li>
-                            <li><a href="#">Utilities</a></li>
-                            <li><a href="#">Dairy</a></li>
+                            <!-- if logged in as seeker, will see all the categories -->
+                            <?php 
+                                if( AuthComponent::user('type') != 1 ) 
+                                {
+                                    foreach ($categories as $key => $category) 
+                                    { 
+
+                            ?>
+                                    <li>
+                                        <a href="<?php echo $this->webroot.'home/provider_all_solutions?id='.$key.'&showcategories=1'; ?>">
+                                            <?php echo $category; ?>
+                                        </a>
+                                    </li>
+                            <?php 
+                                    } 
+                                }
+                            ?>
+
+                            <?php 
+                                if( AuthComponent::user('type') == 1 ) 
+                                {
+                                    if (count($cat_names) > 0) {
+
+                                        foreach ($cat_names as $key => $category) 
+                                        { 
+
+                                ?>
+                                        <li>
+                                            <a href="<?php echo $this->webroot.'home/seeker_selected_category?id='. $category['Category']['id'].'&showcategories=1'; ?>">
+                                                <?php echo $category['Category']['title']; ?>
+                                            </a>
+                                        </li>
+                                <?php 
+                                        } 
+                                    }else{
+                                        echo "<li style='color: #ff7f27;'>No Categories Found</li>";
+                                    }
+                                }
+                            ?>
+
                         </ul>
 
                         <h3 class="txt_black txt_w_700 text-uppercase m_t_60">POPULAR SOLUTION AREAS</h3>

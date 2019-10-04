@@ -55,7 +55,7 @@
                         </div>
                         <div class="orange_btns m_t_30">
                             <ul class="list-unstyled list-inline m_b_0">
-                                <?php if(AuthComponent::user('id') == 1) { ?>
+                                <?php if(AuthComponent::user('type') == 1) { ?>
                                     <li>
                                         <a href="#" data-toggle="modal" data-target="#submit_quote_modal">
                                             Submit a Quote

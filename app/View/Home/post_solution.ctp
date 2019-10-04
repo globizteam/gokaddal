@@ -34,6 +34,7 @@
                         
                         <div class="row">
                             <div class="col-lg-11 col-md-12">
+                                <?php echo $this->Flash->render(); ?>
                                 <div class="my_account_main_content p_tb_80 col_sm_p_tb_60">
 
                                     <div class="row m_b_15">
@@ -58,33 +59,53 @@
                                         <div class="row">
                                             <div class="col-md-7 col-sm-9 col-xs-12">
                                                 
-                                                <form action="#" class="">
+                                                <form action="<?php if(isset($editservice['ProviderService']['id'] )) { echo $this->webroot.'home/post_solution/'.$editservice['ProviderService']['id']; }else{ echo $this->webroot.'home/post_solution'; }  ?>" method="post" enctype="multipart/form-data">
+                                                <?php //echo $this->Form->create(); ?>
                                                     <div class="form-group">
-                                                        <select class="form-control input_field">
+                                                        <select class="form-control input_field" name="category_id">
                                                             <option value="Select category" selected disabled>Select Category</option>
-                                                            <?php foreach ($cat_names as $key => $name) { ?>
-                                                                <option value="Smart Cities">
-                                                                    <?php echo $name['Category']['title']; ?>
+                                                            <?php foreach ($categories as $key => $category) {?>
+                                                                <option value="<?php echo $key ?>" <?php if(isset($editservice['Category']['title']) && ($editservice['Category']['title'] == $categories[$key] )){ echo 'selected'; }?> >    <?php echo $categories[$key] ;?>
                                                                 </option>
-                                                            <?php } ?>
+                                                            <?php }  ?>
+
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control input_field" placeholder="Title">
+                                                        <input type="text" class="form-control input_field" name="title" value="<?php if(isset($editservice['ProviderService']['title'] )) { echo $editservice['ProviderService']['title'];  } ?>" placeholder="Title">
                                                     </div>
+
+                                                    <?php if(isset($editservice['ProviderService']['id'] )) {  ?>
+
+                                                        <input type="hidden" name="id" value="<?php if(isset($editservice['ProviderService']['id'] )) { echo $editservice['ProviderService']['id']; } ?>">
+
+                                                    <?php }  ?>
+
                                                     <div class="form-group">
-                                                        <input type="email" class="form-control input_field" placeholder="Solution Tags">
+                                                        <select class="form-control input_field" name="tag_id">
+                                                            <option value="Select category" selected disabled>Select Tag</option>
+                                                        <?php foreach ($tags as $key => $tag) {?>
+                                                            <option value="<?php echo $tag['Tag']['id'] ;?>" <?php if(isset($editservice['Tag']['id']) && ($editservice['Tag']['id'] == $tag['Tag']['id'] )){ echo 'selected'; }?> >    <?php echo $tag['Tag']['name'] ;?>
+                                                            </option>
+                                                        <?php }  ?>
+
+                                                        </select>
+<!--                                                         <input type="email" name="title" class="form-control input_field" placeholder="Requirement Tags"> -->
+                                                    </div>                                                   
+
+                                                    <div class="form-group">
+                                                       <textarea rows="4" class="form-control input_field" name="description" placeholder="Solution Details"><?php if(isset($editservice['ProviderService']['description'] )) { echo $editservice['ProviderService']['description']; } ?></textarea>
                                                     </div>
-                                                   <div class="form-group">
-                                                       <textarea rows="4" class="form-control input_field" placeholder="Solution Details"></textarea>
-                                                   </div>
                                                     <div class="form-group">
                                                         <label for="upload_img" class="txt_black">Upload Image</label>
-                                                        <input type="file" class="form-control input_field" id="upload_img" placeholder="Enter Country">
+                                                        <input type="file" name="file" class="form-control input_field" id="upload_img" placeholder="Upload Image">
                                                     </div>
                                                     <div class="text-center orange_btns m_t_30">
                                                         <ul class="list-unstyled list-inline m_b_0">
-                                                            <li><a href="#">Submit</a></li>
+                                                            <li>
+                                                                <input type="submit" name="Submit">
+                                                                <!-- <a href="#">Submit</a> -->
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </form>

@@ -44,9 +44,25 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="product-status-wrap drp-lst">
             <h4>Users List</h4>
+            <div class="usertype">
+	            <form  id="usertype" method="get" class="">
+
+		            <div class="">
+		                <label for="">User Type:</label>
+		                <select name="usertype"  id="selectUserType">
+		                    <option value="0">Select Type</option>
+		                    <option value="1">Provider</option>
+		                    <option value="2">Seeker</option>
+		                </select>
+		            </div>
+
+	            </form>
+	        </div>
+
+
             <div class="add-product">
-                                <a href="<?php echo $this->Html->url('/admin/users/addUser'); ?>">Add User</a>
-                            </div>
+                <a href="<?php echo $this->Html->url('/admin/users/addUser'); ?>">Add User</a>
+            </div>
             <div class="asset-inner">
                 <table>
                     <tr>

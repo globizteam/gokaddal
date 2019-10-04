@@ -98,3 +98,36 @@
     }); 	   
  
 })(jQuery); 
+
+
+// custom js Hardeep @30-Sep-2019
+
+$('#selectUserType').on('change', function () {
+
+	$('#usertype').submit();
+
+	// var current_path = window.location.pathname.split('/').pop();
+	// var userval = $(this).val();
+	// // alert(userval);
+
+	// if (current_path == "userList") 
+	// {
+
+
+	// 	$.ajax({
+	// 	    dataType: 'HTML',
+	// 	    type: 'GET',
+	// 	    evalScripts: true,
+	// 	    url: 'selectusertype',
+	// 	    // cache: false,
+	// 	    data: {data:userval},
+	// 	    success: function (data) {
+	// 	        console.log(data);
+	// 	        // $('#context').html(data);
+	// 	    }
+	// 	});
+
+
+	// }
+
+})

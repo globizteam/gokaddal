@@ -110,9 +110,36 @@ $('.user_type').on('change', function (argument) {
 })
 
 
+/*For search on site*/
+$(document).on('click','.search_btn',function(ev)
+{
+  ev.preventDefault();
+  var location = $.trim($('#location').val());
+  var looking_for = $.trim($('#looking_for').val());
+
+  // console.log('location = ',location);
+  // console.log('looking_for = ',looking_for);
+
+    $.ajax({
+       type: "GET",
+       url: "search_provider",
+       data: {'location' : location,'lookingfor' : looking_for},
+       dataType: "json",
+       success: function(msg)
+       {
+
+        console.log(msg);
+            //Receiving the result of search here
+       }
+    });
+
+});
+
 /*custom validations for validate.js*/
 $(document).ready(function() {
- $("#UserSignupForm, #RateNReviewProviderDetailsForm, #UserLoginForm, #UserForgetForm, #forgot_password, #changePasswordForm").validate({
+ // $("#UserSignupForm, #RateNReviewProviderDetailsForm, #UserLoginForm,  #forgot_password, #changePasswordForm").validate({
+  $('form').each(function () {
+    $(this).validate({
    rules: {
      name : {
        required: true,
@@ -120,8 +147,8 @@ $(document).ready(function() {
      },
      email: {
        required: true,
-       email: true,
-       // remote: '/gokaddal-staging/home/checkEmailExists'
+       email: true
+       // remote: 'admin_checkemailexist'
      },
      contact:{
        	required: true,
@@ -219,4 +246,5 @@ $(document).ready(function() {
 
    }
  });
+});
 });

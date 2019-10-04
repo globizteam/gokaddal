@@ -36,7 +36,7 @@
                         
                         <div class="row">
                             <div class="col-lg-11 col-md-12">
-                                <div class="my_account_main_content p_tb_80 col_sm_p_tb_60">
+                                <div class="my_account_main_content p_tb_80 col_sm_p_tb_60 m_b_70">
                                     <h2 class="txt_black m_b_20">Change Password</h2>
                                     
                                     <div class="my_info_body m_t_30">
@@ -72,7 +72,9 @@
                                                 <div class="orange_btns m_t_30">
                                                     <ul class="list-unstyled list-inline m_b_0">
                                                         <li><input type="submit" value="Update" ></li>
-                                                        <li><a href="#">Cancel</a></li>
+                                                        <li>
+                                                            <a href="<?php echo $this->webroot.'home/change_password' ?>">Cancel</a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </form>

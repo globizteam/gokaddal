@@ -2341,6 +2341,22 @@ ul.two-part-sp li{
     color: #fff;
     border-radius: 4px;
 }
+.usertype{
+    float: right;
+    position: absolute;
+    top: 20px;
+    right: 145px;
+    background: #f57723;
+    padding: 5px 10px 1px 10px;
+    color: #fff;
+    border-radius: 4px;
+
+}
+.usertype select {
+	color: black !important;
+	border-radius: 11px;
+	    width: 114px;
+}
 .product-status-wrap h4 {
     font-size: 20px;
     color: #303030;

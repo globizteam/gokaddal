@@ -11,9 +11,9 @@
                     <div class="col-sm-4 xs_m_t_50">
                         <h4 class="txt_white text-uppercase">Customer Support</h4>
                         <ul class="list-unstyled txt_white m_t_40 ftr_contact_info">
-                            <li><strong>E-MAIL: </strong> <a href="#">gokaddal_support@gmaail.com</a></li>
-                            <li><strong>E-MAIL: </strong> <a href="#">info@gokaddal.com</a></li>
-                            <li class="p_t_20"><strong>PHONE: </strong> <a href="#">+1 8529637410</a></li>
+                            <li><strong>E-MAIL: </strong> <a href="mailto:gokaddal_support@gmail.com">gokaddal_support@gmail.com</a></li>
+                            <li><strong>E-MAIL: </strong> <a href="mailto:info@gokaddal.com">info@gokaddal.com</a></li>
+                            <li class="p_t_20"><strong>PHONE: </strong> <a href="tel:18529637410">+1 8529637410</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-4 xs_m_t_50">
@@ -26,7 +26,6 @@
                             <li><a href="#">Terms & Conditions</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Contact & Support</a></li>
-                            <li><a href="#">Lorem</a></li>
                         </ul>
                     </div>
                 </div>
