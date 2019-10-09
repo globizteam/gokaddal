@@ -110,25 +110,39 @@ $('.user_type').on('change', function (argument) {
 })
 
 
+
+$('#newsletter .news').on('click', function () {
+  var labelclone = $('.p_lr_6 > label').html().clone();
+  console.log($(labelclone));
+  // body...
+})
+
 /*For search on site*/
-$(document).on('click','.search_btn',function(ev)
+$(document).on('click','.search_btn1',function(ev)
 {
   ev.preventDefault();
   var location = $.trim($('#location').val());
   var looking_for = $.trim($('#looking_for').val());
 
-  // console.log('location = ',location);
-  // console.log('looking_for = ',looking_for);
+// console.log(window.location.href.match(/^.*\//)[0]);return;
+
+var rooturl = window.location.href.match(/^.*\//)[0];
+
+  // var Newurl = rooturl+"searchprovider";  
+  var rootpath = window.location.origin + "/"+window.location.pathname.split('/')[1]+"/"+'home/searchall' ;
+
+  // alert(rootpath);return;
+  // alert("/"+window.location.pathname.split('/')[1]);
 
     $.ajax({
        type: "GET",
-       url: "search_provider",
-       data: {'location' : location,'lookingfor' : looking_for},
-       dataType: "json",
+       url: rootpath,
+       data: ({location : location, lookingfor : looking_for, path:rootpath}),
+       dataType: "html",
        success: function(msg)
        {
-
-        console.log(msg);
+         // window.location.href = rootpath;
+        // console.log('msg');
             //Receiving the result of search here
        }
     });

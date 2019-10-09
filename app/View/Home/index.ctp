@@ -12,7 +12,21 @@
                             
 
 
-                            <p class="txt_16 txt_white text-center after_search m_b_20">Popular Searches: &nbsp;&nbsp;&nbsp; <a href="#">Smart Cities</a> , <a href="#">Utilities</a> , <a href="#">Healthcare</a> , <a href="#">Real Estate</a></p>
+                            <p class="txt_16 txt_white text-center after_search m_b_20">Popular Searches: &nbsp;&nbsp;&nbsp; 
+                                <?php 
+
+                                    if (!empty($keyword)) 
+                                    {
+                                         foreach ($keyword as $key => $keyw) 
+                                         {
+                                            if ($key == 5) break; 
+
+                                ?>
+                                            <a href="<?php echo $keyw['SearchKeyword']['id'];  ?>"><?php echo $keyw['SearchKeyword']['keyword']. ",";  ?></a>
+                                <?php
+                                         }
+                                    } 
+                                ?>
                         </div>
                     </div>
                 </div>
@@ -222,28 +236,56 @@
 	<div class="community p_tb_60">
         <div class="container-fluid">
             <div class="container">
+                <?php echo $this->Flash->render(); ?>
                 <h1 class="text-center txt_black txt_w_700 m_b_20">Join Our Community</h1>
                 <p class="text-center txt_18 txt_grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, dolor?</p>
                 <div class="row m_t_50">
                         <div class="col-md-offset-1 col-md-10">
 
                             <div class="banner_search_form m_b_20">
-                                <form action="#">
+                                <form action="<?php echo $this->webroot.'home/newsletter';  ?>" method="post" id="newsletter">
                                     <div class="row">
                                         <div class="col-sm-5 p_lr_6">
                                             <div class="input-group">
-                                                <span class="input-group-addon input_icon"><i class="fas fa-user"></i></span>
-                                                <input type="text" class="form-control search_inputs" placeholder="Enter your name">
+                                                <span class="input-group-addon input_icon">
+                                                    <i class="fas fa-user"></i>
+                                                </span>
+                                                <?php 
+                                                    if(!AuthComponent::user('id')) 
+                                                    {
+                                                ?>
+                                                        <input type="text" class="form-control search_inputs news" name="name" placeholder="Enter your name"> 
+
+                                                <?php }else{ ?>
+
+                                                <input type="text" class="form-control search_inputs news" name="name" placeholder="Enter your name" value="<?php if(AuthComponent::user('id') ) { if(empty($news)) { $name = AuthComponent::user('name'); echo rtrim($name, ' ' ) ;} }  ?> ">
+
+                                                <?php } ?>
+
                                             </div>
                                         </div>
+
                                         <div class="col-sm-5 p_lr_6">
                                             <div class="input-group">
-                                                <span class="input-group-addon input_icon"><i class="fas fa-search"></i></span>
-                                                <input type="text" class="form-control search_inputs" placeholder="Enter your email">
+                                                <span class="input-group-addon input_icon">
+                                                    <i class="fas fa-search"></i>
+                                                </span>
+                                                <?php 
+                                                    if(!AuthComponent::user('id')) 
+                                                    {
+                                                ?>
+                                                <input type="text" class="form-control search_inputs news" name="email" placeholder="Enter your email" >
+
+                                                <?php }else{ ?>
+
+                                                <input type="text" class="form-control search_inputs news" name="email"  value="<?php if(AuthComponent::user('id')) { if(empty($news)){ $email = AuthComponent::user('email');  echo rtrim($email, ' ') ; } } ?> " placeholder="Enter your email" >
+
+                                                <?php } ?>
                                             </div>
                                         </div>
                                         <div class="col-sm-2 p_lr_6">
-                                            <a href="#" class="send_btn">SUBMIT <i class="fas fa-angle-right m_l_3"></i></a>
+                                            <button type="submit" class="send_btn">SUBMIT <i class="fas fa-angle-right m_l_3"></i></button>
+                                            <!-- <a href="#" class="send_btn">SUBMIT <i class="fas fa-angle-right m_l_3"></i></a> -->
                                         </div>
                                     </div>
                                 </form>

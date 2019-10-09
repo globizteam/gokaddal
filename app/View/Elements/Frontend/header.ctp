@@ -77,7 +77,8 @@
                                                     if( AuthComponent::user('type') == 1 ) 
                                                     {
                                                         // echo count($cat_names);
-                                                        if (count($cat_names) > 0) {
+                                                        if (count($cat_names) > 0) 
+                                                        {
 
                                                             foreach ($cat_names as $key => $category) 
                                                             { 

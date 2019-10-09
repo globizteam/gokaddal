@@ -12,7 +12,7 @@ App::uses('Hash', 'Utility');
 class HomeController extends AppController
 {
     public $helpers = array('Session','Html','Js','Form','Paginator','Flash','Module');
-    public $uses = array('Category','User','EmailTemplate','ProviderService', 'RateNReview','Favourite','Tag','SeekerRequirement','SubmitQuote');
+    public $uses = array('Category','User','EmailTemplate','ProviderService', 'RateNReview','Favourite','Tag','SeekerRequirement','SubmitQuote','NewsLetter','SearchKeyword');
 	public $components = array(
 						'Session','Email','RequestHandler','Cookie','Paginator','Flash', 
 						'Auth' => array(
@@ -57,7 +57,7 @@ class HomeController extends AppController
 		// give access to non logged in users
 		// $this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','update_user','change_password','list_favourite_solution','myaccount','seeker_requirement_view','submit_quote','my_requirement_detail');
 		
-		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','submit_quote','checkemailexist','search_provider');
+		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','submit_quote','checkemailexist','searchall','newsletter');
 
 		$this->loadModel('User');
 
@@ -148,6 +148,58 @@ class HomeController extends AppController
 		$this->set(compact('requirement_count'));
 		
 		// pr($quote_list); die();
+
+
+		/*check if logged in user is subscribed for newsletter or not*/
+		$news = $this->NewsLetter->find('all', array('conditions' => 
+														array('NewsLetter.user_id' => $this->Auth->user('id') ) ) );
+		// $newscount = count($news);
+		$this->set(compact('news'));
+
+
+
+
+		/*Popular search keywords for logged in as well as non logged in users*/
+		if ($this->Auth->User('id')) 
+		{
+
+			$this->Paginator->settings = array(
+			        'limit' => 10,
+			        // 'conditions' => array('SearchKeyword.user_id ' => $this->Auth->user('id')),
+			        'order' => 'SearchKeyword.counts desc'
+			  );
+
+			$keyword = $this->Paginator->paginate('SearchKeyword');
+
+			if( count($keyword) > 0 )
+			{
+				$this->set(compact('keyword'));
+			}
+
+			// pr($keyword);die();
+		}else{
+			
+			$this->Paginator->settings = array(
+			        'limit' => 10,
+			        'order' => 'SearchKeyword.counts desc'
+			  );
+
+			$keyword = $this->Paginator->paginate('SearchKeyword');
+
+
+			if( count($keyword) > 0 )
+			{
+				$this->set(compact('keyword'));
+			}
+
+			// pr($keyword);die();
+
+		}
+														// array('SearchKeyword.counts' => $this->Auth->user('id'), ) ) );
+		// $newscount = count($news);
+		$this->set(compact('news'));
+
+
 	}
 
 
@@ -1216,15 +1268,176 @@ class HomeController extends AppController
 	}
 
 
-	public function search_provider($value='')
+	public function searchall($value='')
 	{
 
-		$location = $this->request->query['location'];
-		$lookingfor = $this->request->query['looking_for'];
-		// pr($location);
-		pr($lookingfor);die();
-		$new_regist_user_id = $this->request->query['id'];
-		echo "i am in serach";die();
+
+		// pr($this->request->data);die();
+		// echo "i am in serach";die();
+		$location = !empty($this->request->data['location']) ? $this->request->data['location'] : '';
+		$lookingfor = !empty($this->request->data['lookingfor']) ? $this->request->data['lookingfor'] : '';
+		// $path = $this->request->query['path'];
+
+		// Insert search keyword in SearchKeyword table
+		if (!empty($lookingfor)) 
+		{
+			$id =  $this->Auth->user('id');
+
+			$keyword['SearchKeyword']['user_id'] = !empty($id) ? $id : 0;
+			$keyword['SearchKeyword']['keyword'] = $lookingfor;
+
+			/*If user is logged in*/
+			if ($this->Auth->user('id')) 
+			{
+				
+
+				$records = $this->SearchKeyword->find('all', array('conditions' => array('SearchKeyword.keyword' => $lookingfor,'SearchKeyword.user_id' => $id  ) ) );
+
+
+
+				/*checking if keyword already exists in table*/
+				if (count($records) > 0) 
+				{
+					$keyword['SearchKeyword']['counts'] = $records[0]['SearchKeyword']['counts'] + 1;
+					$keyword['SearchKeyword']['id'] = $records[0]['SearchKeyword']['id'];
+
+					$this->SearchKeyword->save($keyword);
+				}else{
+
+					$keyword['SearchKeyword']['counts'] =  1;
+
+					$this->SearchKeyword->save($keyword);
+				}
+
+			}else{
+
+				/*If user is not logged in */
+				$records = $this->SearchKeyword->find('all', array('conditions' => array('SearchKeyword.keyword' => $lookingfor,'SearchKeyword.user_id' => 0  ) ) );
+
+				// pr($records);die();
+
+				/*checking if keyword already exists in table*/
+				if (count($records) > 0) 
+				{
+					$keyword['SearchKeyword']['counts'] = $records[0]['SearchKeyword']['counts'] + 1;
+					$keyword['SearchKeyword']['id'] = $records[0]['SearchKeyword']['id'];
+
+					// pr($keyword);die();
+
+					$this->SearchKeyword->save($keyword);
+				}else{
+
+					$keyword['SearchKeyword']['counts'] =  1;
+
+					$this->SearchKeyword->save($keyword);
+				}
+
+			}
+		}
+
+
+		$usertype =  $this->Auth->user('type');
+		// echo "usertype is = ".$usertype;die();
+		/*If provider logged in, he is searching for seeker and vice-versa for seeker loged in*/
+
+		if ($usertype) //For Provider or Seeker 
+		{
+			
+			if ($usertype == 1)
+				$type = 2;
+			else
+				$type = 1;
+
+			$this->Paginator->settings = array(
+			        'limit' => 5,
+			        'conditions' => array(
+													'User.type' => $type, 
+													'User.status' => 1,
+													'OR' => array(
+																	array('User.country' => $location ),
+																	array('User.state' => $location ),	
+																	array('User.company_name LIKE' => '%'.$lookingfor.'%' )	
+																	// array()ray('User.company_name LIKE' => '%'.$lookingfor.'%' )	
+													)
+
+										),
+			        'order' => 'User.id desc'
+			  );
+
+			// $this->Paginator->settings = array('conditions' => 
+			// 								array(
+			// 										'User.type' => $type, 
+			// 										'User.status' => 1, 
+			// 										'OR' => array(
+			// 														array('User.country' => $location ),
+			// 														array('User.state' => $location ),	
+			// 														array('User.company_name LIKE' => '%'.$lookingfor.'%' )	
+			// 														// array()ray('User.company_name LIKE' => '%'.$lookingfor.'%' )	
+			// 										),
+
+			// 							));
+
+
+		$searchResult = $this->Paginator->paginate('User');
+
+		// echo "<pre>";
+		// print_r($searchResult);die();
+		// echo "</pre>";
+		$this->set(compact('searchResult'));
+		// $this->redirect('$path');
+
+
+		}else{
+
+			$this->Paginator->settings = array(
+			        'limit' => 5,
+			        'conditions' => array(
+													'User.type' => 1, 
+													'User.status' => 1,
+													'OR' => array(
+																	array('User.country' => $location ),
+																	array('User.state' => $location ),	
+																	array('User.company_name LIKE' => '%'.$lookingfor.'%' )	
+																	// array()ray('User.company_name LIKE' => '%'.$lookingfor.'%' )	
+													)
+
+										),
+			        'order' => 'User.id desc'
+			  );
+
+
+			$searchResult = $this->Paginator->paginate('User');
+
+		// echo "<pre>";
+		// print_r($searchResult);die();
+		// echo "</pre>";
+		$this->set(compact('searchResult'));
+		// $this->redirect('$path');
+
+		}
+		// print_r($location);die();
+		// $new_regist_user_id = $this->request->query['id'];
+	}
+
+
+	public function newsletter($value='')
+	{
+
+
+		if($this->Auth->user())
+		{
+			$this->request->data['user_id'] = $this->Auth->user('id');
+		}
+
+		// pr($this->request->data);die();
+
+			if($this->NewsLetter->save($this->request->data))
+			{
+				$this->Flash->success(__('Record saved successfully'));
+				$this->redirect($this->referer());
+			}
+
+
 	}
 
 	
