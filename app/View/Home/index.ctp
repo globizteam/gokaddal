@@ -21,9 +21,20 @@
                                          {
                                             if ($key == 5) break; 
 
+                                            if ($key == ($counts - 1) || $key == 4) 
+                                            {
                                 ?>
-                                            <a href="<?php echo $keyw['SearchKeyword']['id'];  ?>"><?php echo $keyw['SearchKeyword']['keyword']. ",";  ?></a>
+                                            <a href="javascript:;">
+                                                <?php echo ucfirst($keyw['SearchKeyword']['keyword']) ;  ?>
+                                            </a>
+                                    <?php   }else{  ?>
+                                            
+
+                                            <a href="javascript:;">
+                                                <?php echo ucfirst($keyw['SearchKeyword']['keyword']) . ",";  ?>
+                                            </a>
                                 <?php
+                                            }
                                          }
                                     } 
                                 ?>

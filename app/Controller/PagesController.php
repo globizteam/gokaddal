@@ -194,7 +194,21 @@ class PagesController extends AppController {
         $this->layout = "admin_dashboard";
         $this->loadModel('Contact');
         $this->loadModel('Content');
-        $people = $this->Contact->find('all');
+
+        $this->Paginator->settings = array(
+                'limit'   => 10,
+                // 'conditions'=> array('User.id != ' => 1,'User.type ' => 1,'User.status ' => 1 ),
+                'order'   => 'Contact.id desc'
+          );
+
+
+        // $rating_all_records = $this->RateNReview->find('all', array('order'=> array('RateNReview.rating DESC') ) );
+
+        
+        $people = $this->Paginator->paginate('Contact');
+
+        // $people = $this->Contact->find('all', array('order' => array('Contact.id' => 'desc')));
+        // pr($people);die();
         $data['address'] = $this->Content->findById(4);
         $data['fax'] = $this->Content->findById(5);
         $data['email'] = $this->Content->findById(6);
@@ -202,25 +216,139 @@ class PagesController extends AppController {
         //echo "<pre>";print_r($people);die;
         $this->set(compact('people','data'));
     }
+
     public function admin_changestatus($id=null)
     {
       $this->layout = null;
        $this->loadModel('Contact');
-       $id = base64_decode($id);
+       // $id = base64_decode($id);
        $data = $this->Contact->findById($id);
-       $dat['id'] = $id;
-      if($data['Contact']['status'] == '0')
+       // pr($data);die();
+       $dat['Contact']['id'] = $id;
+      if($data['Contact']['status'] == 0)
+            $dat['Contact']['status'] = 1;
+      else
+            $dat['Contact']['status'] = 0; 
+
+      if ($this->Contact->save($dat)) 
       {
-            $dat['status'] = '1';
+        $this->Flash->success(__('Status updated successfully.'));
+        $this->redirect($this->referer());
+      }
+        $this->Flash->error(__('Problem updating status.'));
+        $this->redirect($this->referer());
+    }
+
+    public function admin_listaddresses($value='')
+    {
+      $this->layout = "admin_dashboard";
+      $this->loadModel('OfficeAddress');
+
+      $getaddresses = $this->OfficeAddress->find('all');
+
+      $this->set(compact('getaddresses'));
+      // pr($getaddresses);die();
+    }
+
+    /*Add new address*/
+    public function admin_addaddresses($id='')
+    {
+      $this->layout = "admin_dashboard";
+      $this->loadModel('OfficeAddress');
+
+      if (!empty($id)) 
+      {
+        $record = $this->OfficeAddress->findById($id);
+        // pr($record);die();
+        $this->set(compact('record'));
+      }
+      
+      if ($this->request->is(array('post','put'))) 
+      {
+
+        if ($this->OfficeAddress->save($this->request->data)) 
+        {
+            if (!empty($this->request->data['id'])) 
+            {
+              $this->Flash->success(__('Address updated successfully.'));
+              $this->redirect('listaddresses');
+            }
+
+            $this->Flash->success(__('Address addeded successfully.'));
+            $this->redirect('listaddresses');
         }
-      else{
-            $dat['status'] = '0'; 
-        } 
-        //pr($dat);die;
-      $this->Contact->save($dat);
+            $this->Flash->error(__('Problem updating address.'));
+            $this->redirect('listaddresses');
+      }
+
+    }
+
+    /*Change status of address display 1 or 0*/
+    public function admin_statusaddresses($id='')
+    {
+      $this->layout = null;
+       $this->loadModel('OfficeAddress');
+       $data = $this->OfficeAddress->findById($id);
+       // pr($data);die();
+       $dat['OfficeAddress']['id'] = $id;
+      if($data['OfficeAddress']['status'] == 0)
+            $dat['OfficeAddress']['status'] = 1;
+      else
+            $dat['OfficeAddress']['status'] = 0; 
+
+      if ($this->OfficeAddress->save($dat)) 
+      {
+        $this->Flash->success(__('Status updated successfully.'));
+        $this->redirect($this->referer());
+      }
+        $this->Flash->error(__('Problem updating status.'));
+        $this->redirect($this->referer());
+    }
+
+    public function admin_deleteaddresses($id='')
+    {
+      
+      $this->layout = null;
+      $this->loadModel('OfficeAddress');
+
+      if($this->OfficeAddress->delete($id))
+        $this->Flash->success(__('Address deleted successfully.'));
+      else
+        $this->Flash->error(__('Error in deleting address.'));
       $this->redirect($this->referer());
     }
-        public function admin_contactaddress()
+
+    public function admin_listblog($value='')
+    {
+       $this->layout = "admin_dashboard";
+       $this->loadModel('Blog');
+       //$specials = $this->Course->findAllByStatus(0);
+       $this->Paginator->settings = array(
+               'limit'   => 10,
+               // 'conditions'=> array('User.id != ' => 1,'User.type ' => 1,'User.status ' => 1 ),
+               'order'   => 'Blog.id desc'
+         );
+      // $this->Paginator->settings = array('Blog' => array('limit' => 100));
+       $blog = $this->paginate('Blog');
+       pr($blog);die();
+       $this->set(compact('blog'));
+    }
+
+
+    public function admin_deletecontact($id=null)
+    {
+
+      $this->layout = null;
+      $this->loadModel('Contact');
+
+      if($this->Contact->delete($id))
+        $this->Flash->success(__('Contact deleted successfully.'));
+      else
+        $this->Flash->error(__('Error in deleting contact.'));
+      $this->redirect($this->referer());
+    }
+
+    public function admin_contactaddress()
     {
       if($this->request->is('post'))
       {

@@ -86,7 +86,10 @@
 
                     <div class="col-md-9 col-sm-12">
 
-                        <p class="txt_18 txt_black sort_by_option_one_line m_b_20 col_sm_m_t_50"><strong>Sort By -</strong>&nbsp; <a href="#" class="active">Rating</a> , <a href="#">Popularty</a> , <a href="#">Top Results</a> , <a href="#">Best Deals</a></p>
+                        <p class="txt_18 txt_black sort_by_option_one_line m_b_20 col_sm_m_t_50">
+                            <strong>Sort By -</strong>&nbsp;
+
+                            <a href="<?php echo  $this->webroot.'home/provider_list/?rating=1'; ?>" >Rating</a> , <!-- <a href="#">Popularty</a> , --> <a href="#">Top Results</a> , <a href="#">Best Deals</a></p>
 
                         <div class="row p_lr_10">
                             <div class="col-lg-11 col-md-12">
@@ -135,7 +138,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-6 col_600_full_width xs_m_t_15">
                                             <div class="listing_item_info listing_match_item">
                                                 <h4 class="listing_item_name">
-                                                    <a href="<?php echo  $this->webroot.'home/provider_details/'.$user['User']['id']; ?>" class="txt_black">
+                                                    <a href="<?php echo  $this->webroot.'home/provider_details/'.$user['User']['id']; ?>" id="" class="txt_black">
                                                         <?php echo  $user['User']['name']; ?>
                                                     </a>
                                                 </h4>
@@ -148,6 +151,7 @@
                                                     // print_r($rating_all_records[0]['RateNReview']);die();
                                                     if(isset($rating_all_records[0]['RateNReview']) )
                                                     {
+                                                        // echo "i m in"; die();
                                                         foreach ($rating_all_records as $key => $rating) 
                                                         {
                                                                 if($rating['RateNReview']['rate_to'] == $user['User']['id'])

@@ -12,7 +12,7 @@ App::uses('Hash', 'Utility');
 class HomeController extends AppController
 {
     public $helpers = array('Session','Html','Js','Form','Paginator','Flash','Module');
-    public $uses = array('Category','User','EmailTemplate','ProviderService', 'RateNReview','Favourite','Tag','SeekerRequirement','SubmitQuote','NewsLetter','SearchKeyword');
+    public $uses = array('Category','User','EmailTemplate','ProviderService', 'RateNReview','Favourite','Tag','SeekerRequirement','SubmitQuote','NewsLetter','SearchKeyword','Page','Contact','OfficeAddress','Blog');
 	public $components = array(
 						'Session','Email','RequestHandler','Cookie','Paginator','Flash', 
 						'Auth' => array(
@@ -55,9 +55,7 @@ class HomeController extends AppController
 	{
 		parent::beforeFilter();
 		// give access to non logged in users
-		// $this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','update_user','change_password','list_favourite_solution','myaccount','seeker_requirement_view','submit_quote','my_requirement_detail');
-		
-		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','submit_quote','checkemailexist','searchall','newsletter');
+		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','submit_quote','checkemailexist','searchall','newsletter','about','blog','contact','terms_n_condition','privacy_policy','contact_n_support');
 
 		$this->loadModel('User');
 
@@ -89,17 +87,12 @@ class HomeController extends AppController
 
 
 		 	$cat_names = $this->Category->find('all', array('conditions' => array('Category.id' => $seeker_cat_ids ) ) );
-		 // 	echo "<pre>";
-			// print_r($cat_names);
-		 // 	echo "</pre>";
-		 // 	die();
+
 
 		 	$cat_count = count($cat_names);
 
 			$this->set(compact('cat_names','cat_count'));
 
-
-		 	// pr($cat_names);die();
 
 		}
 
@@ -147,7 +140,6 @@ class HomeController extends AppController
 		$requirement_count = count($requirement_list);
 		$this->set(compact('requirement_count'));
 		
-		// pr($quote_list); die();
 
 
 		/*check if logged in user is subscribed for newsletter or not*/
@@ -163,41 +155,42 @@ class HomeController extends AppController
 		if ($this->Auth->User('id')) 
 		{
 
-			$this->Paginator->settings = array(
-			        'limit' => 10,
-			        // 'conditions' => array('SearchKeyword.user_id ' => $this->Auth->user('id')),
-			        'order' => 'SearchKeyword.counts desc'
-			  );
+			$keyword = $this->SearchKeyword->find('all', 
+														array(
+														'conditions' => array('SearchKeyword.user_id !=' => 0),
+														'limit' => 10,
+														'order'=>array('counts DESC')
+														 ) );
 
-			$keyword = $this->Paginator->paginate('SearchKeyword');
+			$keyword = array_unique($keyword, SORT_REGULAR);
+			$counts = count($keyword); 
 
 			if( count($keyword) > 0 )
 			{
-				$this->set(compact('keyword'));
+				$this->set(compact('keyword','counts'));
 			}
 
-			// pr($keyword);die();
 		}else{
 			
-			$this->Paginator->settings = array(
-			        'limit' => 10,
-			        'order' => 'SearchKeyword.counts desc'
-			  );
+			$keyword = $this->SearchKeyword->find('all',
+														 array(
+															'conditions' => array('SearchKeyword.user_id' => 0),
+															'limit' => 10,
+															'order'=>array('counts DESC')
+														 ) );
 
-			$keyword = $this->Paginator->paginate('SearchKeyword');
+			$keyword = array_unique($keyword, SORT_REGULAR); 
+			$counts = count($keyword); 
 
 
 			if( count($keyword) > 0 )
 			{
-				$this->set(compact('keyword'));
+				$this->set(compact('keyword','counts'));
 			}
 
-			// pr($keyword);die();
-
 		}
-														// array('SearchKeyword.counts' => $this->Auth->user('id'), ) ) );
-		// $newscount = count($news);
-		$this->set(compact('news'));
+
+		// $this->set(compact('news'));
 
 
 	}
@@ -209,6 +202,88 @@ class HomeController extends AppController
 		$this->loadModel('User');
 
 	}
+
+	public function about($value='')
+	{
+		$aboutus = $this->Page->find('all', array(
+													'limit' => 1,
+													'conditions' => array('Page.slug' => 'about-us')
+												));
+		$this->set(compact('aboutus'));
+
+		// pr($aboutus);die();
+
+	}
+
+	public function privacy_policy($value='')
+	{
+		$privacy = $this->Page->find('all', array(
+													'limit' => 1,
+													'conditions' => array('Page.slug' => 'privacy-policy')
+												));
+		$this->set(compact('privacy'));
+
+		// pr($aboutus);die();
+		
+	}
+
+	public function terms_n_condition($value='')
+	{
+		
+		$terms = $this->Page->find('all', array(
+													'limit' => 1,
+													'conditions' => array('Page.slug' => 'terms-conditions')
+												));
+		$this->set(compact('terms'));
+
+		// pr($aboutus);die();
+	}
+
+
+
+	public function blog($value='')
+	{
+		 // $this->layout = "admin_dashboard";
+		 // $this->loadModel('Blog');
+		 $this->Paginator->settings = array(
+		         'limit'   => 10,
+		         'conditions'=> array('Blog.status' => 1),
+		         'order'   => 'Blog.id desc'
+		   );
+		 $blog = $this->paginate('Blog');
+		 pr($blog);die();
+		 $this->set(compact('blog'));
+	}
+
+	public function contact($value='')
+	{
+
+		$alladdress = $this->OfficeAddress->find('all', array('conditions' => array('OfficeAddress.status' => 1)));
+		$this->set(compact('alladdress'));
+			// pr($alladdress);die();	
+
+		if ($this->request->is('post')) 
+		{
+
+			if ($this->Contact->save($this->request->data)) 
+			{
+				$this->Flash->success(__('You request submitted successfully.'));
+				$this->redirect($this->referer());
+			}
+
+				$this->Flash->error(__('Something went wrong please try again.'));
+				$this->redirect($this->referer());
+			// $
+		}
+		// pr('i am in contact');die();	
+	}
+
+
+	public function contact_n_support($value='')
+	{
+		
+	}
+
 
 	public function login() {
 
@@ -304,63 +379,89 @@ class HomeController extends AppController
 	 public function provider_list($id='')
 	 {
 
-
-
-
 	 	// Getting User type
 	 	$userType = $this->Auth->user('type');
 
-	 	/*If user type is seeker(User.type = 2) then fetch Providers*/
-	 	if ( $userType == 2 )  
-	 	{
-
-		 	$userid = $this->Auth->user('id');
-
-		 	$user = $this->User->findById($userid);
-		 	$seeker_requirement = $user['SeekerRequirement'];
-
-		 	$cat_ids = [];
-		 	foreach ($seeker_requirement as $key => $requirement) 
-		 		$cat_ids[] = $requirement['category_id'];
-		 	
-	 		$provider_with_req_cat = $this->ProviderService->find('all', array('conditions' => array('ProviderService.category_id' => $cat_ids ) ));
-
-	 		$ids = [];
-	 		foreach ($provider_with_req_cat as $key => $provider)
-	 			$ids[] = $provider['ProviderService']['user_id'];
-
-	 		$user_ids = array_unique($ids);
+ 		/*Sort by rating*/
+ 		if ( !empty($this->request->query['rating']) ) 
+ 		{
+			// $this->Paginator->settings = array(
+		 //        'limit' => 10,
+		 //        // 'conditions' => array('RateNReview.rating ' => 1, 'User.type ' => 1,'User.status ' => 1),
+		 //        'order' => 'RateNReview.rating desc'
+			// );
 
 			$this->Paginator->settings = array(
-			        'limit' => 10,
-			        'conditions' => array('User.id ' => $user_ids,'User.status ' => 1),
-			        'order' => 'User.id desc'
+			        'limit' 	=> 10,
+			        'conditions'=> array('User.id != ' => 1,'User.type ' => 1,'User.status ' => 1 ),
+			        'order' 	=> 'User.id desc'
 			  );
 
-	 	/*If user type is seeker(User.type = 1) then fetch Seekers*/
-	 	} elseif ($userType ==  1) {
 
-			$this->Paginator->settings = array(
-			        'limit' => 10,
-			        'conditions' => array('User.id != ' => 1,'User.type ' => 2,'User.status ' => 1 ),
-			        'order' => 'User.id desc'
-			  );
+ 			// $rating_all_records = $this->RateNReview->find('all', array('order'=> array('RateNReview.rating DESC') ) );
 
-	 	/*If user is not logged in*/
-	 	}else{
-
-			$this->Paginator->settings = array(
-			        'limit' => 10,
-			        'conditions' => array('User.id != ' => 1, 'User.type ' => 1,'User.status ' => 1),
-			        'order' => 'User.id desc'
-			  );
-
-	 	}
-
-			$user_list = $this->Paginator->paginate('User');
+			
+			$user_list = $this->Paginator->paginate('RateNReview');
+ 			// pr($user_list);die();
 			$count = count($user_list);
-			$this->set(compact('user_list','count'));
+			$rating = 1;
+			$this->set(compact('user_list','count','rating_all_records','rating'));
+			// $this->redirect($this->referer());
+			// pr($rating_all_records);die();
+ 		}else{
 
+			 	/*If user type is seeker(User.type = 2) then fetch Providers*/
+			 	if ( $userType == 2 )  
+			 	{
+				 	$userid = $this->Auth->user('id');
+
+				 	$user = $this->User->findById($userid);
+				 	$seeker_requirement = $user['SeekerRequirement'];
+
+				 	$cat_ids = [];
+				 	foreach ($seeker_requirement as $key => $requirement) 
+				 		$cat_ids[] = $requirement['category_id'];
+				 	
+			 		$provider_with_req_cat = $this->ProviderService->find('all', array('conditions' => array('ProviderService.category_id' => $cat_ids ) ));
+
+			 		$ids = [];
+			 		foreach ($provider_with_req_cat as $key => $provider)
+			 			$ids[] = $provider['ProviderService']['user_id'];
+
+			 		$user_ids = array_unique($ids);
+
+					$this->Paginator->settings = array(
+					        'limit' => 10,
+					        'conditions' => array('User.id ' => $user_ids,'User.status ' => 1),
+					        'order' => 'User.id desc'
+					);
+
+			 	/*If user type is seeker(User.type = 1) then fetch Seekers*/
+			 	} elseif ($userType ==  1) {
+
+					$this->Paginator->settings = array(
+					        'limit' => 10,
+					        'conditions' => array('User.id != ' => 1,'User.type ' => 2,'User.status ' => 1 ),
+					        'order' => 'User.id desc'
+					  );
+
+			 	/*If user is not logged in*/
+			 	}else{
+
+					$this->Paginator->settings = array(
+				        'limit' => 10,
+				        'conditions' => array('User.id != ' => 1, 'User.type ' => 1,'User.status ' => 1),
+				        'order' => 'User.id desc'
+					  );
+
+			 	}
+
+					$user_list = $this->Paginator->paginate('User');
+					// pr($user_list);die();
+					$count = count($user_list);
+					$this->set(compact('user_list','count'));
+
+ 		}
 	 }
 
 	 public function provider_details($id='')
@@ -1351,32 +1452,18 @@ class HomeController extends AppController
 			$this->Paginator->settings = array(
 			        'limit' => 5,
 			        'conditions' => array(
-													'User.type' => $type, 
-													'User.status' => 1,
-													'OR' => array(
-																	array('User.country' => $location ),
-																	array('User.state' => $location ),	
-																	array('User.company_name LIKE' => '%'.$lookingfor.'%' )	
-																	// array()ray('User.company_name LIKE' => '%'.$lookingfor.'%' )	
-													)
+											'User.type' => $type, 
+											'User.status' => 1,
+											'OR' => array(
+															array('User.country' => $location ),
+															array('User.state' => $location ),	
+															array('User.company_name LIKE' => '%'.$lookingfor.'%' )
+															// array()ray('User.company_name LIKE' => '%'.$lookingfor.'%' )	
+											)
 
 										),
 			        'order' => 'User.id desc'
 			  );
-
-			// $this->Paginator->settings = array('conditions' => 
-			// 								array(
-			// 										'User.type' => $type, 
-			// 										'User.status' => 1, 
-			// 										'OR' => array(
-			// 														array('User.country' => $location ),
-			// 														array('User.state' => $location ),	
-			// 														array('User.company_name LIKE' => '%'.$lookingfor.'%' )	
-			// 														// array()ray('User.company_name LIKE' => '%'.$lookingfor.'%' )	
-			// 										),
-
-			// 							));
-
 
 		$searchResult = $this->Paginator->paginate('User');
 

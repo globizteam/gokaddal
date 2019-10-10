@@ -19,13 +19,13 @@
                     <div class="col-sm-4 xs_m_t_50">
                         <h4 class="txt_white text-uppercase">Quick Links</h4>
                         <ul class="list-unstyled list-inline txt_white m_t_40 ftr_quick_links">
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Contact & Support</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/index' ?>">HOME</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/about' ?>">About</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/blog' ?>">Blog</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/contact' ?>">Contact</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/terms_n_condition' ?>">Terms & Conditions</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/privacy_policy' ?>">Privacy Policy</a></li>
+                            <!-- <li><a href="<?php echo $this->webroot.'home/contact_n_support' ?>">Contact & Support</a></li> -->
                         </ul>
                     </div>
                 </div>

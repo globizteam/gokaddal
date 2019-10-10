@@ -48,16 +48,54 @@
         </li>
         
         <?php if(isset($modules['cms']) || $type == 0): ?>
-        <li id="removable">
-            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-pages icon-wrap" title="CMS"></span> <span class="mini-click-non">CMS</span></a>
-            <ul class="submenu-angle" aria-expanded="false">
-                <li><a title="Login" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'about_us', 'admin'=>true]) ?>"><span class="mini-sub-pro">About</span></a></li>
-                <li><a title="Register" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'faq', 'admin'=>true]) ?>"><span class="mini-sub-pro">Faqs</span></a></li>
-                <!-- <li><a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'privacy_policy', 'admin'=>true]) ?>"><span class="mini-sub-pro">Privacy Policy</span></a></li> -->
-                <li><a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'terms_conditions', 'admin'=>true]) ?>"><span class="mini-sub-pro">Terms & Conditions</span></a></li>
-                 <li><a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'contactus', 'admin'=>true]) ?>"><span class="mini-sub-pro">Contact Us</span></a></li>
-            </ul>
-        </li>
+
+            <li id="removable">
+                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-pages icon-wrap" title="CMS"></span> <span class="mini-click-non">CMS</span></a>
+                <ul class="submenu-angle" aria-expanded="false">
+                    <li>
+                        <a title="Login" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'about_us', 'admin'=>true]) ?>">
+                            <span class="mini-sub-pro">About</span>
+                        </a>
+                    </li>
+                    
+<!--                     <li>
+                        <a title="Register" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'faq', 'admin'=>true]) ?>">
+                            <span class="mini-sub-pro">Faqs</span>
+                        </a>
+                    </li>
+ -->                    
+                    <li>
+                        <a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'privacy_policy', 'admin'=>true]) ?>">
+                            <span class="mini-sub-pro">Privacy Policy</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'terms_conditions', 'admin'=>true]) ?>">
+                            <span class="mini-sub-pro">Terms & Conditions</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'contactus', 'admin'=>true]) ?>">
+                            <span class="mini-sub-pro">Contact Us</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'listaddresses', 'admin'=>true]) ?>">
+                            <span class="mini-sub-pro">Office Addresses</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'listblog', 'admin'=>true]) ?>">
+                            <span class="mini-sub-pro">Blog</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
         <?php endif; ?>
     </ul>
 </nav>

@@ -40,20 +40,26 @@
                             <td><?php echo $i; ?></td>
                             <td><?php echo $tuff['Contact']['name']; ?></td>
                             <td><?php echo $tuff['Contact']['email']; ?></td>
-                            <td><?php echo $tuff['Contact']['mobile']; ?></td>
+                            <td><?php echo $tuff['Contact']['contact']; ?></td>
                             <!--<td><?php echo $tuff['Contact']['gst']; ?></td>-->
                             <td><?php echo $tuff['Contact']['message']; ?></td>
                             <td><?php if($tuff['Contact']['status'] == 0) echo 'Pending'; else echo 'Responded'; ?>
                             <td>
-                              <a title="Change Status" href="<?php echo HTTP_ROOT.'Users/changestatus/'.base64_encode($tuff['Contact']['id'])?>"><i class="fa fa-flag" aria-hidden="true"></i></a>
-                              <a title="Delete" onclick="if(!confirm('Are you sure, you want to delete this Record?')){return false;}" href="<?php echo HTTP_ROOT.'Users/deleteAll/Contact/'.base64_encode($tuff['Contact']['id'])?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                              <a title="Change Status" href="<?php echo $this->webroot.'admin/pages/changestatus/'.$tuff['Contact']['id']?>"><i class="fa fa-flag" aria-hidden="true"></i></a>
+                              <a title="Delete" onclick="if(!confirm('Are you sure, you want to delete this Record?')){return false;}" href="<?php echo $this->webroot.'admin/pages/deletecontact/'.$tuff['Contact']['id']?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                       <?php $i++; } ?>
                     </tbody>
 				    </table>
 				    </div> <!-- /My div Harpreet-->
-                </div> 
+
+              <div class="custom-pagination">
+                  <nav aria-label="Page navigation example">
+                      <?php echo $this->element('Admin/pagination')?>
+                  </nav>
+              </div>
+            </div> 
           <!--<div class="tab-pane fade" id="content">-->
           <!--    <?php echo $this->Html->url; ?>-->
           <!--  <form action="<?php echo HTTP_ROOT.'Users/contactaddress'?>" method="post">-->
