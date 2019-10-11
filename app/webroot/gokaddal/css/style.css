@@ -728,6 +728,9 @@ a:hover,a:focus{
 .blog_item_hr:hover img, .blog_hr_item_img:hover img{
     filter: brightness(1.5);
 }
+.blog_hr_item_img:hover img.no-img{
+    filter: brightness(1) !important;
+}
 .blog_hr_item_img{
     display: inline-block;
     width: 100%;

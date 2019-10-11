@@ -19,7 +19,6 @@
     <?php 
         $directoryURI = $_SERVER['REQUEST_URI'];
         $activePage = basename($directoryURI);   
-
     ?>
 
     <div class="top_header">
@@ -118,9 +117,8 @@
                                             </li>
                                         <?php } ?>
                                         
-                                        <!-- <li class="<?= ($activePage == 'blog') ? 'active':''; ?>"> -->
-                                        <li>
-                                            <a href="javascript:;" style="color: #fff !important;"> Blog</a>
+                                        <li class="<?= ($activePage == 'blog') ? 'active':''; ?>">
+                                            <a href="<?php echo $this->webroot ;?>home/blog"> Blog</a>
                                         </li>
                                         <!-- <li class="top_right_menu"><a href="login.php"><i class="fas fa-user m_r_3"></i> Login / Signup</a></li> -->
 

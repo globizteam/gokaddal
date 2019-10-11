@@ -15334,3 +15334,633 @@ Stack Trace:
 #12 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
 #13 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #14 {main}
+2019-10-11 04:28:03 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-10-11 04:28:24 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 04:37:42 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 04:45:54 Error: [MissingActionException] Action HomeController::blog_single.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'blog_single.php',
+)
+Request URL: /gokaddal-staging/home/blog_single.php
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 04:58:37 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:08:22 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:26:18 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:31:33 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:33:35 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:39:45 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:40:14 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:41:08 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:49:45 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:50:56 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 05:51:00 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/blog_1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 07:06:19 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Blog.category' in 'where clause'
+Request URL: /gokaddal-staging/home/searchblog
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/DboSource.php(472): PDOStatement->execute(Array)
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/DboSource.php(438): DboSource->_execute('SELECT `Blog`.`...', Array)
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/DboSource.php(675): DboSource->execute('SELECT `Blog`.`...', Array, Array)
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/DboSource.php(1186): DboSource->fetchAll('SELECT `Blog`.`...', Array)
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(3040): DboSource->read(Object(AppModel), Array)
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(3012): Model->_readDataSource('all', Array)
+#6 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Component/PaginatorComponent.php(212): Model->find('all', Array)
+#7 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/Controller/HomeController.php(274): PaginatorComponent->paginate(Object(AppModel))
+#8 [internal function]: HomeController->searchblog()
+#9 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(491): ReflectionMethod->invokeArgs(Object(HomeController), Array)
+#10 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#12 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2019-10-11 07:06:38 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Blog.category' in 'where clause'
+Request URL: /gokaddal-staging/home/searchblog
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/DboSource.php(472): PDOStatement->execute(Array)
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/DboSource.php(438): DboSource->_execute('SELECT `Blog`.`...', Array)
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/DboSource.php(675): DboSource->execute('SELECT `Blog`.`...', Array, Array)
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/DboSource.php(1186): DboSource->fetchAll('SELECT `Blog`.`...', Array)
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(3040): DboSource->read(Object(AppModel), Array)
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Model.php(3012): Model->_readDataSource('all', Array)
+#6 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Component/PaginatorComponent.php(212): Model->find('all', Array)
+#7 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/Controller/HomeController.php(274): PaginatorComponent->paginate(Object(AppModel))
+#8 [internal function]: HomeController->searchblog()
+#9 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(491): ReflectionMethod->invokeArgs(Object(HomeController), Array)
+#10 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#11 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#12 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2019-10-11 07:08:36 Error: [MissingViewException] View file "Home/searchblog.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Home/searchblog.ctp',
+)
+Request URL: /gokaddal-staging/home/searchblog
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/View/View.php(470): View->_getViewFileName('Home/searchblog')
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Controller/Controller.php(963): View->render(NULL, NULL)
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2019-10-11 07:14:53 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/listing1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 07:14:53 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/listing4.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 07:14:53 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/listing2.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 07:14:53 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/listing3.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 07:23:24 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/listing1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 07:23:24 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/listing2.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 07:23:24 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/listing3.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 07:23:24 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/listing4.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 07:25:21 Error: [MissingActionException] Action HomeController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'images',
+)
+Request URL: /gokaddal-staging/home/images/listing1.jpg
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 09:56:50 Error: [ParseError] syntax error, unexpected '7' (T_LNUMBER), expecting ',' or ')'
+Request URL: /gokaddal-staging/home/blog/?key=recent
+Stack Trace:
+#0 [internal function]: App::load('HomeController')
+#1 [internal function]: spl_autoload_call('HomeController')
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(266): class_exists('HomeController')
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-10-11 10:00:51 Error: [ParseError] syntax error, unexpected '=>' (T_DOUBLE_ARROW)
+Request URL: /gokaddal-staging/home/blog/?key=recent
+Stack Trace:
+#0 [internal function]: App::load('HomeController')
+#1 [internal function]: spl_autoload_call('HomeController')
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(266): class_exists('HomeController')
+#3 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(235): Dispatcher->_loadController(Object(CakeRequest))
+#4 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(158): Dispatcher->_getController(Object(CakeRequest), Object(CakeResponse))
+#5 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}
+2019-10-11 10:21:39 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-10-11 11:10:34 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:10:40 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:10:52 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:10:58 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:11:05 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:11:07 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:11:18 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:11:36 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:11:53 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:13:28 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:21:43 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:21:50 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:22:21 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:22:30 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:22:53 Error: [MissingActionException] Action PagesController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/pages/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:27:40 Error: [MissingActionException] Action UsersController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/users/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:27:46 Error: [MissingActionException] Action UsersController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/users/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:34:08 Error: [MissingActionException] Action UsersController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/users/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 11:34:16 Error: [MissingActionException] Action UsersController::admin_img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_img',
+)
+Request URL: /gokaddal-staging/admin/users/img/logo/logo.png
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 12:02:28 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2019-10-11 12:06:31 Error: [MissingActionException] Action HomeController::post_solution.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'post_solution.php',
+)
+Request URL: /gokaddal-staging/home/post_solution.php
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 12:06:35 Error: [MissingActionException] Action HomeController::post_solution.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'post_solution.php',
+)
+Request URL: /gokaddal-staging/home/post_solution.php
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 12:06:39 Error: [MissingActionException] Action HomeController::post_solution.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'post_solution.php',
+)
+Request URL: /gokaddal-staging/home/post_solution.php
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 12:07:03 Error: [MissingActionException] Action HomeController::post_solution.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'post_solution.php',
+)
+Request URL: /gokaddal-staging/home/post_solution.php
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 12:07:33 Error: [MissingActionException] Action HomeController::post_solution.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'post_solution.php',
+)
+Request URL: /gokaddal-staging/home/post_solution.php
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 12:08:33 Error: [MissingActionException] Action HomeController::post_solution.php() could not be found.
+Exception Attributes: array (
+  'controller' => 'HomeController',
+  'action' => 'post_solution.php',
+)
+Request URL: /gokaddal-staging/home/post_solution.php
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(HomeController), Object(CakeRequest))
+#2 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2019-10-11 12:13:12 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /gokaddal-staging//css/morris/gokaddal-staging//js/morris.css
+Stack Trace:
+#0 /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

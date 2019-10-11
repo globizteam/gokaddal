@@ -1,10 +1,3 @@
-<?php 
-    $directoryURI = $_SERVER['REQUEST_URI'];
-    $activePage = basename($directoryURI);  
-
-    // echo $activePage; 
-?>
-
         <div class="upper_banner">
             <div class="container-fluid">
                 <div class="container">
@@ -31,23 +24,14 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-md-3 col-sm-12 rightBar">
+                    <div class="col-md-3 col-sm-12 rightBar col_sm_m_t_50">
                         <h3 class="txt_black txt_w_700 text-uppercase">Sort By</h3>
                         <ul class="m_t_40 solution_sidebar listing_page_sidebar list-unstyled p_l_0">
-                            <li class= "<?= ($activePage == '?key=recent') ? 'active-sidebar':''; ?>" >
-                            	<a href="<?php echo $this->webroot.'home/blog/?key=recent' ?>">Recent Posts</a>
-                            </li>
-                            <li class= "<?= ($activePage == '?key=week') ? 'active-sidebar':''; ?>" >
-                            	<a href="<?php echo $this->webroot.'home/blog/?key=week' ?>">Last Week</a>
-                            </li>
-                            <li class= "<?= ($activePage == '?key=month') ? 'active-sidebar':''; ?>" >
-                            	<a href="<?php echo $this->webroot.'home/blog/?key=month' ?>">Last Month</a>
-                            </li>
-                            <li class= "<?= ($activePage == '?key=year') ? 'active-sidebar':''; ?>" >
-                            	<a href="<?php echo $this->webroot.'home/blog/?key=year' ?>">Last Year</a>
-                            </li>
+                            <li><a href="<?php echo $this->webroot.'home/blog/?key=recent' ?>">Recent Posts</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/blog/?key=week' ?>">Last Week</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/blog/?key=month' ?>">Last Month</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/blog/?key=year' ?>">Last Year</a></li>
                         </ul>
-
                         <h3 class="txt_black txt_w_700 text-uppercase m_t_60">Categories</h3>
                         <ul class="m_t_40 solution_sidebar listing_page_sidebar list-unstyled p_l_0">
                             <!-- if logged in as seeker, will see all the categories -->
@@ -89,7 +73,6 @@
                                     }
                                 }
                             ?>
-                        
                         </ul>
 
                     </div> <!-- /.col-md-3 -->
@@ -130,70 +113,74 @@
                             </div>
                         </div>
 
-                        <div class="row m_t_15">
-
-
-                                <?php 
-                                    if (!empty($blog)) 
-                                    {
-                                        foreach ($blog as $key => $bl) 
-                                        {
-                                ?>
-                            <div class="col-sm-6 col-xs-6 col_500_full_width">
-
-                                <div class="blog_item m_t_30 mb_20">
-                                    <div class="image-effect">
-                                        <img src="<?php echo $this->webroot.$bl['Blog']['images']; ?>" alt="" class="img-responsive">
+                        <?php 
+                            if (!empty($searchResult)) 
+                            {
+                                foreach ($searchResult as $key => $bl) 
+                                {
+                        ?>
+                        <div class="m_t_30">
+                            <div class="blog_item_hr">
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-4 col_500_full_width">
+                                        <a href="blog_single.php" class="blog_hr_item_img">
+                                        	<img src="<?php echo $this->webroot.$bl['Blog']['images']; ?>" alt="Image" class="img-responsive center-block">
+                                        </a>
                                     </div>
-                                    
-                                    <a class="blog_cat" href="<?php echo $this->webroot.'home/blog_single/'.$bl['Blog']['id']; ?>">
-                                        <?php echo $bl['Blog']['title']; ?>
-                                    </a>
-
-                                    <p class="blog_title">
-                                    	<?php
-                                    		$string = substr($bl['Blog']['description'],0,100);
-                                    		$string = substr($string,0,strrpos($string," "));
-                                    	?>
-                                        <a href="<?php echo $this->webroot.'home/blog_single/'.$bl['Blog']['id']; ?>">
-                                            <?php echo $string."..."; ?><br>
+                                    <div class="col-md-10 col-sm-10 col-xs-8 col_500_full_width col_500_m_t_10">
+                                        <h4 class="">
+                                        	<a href="<?php echo $this->webroot.'home/blog_single/'.$bl['Blog']['id']; ?>" class="txt_black hover_txt_orange">
+                                        		<?php echo $bl['Blog']['title']; ?>
+                                        	</a>
+                                        </h4>
+                                        
+                                        <div class="blog_meta_info m_t_10">
+                                            <span class="txt_grey">
+                                            	<i class="fas fa-user"></i> 
+                                            	By Admin 
+                                            </span>
+                                            <span class="txt_grey">
+                                            	<i class="fas fa-calendar-alt"></i>
+                                            	 <?php
+                                            	     $date = explode(' ', $bl['Blog']['created_at']);
+                                            	     echo $date[0]; 
+                                            	 ?>
+                                            </span>
+                                        </div>
+                                        <p class="para_large txt_black">
+                                        	<?php
+                                        		$string = substr($bl['Blog']['description'],0,100);
+                                        		$string = substr($string,0,strrpos($string," "));
+                                        		echo $string."...";
+                                        	?>
                                             <a href="<?php echo $this->webroot.'home/blog_single/'.$bl['Blog']['id']; ?>" style="color: #FF7F27;" >READ MORE
                                             </a>
+                                        </p>
 
-                                        </a>
-                                    </p>
-                                    <span class="blog_date">
-                                    	<?php
-                                    	    $date = explode(' ', $bl['Blog']['created_at']);
-                                    	    echo $date[0]; 
-                                    	?>
-                                    </span>
-
+                                    </div>
                                 </div>
-
-
-
                             </div>
-                                <?php
-                                        }
-                                    }
-                                 ?>
+
 
                         </div>
-                        <?php 
-                    	if (!empty($blog)) 
-                        {
-                        ?>
+
+
+
+
+
                         <div class="custom-pagination">
                             <nav aria-label="Page navigation example">
                                 <?php echo $this->element('Admin/pagination')?>
                             </nav>
                         </div>
 
-                    <?php } ?>
 
-
-
+                            <?php
+                                    }
+                                }else{
+                                	echo "<div style='text-align: center; font-weight: 600; font-size: 16px; margin-top:50px;'>No Results Found...</div>";
+                                }
+                             ?>
 
                     </div> <!-- /.col-md-9 -->
 
@@ -202,5 +189,3 @@
             </div> <!-- /.container -->
         </div> <!-- /.container-fluid -->
     </div>
-
-

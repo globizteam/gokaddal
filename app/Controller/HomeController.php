@@ -55,7 +55,7 @@ class HomeController extends AppController
 	{
 		parent::beforeFilter();
 		// give access to non logged in users
-		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','submit_quote','checkemailexist','searchall','newsletter','about','blog','contact','terms_n_condition','privacy_policy','contact_n_support');
+		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','submit_quote','checkemailexist','searchall','newsletter','about','blog','contact','terms_n_condition','privacy_policy','contact_n_support','blog_single','searchblog');
 
 		$this->loadModel('User');
 
@@ -201,6 +201,11 @@ class HomeController extends AppController
 	{
 		$this->loadModel('User');
 
+		$popular_listing = $this->User->find('all', array('order' => array('User.id' => 'desc'), 'conditions' => array('User.type' => 1)));
+
+		// pr($popular_listing);die();
+
+
 	}
 
 	public function about($value='')
@@ -241,18 +246,114 @@ class HomeController extends AppController
 
 
 
-	public function blog($value='')
+	public function blog_single($id='')
 	{
-		 // $this->layout = "admin_dashboard";
-		 // $this->loadModel('Blog');
-		 $this->Paginator->settings = array(
-		         'limit'   => 10,
-		         'conditions'=> array('Blog.status' => 1),
-		         'order'   => 'Blog.id desc'
-		   );
-		 $blog = $this->paginate('Blog');
-		 pr($blog);die();
-		 $this->set(compact('blog'));
+		if (!empty($id)) 
+		{
+			$blog = $this->Blog->findById($id);
+			$this->set(compact('blog'));
+			// $this->redirect('')
+			// pr($blog);die();
+		}
+	}
+
+	public function searchblog($value='')
+	{
+		// pr($this->request->data); die();
+
+		$keyword = !empty($this->request->data['searchblog']) ? $this->request->data['searchblog'] : '';
+
+			$this->Paginator->settings = array(
+			        'limit' => 10,
+			        'conditions' => array(
+											'Blog.status' => 1,
+											'OR' => array(
+															array('Blog.title LIKE' => '%'.$keyword.'%' ),
+															array('Blog.cat LIKE' => '%'.$keyword.'%' )
+											)
+
+										),
+			        'order' => 'Blog.id desc'
+			  );
+
+		$searchResult = $this->Paginator->paginate('Blog');
+
+		// echo "<pre>";
+		// print_r($searchResult);
+		// echo "</pre>";
+		// die();
+		$this->set(compact('searchResult'));
+		// $this->redirect($this->referer());
+	}
+
+	public function blog($id='')
+	{
+		$key = !empty($this->request->query['key']) ? $this->request->query['key'] : '';
+
+		$nowdate = date('Y-m-d');
+		// pr(date($nowdate));die();
+
+		if (!empty($key) && ($key == 'recent')) 
+		{
+			$this->Paginator->settings = array(
+			        'limit'   => 10,
+			        'conditions'=> array('Blog.datenow' => $nowdate),
+			        'order'   => 'Blog.id desc'
+			  );
+
+			$blog = $this->paginate('Blog');
+			$this->set(compact('blog'));
+			// pr($blog);die();
+
+		}elseif (!empty($key) && ($key == 'week')) {
+
+			$this->Paginator->settings = array(
+			        'limit'   => 10,
+			        'conditions'=> array('Blog.datenow >=' => $nowdate - 7 ), //for one week
+			        'order'   => 'Blog.id desc'
+			  );
+
+			$blog = $this->paginate('Blog');
+			$this->set(compact('blog'));
+			// pr($blog);die();
+		}elseif (!empty($key) && ($key == 'month')) {
+
+			$this->Paginator->settings = array(
+			        'limit'   => 10,
+			        'conditions'=> array('Blog.datenow >=' => $nowdate - 30 ), //for one month
+			        'order'   => 'Blog.id desc'
+			  );
+
+			$blog = $this->paginate('Blog');
+			$this->set(compact('blog'));
+			// pr($blog);die();
+
+		}elseif (!empty($key) && ($key == 'year')) {
+
+			$this->Paginator->settings = array(
+			        'limit'   => 10,
+			        'conditions'=> array('Blog.datenow >=' => $nowdate - 365 ), //for one week
+			        'order'   => 'Blog.id desc'
+			  );
+
+			$blog = $this->paginate('Blog');
+			$this->set(compact('blog'));
+			// pr($blog);die();
+
+		}else{
+			 // $this->layout = "admin_dashboard";
+			 // $this->loadModel('Blog');
+			 $this->Paginator->settings = array(
+			         'limit'   => 10,
+			         'conditions'=> array('Blog.status' => 1),
+			         'order'   => 'Blog.id desc'
+			   );
+			 $blog = $this->paginate('Blog');
+			 // pr($blog);die();
+			 $this->set(compact('blog'));
+		}
+
+		
 	}
 
 	public function contact($value='')

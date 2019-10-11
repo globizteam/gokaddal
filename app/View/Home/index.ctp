@@ -257,7 +257,7 @@
                                 <form action="<?php echo $this->webroot.'home/newsletter';  ?>" method="post" id="newsletter">
                                     <div class="row">
                                         <div class="col-sm-5 p_lr_6">
-                                            <div class="input-group">
+                                            <div class="input-group newsltr">
                                                 <span class="input-group-addon input_icon">
                                                     <i class="fas fa-user"></i>
                                                 </span>
@@ -277,7 +277,7 @@
                                         </div>
 
                                         <div class="col-sm-5 p_lr_6">
-                                            <div class="input-group">
+                                            <div class="input-group newsltr">
                                                 <span class="input-group-addon input_icon">
                                                     <i class="fas fa-search"></i>
                                                 </span>
@@ -299,6 +299,7 @@
                                             <!-- <a href="#" class="send_btn">SUBMIT <i class="fas fa-angle-right m_l_3"></i></a> -->
                                         </div>
                                     </div>
+
                                 </form>
                             </div>
 
