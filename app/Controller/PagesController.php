@@ -96,71 +96,122 @@ class PagesController extends AppController {
         $this->request->data = $this->Page->findBySlug('privacy-policy');
 	}
 
-// 	public function admin_faq() 
-// 	{
-// 		if( $this->request->is(array('post', 'put')) )
-//         {
-//             $postData  = $this->request->data;
-//             //pr($postData);die;
-//             $validator = $this->Page->validator();
+  public function admin_newsletterlist($value='')
+  {
+    $this->layout = "admin_dashboard";
+    $this->loadModel('Newsletter');
+
+    $this->Paginator->settings = array(
+            'limit'   => 10,
+            'order'   => 'Newsletter.id desc'
+      );
+
+
+    // $rating_all_records = $this->RateNReview->find('all', array('order'=> array('RateNReview.rating DESC') ) );
+
+    
+    $newsletter = $this->Paginator->paginate('Newsletter');
+
+    // $newsletter = $this->Newsletter->find('all');
+
+    $this->set(compact('newsletter'));
+    // pr($newsletter);die();
+  }
+
+	public function admin_faq() 
+	{
+     $this->layout = "admin_dashboard";
+     $this->loadModel('faq');
+     //$specials = $this->Course->findAllByStatus(0);
+    $this->Paginator->settings = array('faq' => array('limit' => 100));
+     $specials=$this->paginate('faq');
+     $this->set(compact('specials'));
+
+		if( $this->request->is(array('post', 'put')) )
+        {
+            $postData  = $this->request->data;
+            //pr($postData);die;
+            $validator = $this->Page->validator();
             
-//             $this->Page->set($postData);
+            $this->Page->set($postData);
             
-//             if ($this->Page->save()) 
-//             {
-//                 $this->Flash->set('The page information saved successfully.');
-//             	$this->redirect(['action'=>'faq','admin'=> true]);
+            if ($this->Page->save()) 
+            {
+                $this->Flash->set('The page information saved successfully.');
+            	$this->redirect(['action'=>'faq','admin'=> true]);
             
-//             }
-//                 $this->Flash->set('Error Occureds.');            
+            }
+                $this->Flash->set('Error Occureds.');            
           
-//         }
+        }
 
-//         $this->request->data = $this->Page->findBySlug('faq');
-// 	}
+        $this->request->data = $this->Page->findBySlug('faq');
+	}
 
 
- public function admin_add_faq($id=null)
+ public function admin_addfaq($id=null)
     {
+        // pr($this->request->data);die();
       $this->layout = "admin_dashboard";
       $this->loadModel('faq');
-      $id = base64_decode($id);
-      $content = $this->faq->findById($id);
-      
+
+      if (!empty($id)) 
+      {
+        $record = $this->faq->findById($id);
+        // pr($record);die();
+        $this->set(compact('record')); 
+      }
+      // $id = base64_decode($id);
+    
       //echo "<pre>";print_r($content);print_r($content1);print_r($content2);die;      
-      $this->set(compact('content'));
+
       if($this->request->is('post'))
       {
         $data = $this->data;
-        $data['faq']['id'] = $id;
+        // pr($data);die();
+        $data['faq']['id'] = $data['id'];
         //echo "<pre>";print_r($data);die;
-        $data['faq']['ques'] = $data['title'];
-        $data['faq']['ans'] = $data['desc'];
-        $data['faq']['status'] = 1;
-        $this->faq->save($data);
-        $this->Session->write('success-msg','Faq Content Updated!');
-        $this->redirect(array('action' => 'faq')); 
+        $data['faq']['ques'] = $data['ques'];
+        $data['faq']['ans'] = $data['ans'];
+        // $data['faq']['status'] = 1;
+        if ($this->faq->save($data)) 
+        {
+          if (!empty($data['id'])) 
+            $this->Flash->success(__('Faq Content Successfully Updated!'));
+          else
+            $this->Flash->success(__('Faq Added Successfully!'));
+
+          $this->redirect('faq'); 
+          # code...
+        }
+
+        $this->Flash->error(__('Error adding Faq, Try again!'));
+
       }
     }
     
-       public function admin_faq()
-    {
-      $this->layout = "admin_dashboard";
-      $this->loadModel('faq');
-      //$specials = $this->Course->findAllByStatus(0);
-     $this->Paginator->settings = array('faq' => array('limit' => 100));
-      $specials=$this->paginate('faq');
-      $this->set(compact('specials'));
-    } 
-     public function admin_update_faq($id=null){
+    // public function admin_faq()
+    // {
+    //   $this->layout = "admin_dashboard";
+    //   $this->loadModel('faq');
+    //   //$specials = $this->Course->findAllByStatus(0);
+    //  $this->Paginator->settings = array('faq' => array('limit' => 100));
+    //   $specials=$this->paginate('faq');
+    //   $this->set(compact('specials'));
+    // } 
+
+     public function admin_updatestatus($id=null)
+     {
         $this->loadModel('faq');
         $data = $this->faq->find('first', array('conditions' => array('faq.id' => $id)));
-        if($data['faq']['status'] == '0'){
+        if($data['faq']['status'] == 0){
             $this->faq->id = $id;
-            $this->faq->savefield('status',1); 
+            $this->faq->savefield('status',1);
+            $this->Flash->success(__('Status updated successfully.')); 
         }else{
             $this->faq->id = $id;
             $this->faq->savefield('status',0); 
+            $this->Flash->success(__('Status updated successfully.'));
         } 
         
         $this->redirect($this->referer());
@@ -305,6 +356,19 @@ class PagesController extends AppController {
         $this->redirect($this->referer());
     }
 
+    public function admin_deletefaq($id='')
+    {
+      
+      $this->layout = null;
+      $this->loadModel('Faq');
+
+      if($this->Faq->delete($id))
+        $this->Flash->success(__('Faq deleted successfully.'));
+      else
+        $this->Flash->error(__('Error in deleting Faq.'));
+      $this->redirect($this->referer());
+    }
+
     public function admin_deleteaddresses($id='')
     {
       
@@ -315,6 +379,19 @@ class PagesController extends AppController {
         $this->Flash->success(__('Address deleted successfully.'));
       else
         $this->Flash->error(__('Error in deleting address.'));
+      $this->redirect($this->referer());
+    }
+
+    public function admin_deletenewsletter($id='')
+    {
+      
+      $this->layout = null;
+      $this->loadModel('Newsletter');
+
+      if($this->Newsletter->delete($id))
+        $this->Flash->success(__('Newsletter deleted successfully.'));
+      else
+        $this->Flash->error(__('Error in deleting newsletter.'));
       $this->redirect($this->referer());
     }
 
@@ -375,8 +452,98 @@ class PagesController extends AppController {
         $this->redirect($this->referer());
       }
     }
+         public function admin_addblog($id=null)
+    {
+      $this->layout = "admin_dashboard";
+      $this->loadModel('blog');
+      $id = base64_decode($id);
+      $content = $this->blog->findById($id);
+      
+      //echo "<pre>";print_r($content);print_r($content1);print_r($content2);die;      
+      $this->set(compact('content'));
+      if($this->request->is('post'))
+      {
+        $data = $this->data;
+         if (!empty($_FILES)) {
+                if (is_uploaded_file($_FILES['DishImage']['tmp_name'])) {
+                    $allowed =  array('gif','png' ,'jpg');
+                    $filename = $_FILES['DishImage']['name'];
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    if(!in_array($ext,$allowed) ) {
+                        //$this->set('popular', 'dasdasdsadsad');
+                        $this->Session->write('success-msg','Not a allowed image format!');
+                        $this->redirect($this->referer());
+                    }
+                    
+                    //print_r($_FILES);die;
+                  $image = $this->Components->load('resize');
+                  //$image1 = $this->Components->load('resize');  
+                  $destination1 = realpath('../webroot/img/profile') . '/';
+                  $filename = time().'-'.$_FILES['DishImage']['name'];
+                  $image->resize($_FILES['DishImage']['tmp_name'],$destination1.$filename,'aspect_fit',200,200,0,0,0,0);
+                  $data['blog']['images'] = $filename;
+                }      
+              }
+        $data['blog']['id'] = $id;
+        //echo "<pre>";print_r($data);die;
+        $data['blog']['ques'] = $data['title'];
+        $data['blog']['ans'] = $data['descr'];
+        $data['blog']['cat'] = $data['cat'];
+        $data['blog']['status'] = 1;
+        $this->blog->save($data);
+        print_r($data); die();
+        $this->Session->write('success-msg','Blog Content Updated!');
+        $this->redirect(array('action' => 'blog')); 
+      }
+    }
+      public function admin_blog()
+    {
+      $this->layout = "admin_dashboard";
+      $this->loadModel('blog');
+      //$specials = $this->Course->findAllByStatus(0);
+     $this->Paginator->settings = array('blog' => array('limit' => 100));
+      $specials=$this->paginate('blog');
+      $this->set(compact('specials'));
+    }
+        public function admin_update_blog($id=null){
+        $this->loadModel('blog');
+        $data = $this->blog->find('first', array('conditions' => array('blog.id' => $id)));
+        if($data['blog']['status'] == '0'){
+            $this->blog->id = $id;
+            $this->blog->savefield('status',1); 
+        }else{
+            $this->blog->id = $id;
+            $this->blog->savefield('status',0); 
+        } 
+        
+        $this->redirect($this->referer());
+    }
+     public function update_faq($id=null){
+        $this->loadModel('faq');
+        $data = $this->faq->find('first', array('conditions' => array('faq.id' => $id)));
+        if($data['faq']['status'] == '0'){
+            $this->faq->id = $id;
+            $this->faq->savefield('status',1); 
+        }else{
+            $this->faq->id = $id;
+            $this->faq->savefield('status',0); 
+        } 
+        
+        $this->redirect($this->referer());
+    }
 
+    public function admin_deleteblog($id='')
+    {
+      
+      $this->layout = null;
+      $this->loadModel('blog');
 
+      if($this->blog->delete($id))
+        $this->Flash->success(__('Blog deleted successfully.'));
+      else
+        $this->Flash->error(__('Error in deleting Blog.'));
+      $this->redirect($this->referer());
+    }
 	public function display() {
 		$this->layout='';
 		$path = func_get_args();

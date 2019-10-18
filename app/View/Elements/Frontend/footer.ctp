@@ -25,6 +25,7 @@
                             <li><a href="<?php echo $this->webroot.'home/contact' ?>">Contact</a></li>
                             <li><a href="<?php echo $this->webroot.'home/terms_n_condition' ?>">Terms & Conditions</a></li>
                             <li><a href="<?php echo $this->webroot.'home/privacy_policy' ?>">Privacy Policy</a></li>
+                            <li><a href="<?php echo $this->webroot.'home/faq' ?>">FAQ</a></li>
                             <!-- <li><a href="<?php echo $this->webroot.'home/contact_n_support' ?>">Contact & Support</a></li> -->
                         </ul>
                     </div>

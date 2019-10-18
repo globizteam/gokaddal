@@ -19,9 +19,10 @@
                             </ul>
                             
                                 <div class="add-product">
-                                <a href="<?php echo $this->Html->url('/admin/users/addUser'); ?>">Add FAQ</a>
+                                <a href="<?php echo $this->Html->url('/admin/pages/addfaq'); ?>">Add FAQ</a>
                             </div>
-                                    <div class="asset-inner">                           	           <table>
+                                    <div class="asset-inner">                           	           
+              <table>
                <thead>
                  <th>SNo.</th>
                  <th>Faq Question</th>
@@ -42,10 +43,20 @@
                             <?php } else{?>
                             <td>Active</td>
                     <?php  }?>
-                   <!--<td><a href="<?php echo HTTP_ROOT .'Users/addfaq/' . base64_encode($special['faq']['id']);?>"><i class="fa fa-pencil"></i></a>-->
-                   <!--<a title="Update Status" href="<?php echo HTTP_ROOT.'Users/update_faq/'.$special['faq']['id']?>"><i class="fa fa-flag" aria-hidden="true"></i></a>-->
-                   <!--</td>-->
-                 </tr>
+                    <td>
+                      
+                      <a title="Update Status" href="<?php echo $this->webroot.'admin/pages/updatestatus/'.$special['faq']['id']?>">
+                        <i class="fa fa-flag" aria-hidden="true"></i>
+                      </a>
+
+                      <a title="Update Question" href="<?php echo $this->webroot.'admin/pages/addfaq/'.$special['faq']['id']?>">
+                        <i class="fa fa-pencil"></i>
+                      </a>
+                      
+                      <a href="<?php echo $this->webroot.'admin/pages/deletefaq/'.$special['faq']['id']?>" onclick="return confirm('Are you sure, You want to delete this faq?')" data-toggle="tooltip" title="" class="pd-setting-ed" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+
+                    </td>
+                  </tr>
                  <?php $i++; } ?>
                </tbody>
              </table>  

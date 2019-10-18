@@ -1,4 +1,27 @@
-
+<Style>
+    .search-icon{
+    position: absolute;
+    margin-top: 16px;
+    font-size: 18px;
+    color: #9e9e9e;
+    padding-left: 10px;
+}
+.form-controls {
+    position: unset !important;
+    float: none !important;
+}
+.search_input {
+        padding: 13px 35px !important;
+    border-left: 1px solid #cccccc !important;
+    
+}
+.input-groups {
+    display: block !important;
+}
+input.error, textarea.error {
+   border: 1px dashed red !important;
+}
+</Style>
         <div class="upper_banner">
             <div class="container-fluid">
                 <div class="container">
@@ -122,83 +145,22 @@
             <div class="container">
                 <h1 class="text-center txt_black txt_w_700 m_b_20">Popular Listings</h1>
                 <p class="text-center txt_18 txt_grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, dolor?</p>
-                <div class="m_t_50 owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="blog_item">
-                            <img src="<?php echo HTTP_ROOT; ?>gokaddal/images/listing1.jpg" alt="" class="img-responsive">
+
+
+<div class="m_t_50 owl-carousel owl-theme owl-loaded owl-drag">
+                    
+                    
+                    
+                    
+                    
+
+                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1150px, 0px, 0px); transition: all 0s ease 0s; width: 3738px;"><div class="owl-item cloned" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="">
+                            <img src="images/listing2.jpg" alt="" class="img-responsive">
                         </div>
-						<div class="listing_text">
-							<h4><a href="#;">Stark Industries</a></h4>
-							<h5>Perfect, Modern & Compact</h5>
-							<span>
-								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-							</span>
-							<div class="list_btn">
-								<a href="#;"><i class="fa fa-eye"></i>View Details</a>
-								<a href="#;"><i class="fa fa-heart"></i>Save</a>
-							</div>
-							<h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
-						</div>
-						
-                    </div>
-					<div class="item">
-                        <div class="blog_item">
-                            <img src="<?php echo HTTP_ROOT; ?>gokaddal/images/listing2.jpg" alt="" class="img-responsive">
-                        </div>
-						<div class="listing_text">
-							<h4><a href="#;">Cyberdyne Systems</a></h4>
-							<h5>Perfect, Modern & Compact</h5>
-							<span>
-								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-							</span>
-							<div class="list_btn">
-								<a href="#;"><i class="fa fa-eye"></i>View Details</a>
-								<a href="#;"><i class="fa fa-heart"></i>Save</a>
-							</div>
-							<h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
-						</div>
-                    </div>
-					<div class="item">
-                        <div class="blog_item">
-                            <img src="<?php echo HTTP_ROOT; ?>gokaddal/images/listing3.jpg" alt="" class="img-responsive">
-                        </div>
-						<div class="listing_text">
-							<h4><a href="#;">Wayne Enterprises</a></h4>
-							<h5>Perfect, Modern & Compact</h5>
-							<span>
-								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-							</span>
-							<div class="list_btn">
-								<a href="#;"><i class="fa fa-eye"></i>View Details</a>
-								<a href="#;"><i class="fa fa-heart"></i>Save</a>
-							</div>
-							<h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
-						</div>
-                    </div>
-					<div class="item">
-                        <div class="blog_item">
-                            <img src="<?php echo HTTP_ROOT; ?>gokaddal/images/listing4.jpg" alt="" class="img-responsive">
-                        </div>
-						<div class="listing_text">
-							<h4><a href="#;">Genco Pura Olive</a></h4>
-							<h5>Perfect, Modern & Compact</h5>
-							<span>
-								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-							</span>
-							<div class="list_btn">
-								<a href="#;"><i class="fa fa-eye"></i>View Details</a>
-								<a href="#;"><i class="fa fa-heart"></i>Save</a>
-							</div>
-							<h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
-						</div>
-                    </div>
-                    <div class="item">
-                        <div class="blog_item">
-                            <img src="<?php echo HTTP_ROOT; ?>gokaddal/images/listing2.jpg" alt="" class="img-responsive">
-                        </div>
-                        <div class="listing_text">
-                            <h4><a href="#;">Genco Pura Olive</a></h4>
-                            <h5>Perfect, Modern & Compact</h5>
+                        <div class="listing_text" style="">
+                            <h4><a href="#;">Cyberdyne Systems</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
                             <span>
                                 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                             </span>
@@ -208,9 +170,203 @@
                             </div>
                             <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
                         </div>
-                    </div>
+                    </div></div><div class="owl-item cloned" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="">
+                            <img src="<?php echo $this->webroot.'gokaddal/images/listing3.jpg' ; ?>" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="">
+                            <h4><a href="#;">Wayne Enterprises</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="">
+                            <img src="images/listing4.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="">
+                            <h4><a href="#;">Genco Pura Olive</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="">
+                            <img src="images/listing2.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="">
+                            <h4><a href="#;">Genco Pura Olive</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div><div class="owl-item active" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="height: 278px;">
+                            <img src="<?php echo $this->webroot.'gokaddal/images/listing1.jpg' ; ?>" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="height: 232px;">
+                            <h4><a href="#;">Stark Industries</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                        
+                    </div></div><div class="owl-item active" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="height: 278px;">
+                            <img src="<?php echo $this->webroot.'gokaddal/images/listing2.jpg' ; ?>" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="height: 232px;">
+                            <h4><a href="#;">Cyberdyne Systems</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div><div class="owl-item active" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="height: 278px;">
+                            <img src="<?php echo $this->webroot.'gokaddal/images/listing3.jpg' ; ?>" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="height: 232px;">
+                            <h4><a href="#;">Wayne Enterprises</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div><div class="owl-item active" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="height: 278px;">
+                            <img src="<?php echo $this->webroot.'gokaddal/images/listing4.jpg' ; ?>" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="height: 232px;">
+                            <h4><a href="#;">Genco Pura Olive</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div><div class="owl-item" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="height: 278px;">
+                            <img src="images/listing2.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="height: 232px;">
+                            <h4><a href="#;">Genco Pura Olive</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="">
+                            <img src="<?php echo $this->webroot.'gokaddal/images/listing1.jpg' ; ?>" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="">
+                            <h4><a href="#;">Stark Industries</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                        
+                    </div></div><div class="owl-item cloned" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="">
+                            <img src="<?php echo $this->webroot.'gokaddal/images/listing2.jpg' ; ?>" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="">
+                            <h4><a href="#;">Cyberdyne Systems</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="">
+                            <img src="images/listing3.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="">
+                            <h4><a href="#;">Wayne Enterprises</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div><div class="owl-item cloned" style="width: 277.5px; margin-right: 10px;"><div class="item">
+                        <div class="blog_item" style="">
+                            <img src="images/listing4.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="listing_text" style="">
+                            <h4><a href="#;">Genco Pura Olive</a></h4>
+                            <h5>Perfect, Modern &amp; Compact</h5>
+                            <span>
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <div class="list_btn">
+                                <a href="#;"><i class="fa fa-eye"></i>View Details</a>
+                                <a href="#;"><i class="fa fa-heart"></i>Save</a>
+                            </div>
+                            <h6><i class="fas fa-map-marker-alt"></i><p>East 34th Street, Near abcd Avenue</p></h6>
+                        </div>
+                    </div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
 
-                </div>
+
             </div>   
         </div>
 	</div>
@@ -257,19 +413,19 @@
                                 <form action="<?php echo $this->webroot.'home/newsletter';  ?>" method="post" id="newsletter">
                                     <div class="row">
                                         <div class="col-sm-5 p_lr_6">
-                                            <div class="input-group newsltr">
-                                                <span class="input-group-addon input_icon">
-                                                    <i class="fas fa-user"></i>
-                                                </span>
+                                            <div class="input-group input-groups  newsltr">
+                                                <!-- <span class="input-group-addon input_icon"> -->
+                                                    <i class="fas fa-user search-icon"></i>
+                                               <!-- </span> -->
                                                 <?php 
                                                     if(!AuthComponent::user('id')) 
                                                     {
                                                 ?>
-                                                        <input type="text" class="form-control search_inputs news" name="name" placeholder="Enter your name"> 
+                                                        <input type="text" class="form-control form-controls search_inputs search_input news" name="name" placeholder="Enter your name"> 
 
                                                 <?php }else{ ?>
 
-                                                <input type="text" class="form-control search_inputs news" name="name" placeholder="Enter your name" value="<?php if(AuthComponent::user('id') ) { if(empty($news)) { $name = AuthComponent::user('name'); echo rtrim($name, ' ' ) ;} }  ?> ">
+                                                <input type="text" class="form-control form-controls search_inputs search_input news" name="name" placeholder="Enter your name" value="<?php if(AuthComponent::user('id') ) { if(empty($news)) { echo rtrim($loguserdata['User']['name'], ' ' ); } }  ?>">
 
                                                 <?php } ?>
 
@@ -277,25 +433,26 @@
                                         </div>
 
                                         <div class="col-sm-5 p_lr_6">
-                                            <div class="input-group newsltr">
-                                                <span class="input-group-addon input_icon">
-                                                    <i class="fas fa-search"></i>
-                                                </span>
+                                            <div class="input-group input-groups newsltr">
+                                                <!--<span class="input-group-addon input_icon">-->
+                                                    <i class="fas fa-search search-icon"></i>
+                                               <!-- </span> -->
                                                 <?php 
                                                     if(!AuthComponent::user('id')) 
                                                     {
                                                 ?>
-                                                <input type="text" class="form-control search_inputs news" name="email" placeholder="Enter your email" >
+                                                <input type="text" class="form-control form-controls search_inputs search_input news" name="email" placeholder="Enter your email" >
 
                                                 <?php }else{ ?>
 
-                                                <input type="text" class="form-control search_inputs news" name="email"  value="<?php if(AuthComponent::user('id')) { if(empty($news)){ $email = AuthComponent::user('email');  echo rtrim($email, ' ') ; } } ?> " placeholder="Enter your email" >
+                                                <input type="text" class="form-control form-controls search_inputs
+                                                search_input news" name="email"  value="<?php if(AuthComponent::user('id')) { if(empty($news)){ echo rtrim($loguserdata['User']['email'], ' ' ) ; } }?>" placeholder="Enter your email">
 
                                                 <?php } ?>
                                             </div>
                                         </div>
                                         <div class="col-sm-2 p_lr_6">
-                                            <button type="submit" class="send_btn">SUBMIT <i class="fas fa-angle-right m_l_3"></i></button>
+                                            <button type="submit" class="send_btn" data-toggle="modal" data-target="#subscription_suc_modal11">SUBMIT <i class="fas fa-angle-right m_l_3"></i></button>
                                             <!-- <a href="#" class="send_btn">SUBMIT <i class="fas fa-angle-right m_l_3"></i></a> -->
                                         </div>
                                     </div>
@@ -314,32 +471,66 @@
             <div class="container">
                 <h1 class="text-center txt_black txt_w_700 m_b_20">Latest Blog</h1>
                 <p class="text-center txt_18 txt_grey">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, dolor?</p>
+
                 <div class="row m_t_50">
+
+                    <?php 
+                    if (!empty($latestblog)) 
+                    {
+                        foreach ($latestblog as $key => $blog) 
+                        {
+                    ?>
+
                     <div class="col-sm-4 col-xs-6 col_500_full_width">
                         <div class="blog_item mb_20">
-                            <div class="image-effect"><img src="<?php echo HTTP_ROOT; ?>gokaddal/images/blog_1.jpg" alt="" class="img-responsive"></div>
-							<a class="blog_cat" href="#;">Data Analytics</a>
-							<p class="blog_title"><a href="#;">Lorem ipsum dollor amet conculater qwerty Set</a></p>
-							<span class="blog_date">October 6, 2019 by John Doe</span>
+                            <div class="image-effect">
+                                <?php 
+                                    if (!empty($blog)) 
+                                    {
+                                ?>
+                                        <img src="<?php echo $this->webroot.$blog['Blog']['images']; ?>" alt="" class="img-responsive">
+                                    
+                                <?php  
+                                    }else{
+
+                                ?>
+                                        <img src="<?php echo $this->webroot.'no-img.jpg'; ?>" alt="" class="img-responsive">
+                                <?php
+                                    }
+                                ?>
+                            </div>
+							<a class="blog_cat" href="<?php echo $this->webroot.'home/blog_single/'.$blog['Blog']['id']; ?>">
+                               <?php echo $blog['Blog']['cat']; ?>
+                            </a>
+							<p class="blog_title">
+                                <a href="<?php echo $this->webroot.'home/blog_single/'.$blog['Blog']['id']; ?>">
+                                    <?php 
+                                        $desc = substr($blog['Blog']['ans'], 0,100);
+                                        echo $desc.'... <span style = "color: #ff7f27; font-size:15px;"> Read More </span>';
+
+                                    ?>
+                                </a>
+                            </p>
+							
+                            <span class="blog_date">
+                                    <?php 
+                                        $img =explode(' ', $blog['Blog']['cdate']);
+                                        echo $img[0]; 
+                                    ?>
+                            </span>
+
                         </div>
                     </div>
-					<div class="col-sm-4 col-xs-6 col_500_full_width">
-                        <div class="blog_item mb_20">
-                            <div class="image-effect"><img src="<?php echo HTTP_ROOT; ?>gokaddal/images/blog_3.jpg" alt="" class="img-responsive"></div>
-							<a class="blog_cat" href="#;">SMART WATER MANAGEMENT</a>
-							<p class="blog_title"><a href="#;">Lorem ipsum dollor amet conculater qwerty Set</a></p>
-							<span class="blog_date">October 6, 2019 by John Doe</span>
-                        </div>
-                    </div>
-					<div class="col-sm-4 col-xs-6 col_500_full_width">
-                        <div class="blog_item mb_20">
-                            <div class="image-effect"><img src="<?php echo HTTP_ROOT; ?>gokaddal/images/blog_4.jpg" alt="" class="img-responsive"></div>
-							<a class="blog_cat" href="#;">DIGITAL HEALTHCARE</a>
-							<p class="blog_title"><a href="#;">Lorem ipsum dollor amet conculater qwerty Set</a></p>
-							<span class="blog_date">October 6, 2019 by John Doe</span>
-                        </div>
-                    </div>
+
+                    <?php
+                        }
+
+                    }
+                    ?>
+
                 </div>
+
+
                 <div class="text-center m_t_50">
                     <a href="#" class="read_btn text-uppercase">See All <i class="fas fa-angle-right m_l_3"></i></a>
                 </div>
@@ -349,6 +540,29 @@
 
 
 
+     <!-- Subsription modal -->
+    <div id="subscription_suc_modal" class="modal fade modal_form" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <button type="button" class="close modal_close_btn" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                <div class="modal-body">
+                    <div class="form_with_grey_bg">
+                        <h4 class="text-center txt_grey txt_w_400 l_h_28 m_t_30">
+                            Subscription email sent.
+                        </h4>
+                    
+
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+
+        </div>
+    </div>
 
 
 

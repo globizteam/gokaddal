@@ -8,7 +8,7 @@
                         <div class="col-md-offset-1 col-md-10">
                             
                             
-                            <?php //echo $this->element('Frontend/search_form'); ?>
+                            <?php echo $this->element('Frontend/search_form'); ?>
 
 
                             <!-- <p class="txt_16 txt_white text-center after_search m_b_20">Popular Searches: &nbsp;&nbsp;&nbsp; <a href="#">Smart Cities</a> , <a href="#">Utilities</a> , <a href="#">Healthcare</a> , <a href="#">Real Estate</a></p> -->
@@ -27,30 +27,30 @@
                 <div class="row">
 
 
-                    <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
 
                         <?php echo $this->Flash->render(); ?>
 
                         <div class="form_with_grey_bg contact_match_height">
                             <h2 class="text-center txt_black m_b_20 txt_w_700">Contact Form</h2>
                             <h4 class="text-center txt_grey txt_w_400">Please fill the below form for more info</h4>
-                            <form action="<?php echo $this->webroot.'home/contact'; ?>" method="post" class="m_t_40">
+                            <form action="<?php echo $this->webroot.'hotelapi/Authenticate'; ?>" method="post" class="m_t_40">
                                 <div class="form-group">
-                                    <input type="text" class="form-control input_field" name="name" placeholder="Enter Your Name">
+                                    <input type="text" class="form-control input_field" name="ClientId" value="ApiIntegrationNew" placeholder="Enter ClientId">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control input_field" name="email" placeholder="Enter Email">
+                                    <input type="text" class="form-control input_field" name="UserName" value="liamtra" placeholder="Enter UserName">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control input_field" name="contact" placeholder="Enter Contact Number">
+                                    <input type="password" class="form-control input_field" name="Password" value="liamtra@123" placeholder="Enter Password">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control input_field" name="subject" placeholder="Enter Subject">
+                                    <input type="text" class="form-control input_field" name="EndUserIp" value="192.168.11.120" placeholder="Enter EndUserIp" value="">
                                 </div>
-                               <div class="form-group">
+<!--                                <div class="form-group">
                                    <textarea rows="4" class="form-control input_field" name="message" placeholder="Enter Message"></textarea>
                                </div> 
-                                <div class="text-center orange_btns m_t_30">
+ -->                                <div class="text-center orange_btns m_t_30">
                                     <ul class="list-unstyled list-inline m_b_0">
                                         <li>
                                             <input type="submit" name="" value="Submit">
@@ -63,10 +63,8 @@
 
                     </div>
 
-                </div>
-                    <div class="row">
-                    <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-                        <div class="form_with_grey_bg contact_match_height text-center">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="form_with_grey_bg contact_match_height">
                             <h2 class="text-center txt_black m_b_20 txt_w_700">Our Offices</h2>
                             <h4 class="text-center txt_grey txt_w_400">Lorem ipsum dolor sit amet, consectetur.</h4>
                             <div class="m_t_15">

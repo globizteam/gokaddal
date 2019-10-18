@@ -124,7 +124,19 @@
                                 <div class="row">
                                     <div class="col-md-2 col-sm-2 col-xs-4 col_500_full_width">
                                         <a href="blog_single.php" class="blog_hr_item_img">
-                                        	<img src="<?php echo $this->webroot.$bl['Blog']['images']; ?>" alt="Image" class="img-responsive center-block">
+                                        	<?php 
+                                                if (!empty($blog['Blog']['images'])) 
+                                                {
+                                            ?>
+                                                    <img src="<?php echo $this->webroot.$blog['Blog']['images']; ?>" alt="Image" class="img-responsive">
+                                            <?php
+                                                }else{
+                                            ?>
+                                                    <img src="<?php echo $this->webroot.'no-image.jpg'; ?>" alt="Image" class="img-responsive no-img">
+                                            <?php
+
+                                                } 
+                                            ?>
                                         </a>
                                     </div>
                                     <div class="col-md-10 col-sm-10 col-xs-8 col_500_full_width col_500_m_t_10">

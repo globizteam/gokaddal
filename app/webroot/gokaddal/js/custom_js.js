@@ -14,6 +14,28 @@ jQuery('#return_to_top').click(function() {      // When arrow is clicked
 
 
 
+// Search form submit validation if both fields have no value.
+$('#searchform').submit(function (ev) {
+  var count = 0;
+  $('#searchform input').each(function(){
+    if ($(this).val() == '')
+    {
+      count = count + 1;
+    }
+  })
+
+  if (count == 2)
+  {
+    $(this).find('.input-group').css('border','1px solid red');
+    ev.preventDefault();
+  }
+})
+
+// Validation for search form if data enter hide red border
+$('#searchform input').on('keyup',function () {
+    $('#searchform').find('.input-group').css('border','none');
+})
+
  // Categories on Home page
 jQuery('.catg_item').matchHeight();
 
@@ -63,6 +85,41 @@ if(screen_width < 992){
 }
 
 
+$('#newsletter').submit(function(e) {
+  // alert('escsad');
+    e.preventDefault(); // don't submit multiple times
+    // alert($(this).find('.error').css('display','block'));
+    
+if ($(this).find('input').val() == '') 
+  return;
+
+    if( $('.newsltr').find('label').is(':visible')  )
+    {
+      console.log('i am in');
+     $label = $('.newsltr').find('label').clone();
+     $('.newsltr').find('label').remove();
+     $('.newsltr').append($label); 
+      // return;
+    }else{
+
+      this.submit(); // use the native submit method of the form element
+      $('#subscription_suc_modal').modal('show'); //Open the model
+      return;
+// e.preventDefault();
+    }
+});
+
+/*preventing form submissin for Join our community index page*/
+// $('#newsletter').on('click', function(e){
+//   if($(this).find('.error') == "undefined" )
+//   {
+
+//   }else{
+//     e.preventDefault();
+
+//   } 
+
+// });
 
 
 // //  Listing Page 
@@ -111,6 +168,28 @@ $('.user_type').on('change', function (argument) {
 
 
 
+$(function() {
+   var links = $('a.link').click(function() {
+       links.parent().removeClass('active-sidebar');
+       $(this).parent().addClass('active-sidebar');
+   });
+});
+
+
+// // Add address validation as link in admin panel (add addresses) CMS link
+// add-address
+// $("#button").click(function() {
+//     if ($("#alta").valid()) {
+//         $("#alta").submit();
+//     }
+// })
+
+// Highlight link if clicked
+// $('li').on('click', function () {
+//   $(this).addClass('active-sidebar');
+// })
+
+
 // $('#newsletter .news').on('click', function () {
 //   var labelclone = $('.p_lr_6 > label').html().clone();
 //   console.log($(labelclone));
@@ -123,19 +202,19 @@ $('.user_type').on('change', function (argument) {
 // $(error_elem).parent().append(error_elem); 
 
 /*move element out from div*/
-$('.newsltr input').on('focusout keyup', function(){
-  // console.log($('.newsltr').find('#name-error').length);
-    // if($('.newsltr').find('#name-error').length > 0)
-    // {
-      // console.log($(this).find('#name-error'));
-      // return;
-      var error_elem = $('#name-error').clone();
-      $(this).find('#name-error').remove();
-      $(this).append(error_elem); 
-      console.log('consoling error element :');
-      console.log(error_elem);
-      // alert($(this).parent().find('#name-error').html());
-    });
+// $('.newsltr input').on('focusout keyup', function() {
+//   // console.log($('.newsltr').find('#name-error').length);
+//     // if($('.newsltr').find('#name-error').length > 0)
+//     // {
+//       // console.log($(this).find('#name-error'));
+//       // return;
+//       var error_elem = $('#name-error').clone();
+//       $(this).find('#name-error').remove();
+//       $(this).append(error_elem); 
+//       console.log('consoling error element :');
+//       console.log(error_elem);
+//       // alert($(this).parent().find('#name-error').html());
+//     });
 // });
 
     $('ul.list > li > a > img').each(function() {
@@ -173,6 +252,16 @@ var rooturl = window.location.href.match(/^.*\//)[0];
     });
 
 });
+
+jQuery('.panel-collapse').on('show.bs.collapse', function () {
+  jQuery(this).parent('.panel').find('.fa-angle-up').show();
+  jQuery(this).parent('.panel').find('.fa-angle-down').hide();
+})
+jQuery('.panel-collapse').on('hide.bs.collapse', function () {
+  jQuery(this).parent('.panel').find('.fa-angle-up').hide();
+  jQuery(this).parent('.panel').find('.fa-angle-down').show();
+})
+
 
 /*custom validations for validate.js*/
 $(document).ready(function() {

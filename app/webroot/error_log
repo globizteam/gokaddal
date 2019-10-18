@@ -25,3 +25,4 @@
 [04-Oct-2019 07:18:10 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Event/CakeEventManager.php on line 157
 [04-Oct-2019 07:18:47 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Event/CakeEventManager.php on line 157
 [04-Oct-2019 07:18:55 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/lib/Cake/Model/Datasource/Database/Mysql.php on line 284
+[13-Oct-2019 03:37:37 UTC] PHP Fatal error:  Cannot redeclare getUserIP() (previously declared in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/Controller/HotelapiController.php:45) in /home/ejhcntq4nh1j/public_html/gokaddal-staging/app/Controller/HotelapiController.php on line 43

@@ -165,7 +165,11 @@
                                     <?php //endif; ?>
                                 </li>
                             <!-- if user is logged in -->
-                            <?php $done = 0; if(AuthComponent::user('id')) { ?>
+                            <?php 
+                                $done = 0; 
+                                if(AuthComponent::user('id')) 
+                                { 
+                            ?>
                                 <!-- if rating is already given by current logged in user(seeker) -->
                                 <?php
                                     
@@ -213,10 +217,10 @@
                                     } else {
                                 ?>
                                     <li>
-                                        <a href="javascript:;" data-toggle="collapse" data-target="#provider_reviews">Rating & Reviews</a>
+                                        <a href="javascript:;" data-toggle="modal" data-target="#provider_login_first">Rating & Reviews</a>
                                     </li>
 
-                            <?php  } ?>
+                                    <?php  } ?>
                             </ul>
                         </div>
                     </div>
@@ -225,6 +229,35 @@
 
 
 
+                 <!-- login first modal -->
+                <div id="provider_login_first" class="modal fade modal_form" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <button type="button" class="close modal_close_btn" data-dismiss="modal">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="modal-body">
+                                <div class="form_with_grey_bg">
+                                    <h2 class="text-center txt_black txt_w_700">Please Login First</h2>
+                                    <div class="text-center orange_btns m_t_30">
+                                            <ul class="list-unstyled list-inline m_b_0">
+                                                <li>
+                                                    <a href="<?php echo $this->webroot.'home/login'; ?>">Login</a>
+                                                    <!-- <input type="submit" value="Submit"> -->
+                                                </li>
+                                            </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div> -->
+                        </div>
+
+                    </div>
+                </div>
 
 
 

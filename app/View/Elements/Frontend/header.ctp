@@ -150,8 +150,8 @@
                                                             echo $this->Html->link('Myaccount',
                                                                     array(
                                                                         'controller' => 'home',
-                                                                        'action' => 'myaccount',
-                                                                        'full_base' => true,
+                                                                        'action'     => 'myaccount',
+                                                                        'full_base'  => true,
                                                                     ),
                                                                     array('escape' => false)
                                                             );

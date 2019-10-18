@@ -122,7 +122,7 @@
                         <?php 
                         /*For Providers listings*/
                         // if(!empty($searchResult) && (AuthComponent::user('type') == 2) ) 
-                        if( !empty($searchResult) ) 
+                        if( !empty($searchResult) && (AuthComponent::user('type') != 1)  ) 
                         {
 	                        foreach ($searchResult as $key => $user) 
 	                        {

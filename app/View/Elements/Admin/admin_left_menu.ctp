@@ -58,12 +58,12 @@
                         </a>
                     </li>
                     
-<!--                     <li>
+                    <li>
                         <a title="Register" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'faq', 'admin'=>true]) ?>">
                             <span class="mini-sub-pro">Faqs</span>
                         </a>
                     </li>
- -->                    
+                    
                     <li>
                         <a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'privacy_policy', 'admin'=>true]) ?>">
                             <span class="mini-sub-pro">Privacy Policy</span>
@@ -89,11 +89,17 @@
                     </li>
 
                     <li>
+                        <a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'newsletterlist', 'admin'=>true]) ?>">
+                            <span class="mini-sub-pro">Newsletter</span>
+                        </a>
+                    </li>
+
+<!--                     <li>
                         <a title="Lock" href="<?php echo $this->Html->url(['controller'=>'pages', 'action'=>'listblog', 'admin'=>true]) ?>">
                             <span class="mini-sub-pro">Blog</span>
                         </a>
                     </li>
-
+ -->
                 </ul>
             </li>
         <?php endif; ?>

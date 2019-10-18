@@ -4786,6 +4786,28 @@ label.error {
     font-weight: bold;
     color: #fff;
 }
+.search-icon{
+    position: absolute;
+    margin-top: 16px;
+    font-size: 18px;
+    color: #9e9e9e;
+    padding-left: 10px;
+}
+.form-controls {
+    position: unset !important;
+    float: none !important;
+}
+.search_input {
+    padding: 13px 35px !important;
+    border-left: 1px solid #cccccc !important;
+}
+.input-groups {
+    display: block !important;
+}
+input.error, textarea.error {
+    
+   border-left: 1px dashed red !important;
+}
 .error-message{color: red;}
 a.show-user-info { cursor: pointer; }
 .wd-20{width: 20%;float: left;}

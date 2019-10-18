@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-sm-2 p_lr_6">
-                <button type="submit" class="send_btn search_btn">SEARCH<i class="fas fa-angle-right m_l_3"></i></button>
+                <button type="submit" class="send_btn search_btn search_btn_main" id="search_btn_main">SEARCH<i class="fas fa-angle-right m_l_3"></i></button>
 <!--                 <a href="#" class="send_btn search_btn">
                     SEARCH 
                     <i class="fas fa-angle-right m_l_3"></i>

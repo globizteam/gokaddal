@@ -10,7 +10,6 @@
     <!-- favicon
         ============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->webroot; ?>/img/logo/logo_icon_cropped.jpg" >
-        <script src="<?php echo HTTP_ROOT ?>js/pages/base_pages_dashboard.js"></script>
    
     <!-- Google Fonts
         ============================================ -->

@@ -12,7 +12,8 @@ App::uses('Hash', 'Utility');
 class HomeController extends AppController
 {
     public $helpers = array('Session','Html','Js','Form','Paginator','Flash','Module');
-    public $uses = array('Category','User','EmailTemplate','ProviderService', 'RateNReview','Favourite','Tag','SeekerRequirement','SubmitQuote','NewsLetter','SearchKeyword','Page','Contact','OfficeAddress','Blog');
+    public $uses = array('Category','User','EmailTemplate','ProviderService', 'RateNReview','Favourite','Tag','SeekerRequirement','SubmitQuote','NewsLetter','SearchKeyword','Page','Contact','OfficeAddress','Blog','Faq');
+
 	public $components = array(
 						'Session','Email','RequestHandler','Cookie','Paginator','Flash', 
 						'Auth' => array(
@@ -55,7 +56,7 @@ class HomeController extends AppController
 	{
 		parent::beforeFilter();
 		// give access to non logged in users
-		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','submit_quote','checkemailexist','searchall','newsletter','about','blog','contact','terms_n_condition','privacy_policy','contact_n_support','blog_single','searchblog');
+		$this->Auth->allow('index','login','signup','provider_list','seeker_list','provider_solution_view','provider_details','provider_all_solutions','validate_user','forgot_password','submit_quote','checkemailexist','searchall','newsletter','about','blog','contact','terms_n_condition','privacy_policy','contact_n_support','blog_single','searchblog','faq');
 
 		$this->loadModel('User');
 
@@ -125,7 +126,8 @@ class HomeController extends AppController
 
 		$cat_ids = [];
 		// gathered category ids in which current user deals...
-		foreach ($services as $key => $service) {
+		foreach ($services as $key => $service) 
+		{
 			$cat_ids[] = $service['ProviderService']['category_id'];
 		}
 
@@ -190,7 +192,11 @@ class HomeController extends AppController
 
 		}
 
-		// $this->set(compact('news'));
+		$loguserdata = $this->User->findById($id);		
+
+		$this->set(compact('loguserdata'));
+
+		// pr($loguserdata);die();
 
 
 	}
@@ -203,7 +209,13 @@ class HomeController extends AppController
 
 		$popular_listing = $this->User->find('all', array('order' => array('User.id' => 'desc'), 'conditions' => array('User.type' => 1)));
 
-		// pr($popular_listing);die();
+		$latestblog = $this->Blog->find('all', array('limit' => 3, 'order' => array('Blog.id' => 'desc'), 'conditions' => array('Blog.status' => 1)));
+
+		$this->set(compact('latestblog'));
+
+
+
+		// pr($latestblog);die();	
 
 
 	}
@@ -379,6 +391,13 @@ class HomeController extends AppController
 		// pr('i am in contact');die();	
 	}
 
+
+	public function faq($value='')
+	{
+		$faqrecords = $this->Faq->find('all', array('conditions' => array('Faq.status' => 1)));
+		$this->set(compact('faqrecords'));
+		// pr($faqrecords);die();
+	}
 
 	public function contact_n_support($value='')
 	{
@@ -1476,8 +1495,10 @@ class HomeController extends AppController
 
 		// pr($this->request->data);die();
 		// echo "i am in serach";die();
-		$location = !empty($this->request->data['location']) ? $this->request->data['location'] : '';
-		$lookingfor = !empty($this->request->data['lookingfor']) ? $this->request->data['lookingfor'] : '';
+
+		$searchResult = "";
+		$location = !empty($this->request->data['location']) ? $this->request->data['location'] : NULL;
+		$lookingfor = !empty($this->request->data['lookingfor']) ? $this->request->data['lookingfor'] : NULL;
 		// $path = $this->request->query['path'];
 
 		// Insert search keyword in SearchKeyword table
@@ -1545,53 +1566,474 @@ class HomeController extends AppController
 		if ($usertype) //For Provider or Seeker 
 		{
 			
-			if ($usertype == 1)
-				$type = 2;
-			else
-				$type = 1;
+			// pr('i am logged in');die();
+			// if ($usertype == 1)
+			// 	$type = 2;
+			// else
+			// 	$type = 1;
 
-			$this->Paginator->settings = array(
-			        'limit' => 5,
-			        'conditions' => array(
-											'User.type' => $type, 
-											'User.status' => 1,
-											'OR' => array(
-															array('User.country' => $location ),
-															array('User.state' => $location ),	
-															array('User.company_name LIKE' => '%'.$lookingfor.'%' )
-															// array()ray('User.company_name LIKE' => '%'.$lookingfor.'%' )	
-											)
+			/*If Seeker logged in search for Provider services according to search keyword*/
+			if ($usertype == 2) 
+			{
 
-										),
-			        'order' => 'User.id desc'
-			  );
+				/*If only lookingfor keywork is entered*/
+				if ( !empty($lookingfor) ) 
+				{
 
-		$searchResult = $this->Paginator->paginate('User');
+					pr('i am loggedIn as provider');die();
+
+					/*trying serching through category name*/
+					$catname = $this->Category->find('first', array('conditions' => array('Category.title LIKE' => '%'.$lookingfor.'%' )));
+
+					$catid = !empty($catname["Category"]["id"]) ? $catname["Category"]["id"] : '';
+
+
+					$providerlist = $this->ProviderService->find('all', 
+																	array('limit' => 100, 'conditions' => 
+																			array('ProviderService.category_id' => 
+																					$catid)));
+					
+					$userids = [];
+
+					foreach ($providerlist as $key => $listuser) 
+					{
+						$userids[] = $listuser['User']['id'];
+					}
+					$ids = [];
+					$ids = array_unique($userids);
+
+
+					if (!empty($location)) 
+					{
+
+						// pr('location is not empty');die();
+						$this->Paginator->settings = array(
+													        'limit' => 50,
+													        'conditions' => array('User.id' => $ids,
+													        'OR' => array(
+													        				array('User.country' => $location),
+													        				array('User.state' => $location)
+													        			)
+			        										// 'order' => 'User.id desc'
+														  ));
+					}else{
+
+						// pr('location is empty');die();
+						$this->Paginator->settings = array(
+													        'limit' => 50,
+													        'conditions' => array('User.id' => $ids),
+			        										// 'order' => 'User.id desc'
+														  );
+
+					}
+
+					$searchResult = $this->Paginator->paginate('User');
+
+
+
+
+					// $searchResult = $this->User->find('all', 
+					// 									array('limit' => 50, 'conditions' => 
+					// 											array('User.id' => $ids)));
+					// echo "<pre>";
+					// print_r($searchResult);die();
+
+					/*if search keyword from category*/
+					if (count($searchResult) > 0) 
+					{
+						// pr('Result count for category');die();
+						$this->set(compact('searchResult'));
+						// $this->redirect('searchall');
+					}
+
+
+
+
+
+
+					if (count($searchResult) <= 0) 
+					{
+						/*trying serching through category name for Tag name*/
+						$tagname = $this->Tag->find('first', array('conditions' => array('Tag.name LIKE' => '%'.$lookingfor.'%' )));
+
+						$tagid = !empty($tagname["Tag"]["id"]) ? $tagname["Tag"]["id"] : '';
+
+						// pr($catid);die();
+
+						$providerlist = $this->ProviderService->find('all', 
+																		array('limit' => 100, 'conditions' => 
+																				array('ProviderService.tag_id' => 
+																						$tagid)));
+						
+						$userids = [];
+
+						foreach ($providerlist as $key => $listuser) 
+						{
+							$userids[] = $listuser['User']['id'];
+						}
+						$ids = [];
+						$ids = array_unique($userids);
+
+						if (!empty($location)) 
+						{
+							$this->Paginator->settings = array(
+														        'limit' => 50,
+														        'conditions' => array('User.id' => $ids,
+														        'OR' => array(
+														        				array('User.country' => $location),
+														        				array('User.state' => $location)
+														        			)
+				        										// 'order' => 'User.id desc'
+															  ));
+						}else{
+
+							$this->Paginator->settings = array(
+														        'limit' => 50,
+														        'conditions' => array('User.id' => $ids),
+				        										// 'order' => 'User.id desc'
+															  );
+
+						}
+
+						$searchResult = $this->Paginator->paginate('User');
+
+
+						// echo "<pre>";
+						// print_r($searchResult);die();
+					}
+
+
+
+					$tagcount = count($searchResult);
+
+					/*If result count for tag*/
+					if ($tagcount > 0) 
+					{
+						// pr('Result count for Tag');die();
+						$this->set(compact('searchResult'));
+						// $this->redirect('searchall');
+					}
+
+					
+					/*if only location enters*/
+					if ( !empty($location) && ($tagcount <= 0) ) 
+					{
+						$this->Paginator->settings = array(
+							        'limit' => 50,
+							        'conditions' => array('User.type' => 2,
+							        'OR' => array(
+							        				array('User.country' => $location),
+							        				array('User.state' => $location)
+							        			)
+									// 'order' => 'User.id desc'
+								  ));
+
+						$searchResult = $this->Paginator->paginate('User');
+
+
+					}
+
+					if (count($searchResult) > 0) 
+					{
+						// pr('only location enter');die();
+						$this->set(compact('searchResult'));
+						// $this->redirect('searchall');
+					}
+
+
+
+				/*if Provider */
+				}
+			}elseif($usertype == 1){
+
+						/*If only lookingfor keywork is entered*/
+						if ( !empty($lookingfor) ) 
+						{
+
+
+							// pr('i am logged in as provider lookig for seeker');die();
+
+							/*trying serching through category name*/
+							$catname = $this->Category->find('first', array('conditions' => array('Category.title LIKE' => '%'.$lookingfor.'%' )));
+
+							$catid = $catname["Category"]["id"];
+
+
+							$this->Paginator->settings = array(
+								        'limit' => 50,
+										'conditions' => array('SeekerRequirement.category_id' => $catid)					
+					// 'order' => 'User.id desc'
+									  );
+
+							$searchResult = $this->Paginator->paginate('SeekerRequirement');
+							// $providerlist = $this->SeekerRequirement->find('all', 
+							// 												array('limit' => 100, 'conditions' => 
+							// 														array('SeekerRequirement.category_id' => 
+							// 																$catid)));
+							
+							// $userids = [];
+
+							// foreach ($providerlist as $key => $listuser) 
+							// {
+							// 	$userids[] = $listuser['User']['id'];
+							// }
+							// $ids = [];
+							// $ids = array_unique($userids);
+
+
+							// if (!empty($location)) 
+							// {
+							// 	$this->Paginator->settings = array(
+							// 								        'limit' => 50,
+							// 								        'conditions' => array('User.id' => $ids,
+							// 								        'OR' => array(
+							// 								        				array('User.country' => $location),
+							// 								        				array('User.state' => $location)
+							// 								        			)
+					  //       										// 'order' => 'User.id desc'
+							// 									  ));
+							// }else{
+
+							// 	$this->Paginator->settings = array(
+							// 								        'limit' => 50,
+							// 								        'conditions' => array('User.id' => $ids),
+					  //       										// 'order' => 'User.id desc'
+							// 									  );
+
+							// }
+
+
+
+
+
+							// $searchResult = $this->User->find('all', 
+							// 									array('limit' => 50, 'conditions' => 
+							// 											array('User.id' => $ids)));
+							// echo "<pre>";
+							// print_r($searchResult);die();
+
+							/*if search keyword from category*/
+							if (count($searchResult) > 0) 
+							{
+								$this->set(compact('searchResult'));
+								// pr($searchResult);die();
+								// $this->redirect('searchall');
+							}
+
+
+
+
+
+
+							if (count($searchResult) <= 0) 
+							{
+								/*trying serching through category name for Tag name*/
+								$tagname = $this->Tag->find('first', array('conditions' => array('Tag.name LIKE' => '%'.$lookingfor.'%' )));
+
+								$tagid = $tagname["Tag"]["id"];
+
+								// pr($catid);die();
+
+								$this->Paginator->settings = array(
+									        'limit' => 50,
+											'conditions' => array('SeekerRequirement.category_id' => $catid)					
+						// 'order' => 'User.id desc'
+										  );
+
+								$searchResult = $this->Paginator->paginate('SeekerRequirement');
+						
+
+								// $userids = [];
+
+								// foreach ($providerlist as $key => $listuser) 
+								// {
+								// 	$userids[] = $listuser['User']['id'];
+								// }
+								// $ids = [];
+								// $ids = array_unique($userids);
+
+								// if (!empty($location)) 
+								// {
+								// 	$this->Paginator->settings = array(
+								// 								        'limit' => 50,
+								// 								        'conditions' => array('User.id' => $ids,
+								// 								        'OR' => array(
+								// 								        				array('User.country' => $location),
+								// 								        				array('User.state' => $location)
+								// 								        			)
+						  //       										// 'order' => 'User.id desc'
+								// 									  ));
+								// }else{
+
+								// 	$this->Paginator->settings = array(
+								// 								        'limit' => 50,
+								// 								        'conditions' => array('User.id' => $ids),
+						  //       										// 'order' => 'User.id desc'
+								// 									  );
+
+								// }
+
+
+
+								// echo "<pre>";
+								// print_r($searchResult);die();
+							}
+
+
+
+							$tagcount = count($searchResult);
+
+							/*If result count for tag*/
+							if ($tagcount > 0) 
+							{
+								// pr('Result count for Tag');die();
+								$this->set(compact('searchResult'));
+								// $this->redirect('searchall');
+							}
+
+							
+							/*if only location enters*/
+							if ( !empty($location) && ($tagcount <= 0) ) 
+							{
+								$this->Paginator->settings = array(
+									        'limit' => 50,
+									        'conditions' => array('User.type' => 1,
+									        'OR' => array(
+									        				array('User.country' => $location),
+									        				array('User.state' => $location)
+									        			)
+											// 'order' => 'User.id desc'
+										  ));
+
+								$searchResult = $this->Paginator->paginate('User');
+
+
+							}
+
+							if (count($searchResult) > 0) 
+							{
+								// pr('only location enter');die();
+								$this->set(compact('searchResult'));
+								// $this->redirect('searchall');
+							}
+						
+						}
+
+				}else{
+
+						pr('i am n');die();
+					/*if only location enters*/
+						$this->Paginator->settings = array(
+							        'limit' => 50,
+							        'conditions' => array('User.type' => 1,
+							        'OR' => array(
+							        				'User.country' => $location,
+							        				'User.state' => $location
+							        			),
+							        		// array('User.state' => $location)
+									// 'order' => 'User.id desc'
+								  ));
+
+						$searchResult = $this->Paginator->paginate('User');
+
+						// echo count($searchResult); die();
+
+
+					if (count($searchResult) > 0) 
+					{
+						// pr('if only locatin enter');die();
+						$this->set(compact('searchResult'));
+						// $this->redirect('searchall');
+					}
+
+				}
+			
+
+				/*If no results found*/
+				// $this->set(compact('searchResult'));
+				// $this->redirect('searchall');
+
+
+				// $catname = $this->Paginator->settings = array(
+				//         'limit' => 5,
+				//         'conditions' => array(
+				// 								array('Category.title LIKE' => '%'.$lookingfor.'%' )
+				// 							),
+				//  );
+
+
+				// pr($catname["Category"]["id"]);die();
+
+				/*category id to search*/
+
+
+
+
+
+				// $data = $this->Category->find('all', array('joins' => array(
+				//     array(
+				//         'table' => 'provider_services',
+				//         'alias' => 'SeekerRequirement',
+				//         'type' => 'inner',
+				//         'foreignKey' => false,
+				//         'conditions'=> array('ProviderService.category_id = $catid')
+				//     )
+
+				// )));
+
+		// 		pr($data);die();
+
+		// 		$searchResult = $this->Paginator->paginate('Category');
+		// 		$this->set(compact('searchResult'));
+
+		// 	}
+		// 	$this->Paginator->settings = array(
+		// 	        'limit' => 5,
+		// 	        'conditions' => array(
+		// 									'User.type' => $type, 
+		// 									'User.status' => 1,
+		// 									'OR' => array(
+		// 													array('User.country' => $location ),
+		// 													array('User.state' => $location ),	
+		// 													array('User.company_name LIKE' => '%'.$lookingfor.'%' )
+		// 												)
+
+		// 								),
+		// 	        'order' => 'User.id desc'
+		// 	  );
+
+		// $searchResult = $this->Paginator->paginate('User');
+		// $this->set(compact('searchResult'));
+
 
 		// echo "<pre>";
 		// print_r($searchResult);die();
 		// echo "</pre>";
-		$this->set(compact('searchResult'));
 		// $this->redirect('$path');
 
 
 		}else{
 
+			// pr('i am out');die();
+			// pr('Loking for = '. $lookingfor);die();
 			$this->Paginator->settings = array(
 			        'limit' => 5,
 			        'conditions' => array(
-													'User.type' => 1, 
-													'User.status' => 1,
-													'OR' => array(
-																	array('User.country' => $location ),
-																	array('User.state' => $location ),	
-																	array('User.company_name LIKE' => '%'.$lookingfor.'%' )	
-																	// array()ray('User.company_name LIKE' => '%'.$lookingfor.'%' )	
-													)
+											'User.type' => 1, 
+											'User.status' => 1,
+											'OR' => array(
+															array('User.country' => $location ),
+															array('User.state' => $location ),	
+															array('User.company_name LIKE' => '%'.$lookingfor.'%')	
 
-										),
-			        'order' => 'User.id desc'
-			  );
+											),
+											'AND' => array(
+
+											)
+
+
+										));
+			        // 'order' => 'User.id desc'
 
 
 			$searchResult = $this->Paginator->paginate('User');
@@ -1618,10 +2060,31 @@ class HomeController extends AppController
 		}
 
 		// pr($this->request->data);die();
+			$name = $this->request->data['name'];
+			$email = $this->request->data['email'];
 
 			if($this->NewsLetter->save($this->request->data))
 			{
-				$this->Flash->success(__('Record saved successfully'));
+
+			     $emailTemplate = $this->EmailTemplate->findBySlug('newsletter');
+			 	// pr($emailTemplate);die;
+			     if( !empty($emailTemplate) )
+			     {
+			         // $password = $user['password'];
+			         $body = str_replace( ['{name}'], [$name], $emailTemplate['EmailTemplate']['body'] );
+
+			         $param['email'] = $email;
+			         $param['body'] = $body;
+
+			         $this->mail($emailTemplate, $param);    
+
+			         // $this->Flash->success(__('Reset password email sent successfully'));
+			         // $this->redirect('login');
+
+			     }
+			     // return false;
+
+				// $this->Flash->success(__('Record saved successfully'));
 				$this->redirect($this->referer());
 			}
 

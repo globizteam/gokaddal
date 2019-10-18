@@ -78,7 +78,7 @@
                                                                 
                                                                     <?php echo $this->Form->input(
                                                                                 'facebook',array(
-                                                                                    'type'=>'text',
+                                                                                    'type'=>'url',
                                                                                     'placeholder' => 'Facebook link', 
                                                                                     'class' => 'form-control required', 
                                                                                     'label' => 'Facebook',
@@ -91,7 +91,7 @@
                                                                 
                                                                     <?php echo $this->Form->input(
                                                                                 'twitter',array(
-                                                                                    'type'=>'text',
+                                                                                    'type'=>'url',
                                                                                     'placeholder' => 'Twitter link', 
                                                                                     'class' => 'form-control required', 
                                                                                     'label' => 'Twitter',
@@ -104,7 +104,7 @@
                                                                 
                                                                     <?php echo $this->Form->input(
                                                                                 'instagram',array(
-                                                                                    'type'=>'text',
+                                                                                    'type'=>'url',
                                                                                     'placeholder' => 'Instagram link', 
                                                                                     'class' => 'form-control required', 
                                                                                     'label' => 'Instagram',
@@ -117,7 +117,7 @@
                                                                 
                                                                     <?php echo $this->Form->input(
                                                                                 'linkedin',array(
-                                                                                    'type'=>'text',
+                                                                                    'type'=>'url',
                                                                                     'placeholder' => 'LinkedIn link', 
                                                                                     'class' => 'form-control required', 
                                                                                     'label' => 'LinkedIn',
@@ -133,7 +133,7 @@
                                                                             <div class="col-lg-12">
                                                                                 <div class="login-horizental cancel-wp pull-left form-bc-ele">
                                                                                     <button type="button" class="btn btn-white" onclick="history.go(-1)">Cancel</button>
-                                                                                    <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save Change</button>
+                                                                                    <button class="btn btn-sm btn-primary login-submit-cs add-address" type="submit">Save Change</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

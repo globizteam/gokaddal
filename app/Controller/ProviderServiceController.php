@@ -110,7 +110,7 @@ class ProviderServiceController extends AppController
 	{
 
 		$this->layout = 'admin_dashboard';
-		$this->loadModule = 'ProviderService';
+		$this->loadModule = 'News';
 
 		$allcatrecords = $this->Category->find('all',array('fields'=>'id,title'));
 		$users = $this->User->find('all', array('conditions' => array('User.id !=' => 1, 'User.type' => 1 )));

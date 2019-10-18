@@ -188,7 +188,7 @@ a:hover,a:focus{
 }
 .p_tb_80{
 	padding-top: 80px;
-	/*padding-bottom: 80px;*/
+	padding-bottom: 80px;
 }
 .p_tb_70{
     padding-top: 70px;
@@ -836,6 +836,10 @@ a:hover,a:focus{
 
 /*custom css Hardeep*/
 
+/*frontend search form error css*/
+.input-group.warning{
+    border: 1px solid #ff7f27 !important;
+}
 .message.error, .message {
     background: red !important;
     padding: 10px;
@@ -852,6 +856,7 @@ a:hover,a:focus{
     color: #fff;
     margin-top: 30px;
 }
+
 
 .top_right_menu:hover .dropdown-menu{
     display: block;
@@ -1551,4 +1556,48 @@ a:hover,a:focus{
 
 .my_account_main_content .form-group{
         height: 105px;
+}
+
+
+
+/* Style for FAQ page @ 17-10-2019 by Harpreet */
+
+.faq_item{
+    border-radius: 0 !important;
+    box-shadow: none;
+    margin-bottom: 20px !important;
+    border: 0;
+}
+.faq_item .panel-heading{
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    position: relative;
+}
+.faq_item .panel-heading a {
+    display: block;
+    padding: 15px 30px 15px 15px;
+    border-radius: 0;
+    background-color: #ff7f27;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+.faq_item .panel-body{
+    padding: 15px 15px;
+    background-color: #F4F4F4;
+    color: #000;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.faq_arrows{
+    display: inline-block;
+    position: absolute;
+    right: 13px;
+    top: 36%;
+    font-size: 20px;
+    color: #fff;
 }
